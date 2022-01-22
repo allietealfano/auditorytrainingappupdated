@@ -49,7 +49,7 @@ After Node.js is installed, you will need to clone the GitHub repository onto yo
 
 ```
 
-git clone repository-link or use the Desktop App by going to File, then clone repository.
+git clone https://github.com/Elton360/mission-audition.git or use the Desktop App by going to File, then clone repository.
 
 ```
 
