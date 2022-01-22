@@ -1,10 +1,12 @@
-# Auditory Trainning Web-App
+# Mission Audition
 
 Authors:
 
 Product Owner: Alliete Alfano
 
-The Auditory Trainning Web-App is currently in its first version. It is designed to
+The Auditory Trainning Web-App is currently in its first version. It is designed for adults with 
+hearing loss who have received a hearing aid or cochlear implant and want to improve their hearing 
+via fun games and other listening activities.
 
 ---
 
@@ -16,11 +18,11 @@ The following tree structure will be useful to visualize how the project is stru
 
 ├── Code
 
-│   └── App-Name
+│   └── mission-audition
 
 │       ├── assets (for images, icons etc.)
 
-│       ├── node_modules (inside here are all the modules installed after running ``npm install``)
+│       ├── node_modules (not in the repository, it will be created when you install all the dependencies)
 
 │       └── src
 
@@ -29,15 +31,19 @@ The following tree structure will be useful to visualize how the project is stru
 
 ```
 
-//Explanation of Project Structure
+Code/mission-audition is the directory that contains all of the code required to make app functional. If/When other directories are added, they will be used for documentation.
 
-//What is the entry point?
+The mission-audition/src directory is where all the source code for the application lies. The main entrypoint of the application is through index.js, which is where the application is created, and immediately calls App.js where all other components that change the UI must be referenced. 
 
 ### Installation & Running steps
 
-The easiest way to get started with App Name is to install install Node.js. You can do that by going to : https://nodejs.org/en/. This will automatically install the Node Package Manager (NPM).
-
+The easiest way to get started with App Name is to install install Node.js. You can do that by going to : 
 ```
+https://nodejs.org/en/. 
+```
+
+This will automatically install the Node Package Manager (NPM).
+
 
 After Node.js is installed, you will need to clone the GitHub repository onto your local machine:
 
@@ -47,6 +53,7 @@ git clone repository-link or use the Desktop App by going to File, then clone re
 
 ```
 
+
 Using your terminal, You can now install all the necessary dependencies for the node_modules folder by navigating to the directory folder, and running :
 
 ```
@@ -55,10 +62,11 @@ npm install
 
 ```
 
+
 The app can now be started on your local machine by running:
 
+```
+
 npm start
-
-
 
 ```
