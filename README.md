@@ -4,7 +4,7 @@ Authors: Elton Lucien,
 
 Product Owner: Alliete Alfano
 
-The Mission Audition is currently in its first version. It is designed for adults with
+The Mission Audition Web App is currently in its first version. It is designed for adults with
 hearing loss who have received a hearing aid or cochlear implant and want to improve their hearing
 via fun games and other listening activities.
 
