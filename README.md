@@ -37,7 +37,7 @@ The mission-audition/src directory is where all the source code for the applicat
 
 ### Installation & Running steps
 
-The easiest way to get started with App Name is to install install Node.js. You can do that by going to :
+The easiest way to get started with //waiting on official name// is to install install Node.js. You can do that by going to :
 
 ```
 https://nodejs.org/en/.
