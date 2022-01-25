@@ -45,7 +45,10 @@ https://nodejs.org/en/.
 
 This will automatically install the Node Package Manager (NPM).
 
-After Node.js is installed, you will need to clone the GitHub repository onto your local machine:
+
+It is also necessary to be able to run git commands in your terminal (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), or use the dektop app (https://desktop.github.com/).
+
+After Node.js is installed, and you can run git commands/or the app, you will need to clone the GitHub repository to your local machine:
 
 ```
 
