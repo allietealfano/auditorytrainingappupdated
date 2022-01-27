@@ -6,8 +6,9 @@ function HomePage() {
     <div>
       <h2>
         HomePage Components
-        <br></br>
+        <br />
         <Link to="/auth">Login</Link>
+        <Link to="/auth">Sign Up</Link>
       </h2>
     </div>
   );
