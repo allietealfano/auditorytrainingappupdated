@@ -20,13 +20,19 @@ The following tree structure will be useful to visualize how the project is stru
 
 │   └── mission-audition
 
-│       ├── public (for images, icons etc.)
+│       ├── public 
 
 │       ├── node_modules (not in the repository, it will be created when you install all the dependencies)
 
 │       └── src
 
+│           ├── assets
+
 │           ├── Components
+
+│           ├── css
+
+│           ├── pages
 
 
 ```
