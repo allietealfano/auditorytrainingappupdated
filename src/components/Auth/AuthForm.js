@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./LoginForm.css";
-
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -142,7 +140,7 @@ function AuthForm() {
               <img
                 className="loading-img"
                 src={require("../../assets/images/loading.gif")}
-                alt="Loading Image"
+                alt="Loading"
               />
             )}
           </div>
@@ -150,9 +148,9 @@ function AuthForm() {
 
         <div className="form__switcher">
           <p>
-            {isLogin ? "Don't have an account?" : "Already have an account?"}
+            {isLogin ? "Don't have an account? " : "Already have an account? "}
           </p>
-          <a onClick={switchHandler}>{isLogin ? "Sign Up" : "Sign In"}</a>
+          <p onClick={switchHandler}>{isLogin ? "Sign Up" : "Sign In"}</p>
         </div>
       </div>
     </div>
