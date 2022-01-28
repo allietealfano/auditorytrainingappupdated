@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AuthForm() {
-  const [isLogin, setIsLogin] = useState(false);
+function AuthForm(props) {
+  const [isLogin, setIsLogin] = useState(props.signIn);
   const [isLoading, setIsLoading] = useState(false);
 
   const emailInputRef = useRef();

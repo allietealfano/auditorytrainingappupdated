@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import AuthForm from "../components/Auth/AuthForm";
 
 function AuthPage() {
-  return <AuthForm />;
+  const location = useLocation();
+
+  return <AuthForm signIn={location.state.signIn} />;
 }
 
 export default AuthPage;

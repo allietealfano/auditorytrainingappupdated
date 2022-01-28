@@ -7,8 +7,12 @@ function HomePage() {
       <h2>
         HomePage Components
         <br />
-        <Link to="/auth">Login</Link>
-        <Link to="/auth">Sign Up</Link>
+        <Link to="/auth" state={{ signIn: true }}>
+          Sign In
+        </Link>
+        <Link to="/auth" state={{ signIn: false }}>
+          Sign Up
+        </Link>
       </h2>
     </div>
   );
