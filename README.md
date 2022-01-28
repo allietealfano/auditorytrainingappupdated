@@ -1,6 +1,6 @@
 # Mission Audition
 
-Authors: Elton Lucien, Miguel Pacillo
+Authors: Elton Lucien, Miguel Pacillo, Fernando Diaz
 
 Product Owner: Alliete Alfano
 
