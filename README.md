@@ -1,6 +1,6 @@
 # Mission Audition
 
-Authors: Elton Lucien, Miguel Pacillo, Fernando Diaz, Dmitrii Chzhao, Jason Francis, Taylor Rivera, Tomas Alvarez Lopez, Musa Jean
+Authors: Elton Lucien, Miguel Pacillo, Fernando Diaz, Dmitrii Chzhao, Jason Francis, Taylor Rivera, Tomas Alvarez Lopez, Musa Jean, Alejandro Carvajal
 
 Product Owner: Alliete Alfano
 
