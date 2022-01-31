@@ -27,10 +27,10 @@ function AuthForm(props) {
     let url;
     if (isLogin) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={API KEY}";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBn-xlzCV4WR2zXzYNsKvG9Q5Vby0AkRZM";
     } else {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={API KEY}";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBn-xlzCV4WR2zXzYNsKvG9Q5Vby0AkRZM";
     }
 
     fetch(url, {
