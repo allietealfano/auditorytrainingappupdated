@@ -1,0 +1,36 @@
+.button-container {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background-color: rgba(var(--light-blue));
+  position: relative;
+}
+
+.play-button,
+.pause-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+}
+
+.play-button {
+  transform: translate(-35%, -50%);
+  height: 40%;
+  width: 40%;
+  background-color: rgba(var(--light-yellow));
+  clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
+}
+
+.pause-button {
+  display: flex;
+  width: 8rem;
+  transform: translate(-50%, -50%);
+  justify-content: space-around;
+}
+
+.pause-half {
+  width: 25%;
+  height: 7rem;
+  background-color: rgba(var(--light-yellow));
+}

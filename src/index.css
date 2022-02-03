@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+html {
+  font-family: "frank-new", Helvetica, Arial, sans-serif;
+}
+
+:root {
+  --white: 255, 255, 255;
+  --black: 0, 0, 0;
+  --light-grey: 211, 211, 211;
+  --dark-grey: 51, 51, 51;
+  --main-yellow: 244, 208, 63;
+  --light-yellow: 218, 247, 166;
+  --dark-yellow: 255, 195, 0;
+  --main-blue: 93, 173, 226;
+  --light-blue: 133, 193, 233;
+  --dark-blue: 93, 173, 226;
+}
+
+.btn {
+  border: none;
+  padding: 2rem 4rem;
+  cursor: pointer;
+  border-radius: 5rem;
+  background-color: rgba(var(--dark-blue));
+  text-transform: uppercase;
+  color: rgba(var(--white));
+}
