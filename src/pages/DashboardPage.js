@@ -6,9 +6,9 @@ function DashboardPage() {
   return (
     <div>
       <Pop />
-      NavBar
+      <p>NavBar</p>
       <br />
-      Dashboard Page
+      <p>Dashboard Page</p>
     </div>
   );
 }

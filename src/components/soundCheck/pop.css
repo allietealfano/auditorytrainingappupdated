@@ -23,13 +23,11 @@
 
 .prompt__big {
   color: rgba(var(--dark-grey));
-  font-size: 200%;
   margin: 2rem 0;
 }
 
 .prompt__small {
   color: rgba(var(--dark-grey));
-  font-size: 150%;
   margin: 2rem 0;
 }
 
