@@ -1,0 +1,21 @@
+.feature__cards {
+  display: flex;
+  max-width: 115rem;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.feature__card {
+  width: 30%;
+}
+
+.card__img {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+
+.card__header {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
