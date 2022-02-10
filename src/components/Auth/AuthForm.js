@@ -143,6 +143,8 @@ function AuthForm(props) {
               <label for="Level 2">Level 2</label>
               <input type="radio" id="Level 3" value="Level 3"></input>
               <label for="Level 3">Level 3</label>
+              <input type="radio" id="Level 4" value="Level 4"></input>
+              <label for="Level 4">Level 4</label>
             </div>
           ) : (
             " "
