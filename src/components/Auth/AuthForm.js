@@ -130,7 +130,23 @@ function AuthForm(props) {
               Password
             </label>
           </div>
-
+          {!isLogin ? (
+            <div className="form_group">
+              <h3>Level Selection</h3>
+              <input
+                type="radio"
+                id="Sound Detection"
+                value="Sound Detection"
+              ></input>
+              <label for="Sound Detection">Sound Detection</label>
+              <input type="radio" id="Level 2" value="Level 2"></input>
+              <label for="Level 2">Level 2</label>
+              <input type="radio" id="Level 3" value="Level 3"></input>
+              <label for="Level 3">Level 3</label>
+            </div>
+          ) : (
+            " "
+          )}
           <div className="form__group">
             {!isLoading ? (
               <button className="btn">
