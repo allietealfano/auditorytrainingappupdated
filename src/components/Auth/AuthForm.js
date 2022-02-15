@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../index.css";
 
 function AuthForm(props) {
   const [isLogin, setIsLogin] = useState(props.signIn);
@@ -67,7 +68,9 @@ function AuthForm(props) {
     <div className="body">
       <div className="form__container">
         <form onSubmit={submitHandler} className="form">
+          &nbsp;
           <h1 className="form__header">{isLogin ? "Sign In" : "Sign Up"}</h1>
+          &nbsp;
           {!isLogin ? (
             <div className="form__group">
               <input
@@ -78,9 +81,7 @@ function AuthForm(props) {
                 required
                 ref={firstNameInputRef}
               />
-              <label className="form__label" htmlFor="first-name">
-                First Name
-              </label>
+              <label className="form__label" htmlFor="first-name"></label>
             </div>
           ) : (
             ""
@@ -95,9 +96,6 @@ function AuthForm(props) {
                 required
                 ref={lastNameInputRef}
               />
-              <label className="form__label" htmlFor="last-name">
-                Last Name
-              </label>
             </div>
           ) : (
             ""
@@ -111,11 +109,7 @@ function AuthForm(props) {
               required
               ref={emailInputRef}
             />
-            <label className="form__label" htmlFor="email">
-              Email
-            </label>
           </div>
-
           <div className="form__group">
             <input
               className="form__input"
@@ -126,10 +120,8 @@ function AuthForm(props) {
               required
               ref={passwordInputRef}
             />
-            <label className="form__label" htmlFor="password">
-              Password
-            </label>
           </div>
+          
           {!isLogin ? (
             <div className="form_group">
               <h3>Level Selection</h3>
@@ -149,6 +141,7 @@ function AuthForm(props) {
           ) : (
             " "
           )}
+
           <div className="form__group">
             {!isLoading ? (
               <button className="btn">
@@ -165,10 +158,13 @@ function AuthForm(props) {
         </form>
 
         <div className="form__switcher">
-          <p>
-            {isLogin ? "Don't have an account? " : "Already have an account? "}
+          &nbsp;
+          <p onClick={switchHandler}>
+            {isLogin
+              ? "Don't have an account? Sign Up"
+              : "Already have an account? Sign In"}
           </p>
-          <p onClick={switchHandler}>{isLogin ? "Sign Up" : "Sign In"}</p>
+          &nbsp;
         </div>
       </div>
     </div>
