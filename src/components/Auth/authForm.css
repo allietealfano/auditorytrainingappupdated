@@ -1,0 +1,53 @@
+.form__switcher {
+  margin: 2rem 0;
+}
+
+.span_underline {
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgba(var(--dark-blue));
+  margin-left: 0.75rem;
+}
+
+.form__input {
+  display: block;
+  margin: 2rem 0 1.5rem 2rem;
+  padding: 4px;
+  width: 90%;
+  height: 4%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #aaa;
+  font-size: 1.2rem;
+}
+
+.form__container {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  box-shadow: 0 2px 1.6rem rgba(0, 0, 0, 0.6);
+  background: white;
+  padding: 2rem 0 2rem 1.5rem;
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.form_radio-groups {
+  display: flex;
+  margin: 2rem;
+  justify-content: space-around;
+}
+.form__radio-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.radio__label {
+  margin: 0 1rem;
+}
