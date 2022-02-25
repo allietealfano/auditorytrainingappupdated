@@ -7,7 +7,7 @@ function Mission() {
   return (
     <div>
       <section className="section" id="section--2">
-        <div class="mission">
+        <div className="mission">
           <div className="section__title">
             <h2 className="section__description">Mission</h2>
             <h3 className="section__header">
@@ -15,15 +15,17 @@ function Mission() {
               alias
             </h3>
           </div>
-          <figure class="mission__shape">
+          <figure className="mission__shape">
             <img
               src={require("../../assets/images/test-founder.jpg")}
               alt="Computer"
               className="story__img"
             />
-            <figcaption class="mission__caption">Dr. Alliete Alfano</figcaption>
+            <figcaption className="mission__caption">
+              Dr. Alliete Alfano
+            </figcaption>
           </figure>
-          <div class="mission__text">
+          <div className="mission__text">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam,
               ipsum sapiente aspernatur libero repellat quis consequatur ducimus
