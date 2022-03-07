@@ -1,6 +1,9 @@
 import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { setDoc, doc } from "firebase/firestore";
+
 import AuthContext from "../store/auth-context";
+import { db, apiKey } from "../../firebase-config";
 
 import "./authForm.css";
 
@@ -26,15 +29,15 @@ function AuthForm(props) {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    const enteredFname = isLogin ? "" : firstNameInputRef.current.value;
+    const enteredLname = isLogin ? "" : lastNameInputRef.current.value;
 
     setIsLoading(true);
     let url;
     if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBn-xlzCV4WR2zXzYNsKvG9Q5Vby0AkRZM";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
     } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBn-xlzCV4WR2zXzYNsKvG9Q5Vby0AkRZM";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`;
     }
 
     fetch(url, {
@@ -54,17 +57,31 @@ function AuthForm(props) {
           return res.json();
         } else {
           return res.json().then((data) => {
-            let errorMessage = "authentification Failed: ";
-            if (data && data.error.message) errorMessage += data.error.message;
+            let errorMessage = "Whoops: ";
+            if (data?.error.message) errorMessage += data.error.message;
             throw new Error(errorMessage);
           });
         }
       })
       .then((data) => {
-        // localStorage.setItem("refToken", data.refreshToken.toString());
-        const expTime = new Date(new Date().getTime() + +data.expiresIn * 1000);
-        authContext.login(data.idToken, expTime);
-        navigate("/dashboard", { replace: true });
+        if (!isLogin) {
+          setIsLoading(true);
+          const userData = {
+            fName: enteredFname,
+            lName: enteredLname,
+            email: enteredEmail,
+          };
+          const UId = doc(db, `users/${data.localId}`);
+          setDoc(UId, userData);
+          setIsLoading(false);
+        } else {
+          // localStorage.setItem("refToken", data.refreshToken.toString());
+          const expTime = new Date(
+            new Date().getTime() + +data.expiresIn * 1000
+          );
+          authContext.login(data.idToken, expTime);
+          navigate("/dashboard", { replace: true });
+        }
       })
       .catch((err) => {
         alert(err.message.toLowerCase().replace("_", " ") + ".");

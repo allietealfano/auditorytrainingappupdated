@@ -31,7 +31,6 @@ function HomePage() {
             src={require("../assets/images/test-img.jpg")}
             alt="main"
             className="header__img"
-            alt="Minimalist bank items"
           />
         </div>
       </header>

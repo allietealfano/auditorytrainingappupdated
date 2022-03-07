@@ -23,10 +23,19 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            authContext.isLoggedIn ? <DashboardPage /> : <Navigate to="/" />
+            authContext.isLoggedIn ? <DashboardPage /> : <Navigate to="/auth" />
           }
         />
-        <Route path="auth" element={<AuthPage />} />
+        <Route
+          path="auth"
+          element={
+            !authContext.isLoggedIn ? (
+              <AuthPage />
+            ) : (
+              <Navigate to="/dashboard" />
+            )
+          }
+        />
         <Route path="*" element={<HomePage />} />
       </Routes>
     </Router>

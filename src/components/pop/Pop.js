@@ -4,7 +4,7 @@ import "./pop.css";
 
 function Pop(props) {
   return (
-    <div>
+    <>
       <div className="container">
         <div className="pop-up">
           <div className="prompt">
@@ -42,7 +42,7 @@ function Pop(props) {
         </div>
       </div>
       ) : ( ""
-    </div>
+    </>
   );
 }
 
