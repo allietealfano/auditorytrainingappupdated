@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../store/auth-context";
 
 import "./authForm.css";
 
@@ -13,6 +14,7 @@ function AuthForm(props) {
   const lastNameInputRef = useRef();
 
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const switchHandler = (e) => {
     e.preventDefault();
@@ -59,6 +61,9 @@ function AuthForm(props) {
         }
       })
       .then((data) => {
+        // localStorage.setItem("refToken", data.refreshToken.toString());
+        const expTime = new Date(new Date().getTime() + +data.expiresIn * 1000);
+        authContext.login(data.idToken, expTime);
         navigate("/dashboard", { replace: true });
       })
       .catch((err) => {
@@ -117,11 +122,11 @@ function AuthForm(props) {
             ref={passwordInputRef}
           />
         </div>
-        {!isLogin && (
+        {/* {!isLogin && (
           <div className="form_group">
             <h4>Level Selection</h4>
             <div className="form_radio-groups">
-              <div class="form__radio-group">
+              <div className="form__radio-group">
                 <input
                   type="radio"
                   id="Sound Detection"
@@ -131,19 +136,19 @@ function AuthForm(props) {
                   <p>Sound Detection</p>
                 </label>
               </div>
-              <div class="form__radio-group">
+              <div className="form__radio-group">
                 <input type="radio" id="Level 2" value="Level 2"></input>
                 <label className="radio__label" for="Level 2">
                   <p>Level 2</p>
                 </label>
               </div>
-              <div class="form__radio-group">
+              <div className="form__radio-group">
                 <input type="radio" id="Level 3" value="Level 3"></input>
                 <label className="radio__label" for="Level 3">
                   <p>Level 3</p>
                 </label>
               </div>
-              <div class="form__radio-group">
+              <div className="form__radio-group">
                 <input type="radio" id="Level 4" value="Level 4"></input>
                 <label className="radio__label" for="Level 4">
                   <p>Level 4</p>
@@ -151,7 +156,7 @@ function AuthForm(props) {
               </div>
             </div>
           </div>
-        )}
+        )} */}
         <div className="form__group">
           {!isLoading ? (
             <button className="btn-yellow">
@@ -171,16 +176,16 @@ function AuthForm(props) {
         &nbsp;
         <p onClick={switchHandler}>
           {isLogin && (
-            <p>
+            <span>
               Don't have an account?
               <span className="span_underline">Sign Up</span>
-            </p>
+            </span>
           )}
           {!isLogin && (
-            <p>
-              Don't have an account?
-              <span className="span_underline">Sign Up</span>
-            </p>
+            <span>
+              Already have an account?
+              <span className="span_underline">Sign In</span>
+            </span>
           )}
         </p>
         &nbsp;

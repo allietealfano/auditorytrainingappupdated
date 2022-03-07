@@ -1,8 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import App from "./App";
+import { AuthContextProvider } from "./components/store/auth-context";
+
 import "./index.css";
 
-import App from "./App";
-
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>,
+  document.getElementById("root")
+);

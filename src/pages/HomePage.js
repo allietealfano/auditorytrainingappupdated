@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Nav from "../components/nav/Nav";
 import "./homepage.css";
 
 import Features from "../components/homepage-sects/Features";
@@ -10,16 +11,7 @@ function HomePage() {
   return (
     <main>
       <header className="header">
-        {/* nav is for the navbar component */}
-        <nav>
-          <Link to="/auth" state={{ signIn: true }}>
-            <button className="btn-blue"> Sign In</button>
-          </Link>
-          <Link to="/auth" state={{ signIn: false }}>
-            <button className="btn-blue"> Sign Up</button>
-          </Link>
-        </nav>
-
+        <Nav />
         <br />
         <br />
 
