@@ -17,10 +17,10 @@ function IdleTimerContainer() {
   const onIdle = () => {
     if (isLoggedIn) {
       setPop(true);
-      sessionTimeoutRef.current = setTimeout(function () {
+      sessionTimeoutRef.current = setTimeout(() => {
         logout();
         setPop(false);
-      }, 5000);
+      }, 30 * 1000);
     }
   };
 
@@ -40,7 +40,7 @@ function IdleTimerContainer() {
           option1={"Stay Active"}
           option1Func={active}
           option2={"Log Out"}
-          option2Func={function () {
+          option2Func={() => {
             logout();
             setPop(false);
             clearTimeout(sessionTimeoutRef.current);
@@ -50,7 +50,7 @@ function IdleTimerContainer() {
       <IdleTimer
         crossTab={true}
         ref={idleTimerRef}
-        timeout={5 * 1000}
+        timeout={600 * 1000}
         onIdle={onIdle}
       ></IdleTimer>
     </div>

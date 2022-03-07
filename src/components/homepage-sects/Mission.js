@@ -5,7 +5,7 @@ import "./mission.css";
 
 function Mission() {
   return (
-    <div>
+    <>
       <section className="section" id="section--2">
         <div className="mission">
           <div className="section__title">
@@ -18,7 +18,7 @@ function Mission() {
           <figure className="mission__shape">
             <img
               src={require("../../assets/images/test-founder.jpg")}
-              alt="Computer"
+              alt="Founder"
               className="story__img"
             />
             <figcaption className="mission__caption">
@@ -41,7 +41,7 @@ function Mission() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
 

@@ -29,7 +29,7 @@ function Features() {
   ];
 
   return (
-    <div>
+    <>
       <section className="section" id="section--1">
         <div className="section__title">
           <h2 className="section__description">Features</h2>
@@ -68,7 +68,7 @@ function Features() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
 
