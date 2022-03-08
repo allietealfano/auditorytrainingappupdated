@@ -9,23 +9,23 @@ function Features() {
 
   const featuresArr = [
     {
-      title: "Key Feature 1",
+      title: "Detection",
       detail:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam debitis ducimus.",
+      " In this mission, you will either be presented with a sound or silence. Although you may not hear anything, it’s not a trick! Try your best to choose the best option of what you’re presented with.",
       pic: "../assets/images/test-pc.jpg",
     },
     {
-      title: "Key Feature 2",
+      title: "Discrimination",
       detail:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam debitis ducimus.",
+"In this mission, you will be presented with two sounds and will be asked to select whether the sounds are the same or different.",
       pic: "../assets/images/test-pc.jpg",
     },
     {
-      title: "Key Feature 3",
+      title: "Identification",
       detail:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam debitis ducimus.",
+      "In this mission, you will hear sounds of varying lengths and loudness levels. You will also hear words of varying lengths and voices and asked to identify the correct option.",
       pic: "../assets/images/test-pc.jpg",
-    },
+    },  
   ];
 
   return (
@@ -34,7 +34,10 @@ function Features() {
         <div className="section__title">
           <h2 className="section__description">Features</h2>
           <h3 className="section__header">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias
+          Your mission is to travel through and master each level of auditory training.
+           You will be asked to listen, detect, discriminate, identify, and comprehend
+            different sounds, words, phrases, and sentences. Above all, your main mission 
+            is to have fun!
           </h3>
         </div>
 

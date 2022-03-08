@@ -9,16 +9,18 @@ import Mission from "../components/homepage-sects/Mission";
 function HomePage() {
   return (
     <main>
+       <nav>
+        <ul>
+          <Link to="/"><li className="active">Mission: Audition!</li></Link>
+          <Link to="/auth" state={{ signIn: true }}><li>Sign In</li></Link>
+          <Link to="/auth" state={{ signIn: false }}><li>Sign Up</li></Link>
+          <Link to="/dashboard"><li>Dashboard</li></Link>
+       
+
+      </ul>
+</nav>
+
       <header className="header">
-        {/* nav is for the navbar component */}
-        <nav>
-          <Link to="/auth" state={{ signIn: true }}>
-            <button className="btn-blue"> Sign In</button>
-          </Link>
-          <Link to="/auth" state={{ signIn: false }}>
-            <button className="btn-blue"> Sign Up</button>
-          </Link>
-        </nav>
 
         <br />
         <br />
