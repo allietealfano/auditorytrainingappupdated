@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
 
 import Pop from "../components/pop/Pop";
 import PlayButton from "../components/playButton/PlayButton";
@@ -31,9 +32,6 @@ function DashboardPage() {
           pop={pop}
         />
       )}
-      <p>NavBar</p>
-      <br />
-      <p>Dashboard Page</p>
     </div>
   );
 }

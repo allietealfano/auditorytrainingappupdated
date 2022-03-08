@@ -10,11 +10,24 @@ import Mission from "../components/homepage-sects/Mission";
 function HomePage() {
   return (
     <main>
-      <header className="header">
-        <Nav />
-        <br />
-        <br />
+      <nav>
+        <ul>
+          <Link to="/">
+            <li className="active">Mission: Audition!</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: true }}>
+            <li>Sign In</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: false }}>
+            <li>Sign Up</li>
+          </Link>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
+        </ul>
+      </nav>
 
+      <header className="header">
         <div className="header__title">
           <h1>
             Helping

@@ -11,8 +11,7 @@ function Mission() {
           <div className="section__title">
             <h2 className="section__description">Mission</h2>
             <h3 className="section__header">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-              alias
+          
             </h3>
           </div>
           <figure className="mission__shape">
@@ -27,17 +26,12 @@ function Mission() {
           </figure>
           <div className="mission__text">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam,
-              ipsum sapiente aspernatur libero repellat quis consequatur ducimus
-              quam nisi exercitationem omnis earum qui. Aperiam, ipsum sapiente
-              aspernatur libero repellat quis consequatur ducimus quam nisi
-              exercitationem omnis earum qui. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Aperiam, ipsum sapiente aspernatur
-              libero repellat quis consequatur ducimus quam nisi exercitationem
-              omnis earum qui. Aperiam, ipsum sapiente aspernatur libero
-              repellat quis consequatur ducimus quam nisi exercitationem omnis
-              earum qui.
+            Mission: Audition! is an auditory training application designed to help people 
+              who use cochlear implants train their hearing ability to identify and understand 
+              sounds, words, phrases, and sentences functionally.
             </p>
+            
+            
           </div>
         </div>
       </section>

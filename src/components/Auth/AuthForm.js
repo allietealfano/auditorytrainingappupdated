@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 
 import AuthContext from "../store/auth-context";
@@ -88,7 +88,24 @@ function AuthForm(props) {
       });
   };
   return (
-    <div className="form__container">
+    <>
+      <nav>
+        <ul>
+          <Link to="/">
+            <li className="active">Mission Audition!</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: true }}>
+            <li>Sign In</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: false }}>
+            <li>Sign Up</li>
+          </Link>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
+        </ul>
+      </nav>
+      <div className="form__container">
       <form onSubmit={submitHandler} className="form">
         &nbsp;
         <h2 className="form__header">{isLogin ? "Sign In" : "Sign Up"}</h2>
@@ -208,6 +225,7 @@ function AuthForm(props) {
         &nbsp;
       </div>
     </div>
+    </>
   );
 }
 
