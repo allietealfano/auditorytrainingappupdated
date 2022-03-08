@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { React, useState } from "react";
+import { Link } from "react-router-dom";
+
 import Pop from "../components/pop/Pop";
 import PlayButton from "../components/playButton/PlayButton";
 import Nav from "../components/nav/Nav";
@@ -19,23 +19,6 @@ function DashboardPage() {
 
   return (
     <div>
-      <Pop />
-      <nav>
-        <ul>
-          <Link to="/">
-            <li className="active">Mission Audition!</li>
-          </Link>
-          <Link to="/auth" state={{ signIn: true }}>
-            <li>Sign In</li>
-          </Link>
-          <Link to="/auth" state={{ signIn: false }}>
-            <li>Sign Up</li>
-          </Link>
-          <Link to="/dashboard">
-            <li>Dashboard</li>
-          </Link>
-        </ul>
-      </nav>
       <Nav />
       {pop && (
         <Pop

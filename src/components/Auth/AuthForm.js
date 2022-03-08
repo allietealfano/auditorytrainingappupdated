@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
+
 import AuthContext from "../store/auth-context";
 import { db, apiKey } from "../../firebase-config";
 
@@ -106,125 +106,125 @@ function AuthForm(props) {
         </ul>
       </nav>
       <div className="form__container">
-        <form onSubmit={submitHandler} className="form">
-          &nbsp;
-          <h2 className="form__header">{isLogin ? "Sign In" : "Sign Up"}</h2>
-          &nbsp;
-          {!isLogin && (
-            <div className="form__group">
-              <input
-                className="form__input"
-                id="first-name"
-                type="text"
-                placeholder="First Name"
-                required
-                ref={firstNameInputRef}
-              />
-              <label className="form__label" htmlFor="first-name"></label>
-            </div>
-          )}
-          {!isLogin && (
-            <div className="form__group">
-              <input
-                className="form__input"
-                id="last-name"
-                type="text"
-                placeholder="Last Name"
-                required
-                ref={lastNameInputRef}
-              />
-            </div>
-          )}
+      <form onSubmit={submitHandler} className="form">
+        &nbsp;
+        <h2 className="form__header">{isLogin ? "Sign In" : "Sign Up"}</h2>
+        &nbsp;
+        {!isLogin && (
           <div className="form__group">
             <input
               className="form__input"
-              id="email"
-              type="email"
-              placeholder="Email Address"
+              id="first-name"
+              type="text"
+              placeholder="First Name"
               required
-              ref={emailInputRef}
+              ref={firstNameInputRef}
             />
+            <label className="form__label" htmlFor="first-name"></label>
           </div>
+        )}
+        {!isLogin && (
           <div className="form__group">
             <input
               className="form__input"
-              id="password"
-              type="password"
-              placeholder="Password"
-              minLength="6"
+              id="last-name"
+              type="text"
+              placeholder="Last Name"
               required
-              ref={passwordInputRef}
+              ref={lastNameInputRef}
             />
           </div>
-          {/* {!isLogin && (
-            <div className="form_group">
-              <h4>Level Selection</h4>
-              <div className="form_radio-groups">
-                <div className="form__radio-group">
-                  <input
-                    type="radio"
-                    id="Sound Detection"
-                    value="Sound Detection"
-                  ></input>
-                  <label className="radio__label" for="Sound Detection">
-                    <p>Sound Detection</p>
-                  </label>
-                </div>
-                <div className="form__radio-group">
-                  <input type="radio" id="Level 2" value="Level 2"></input>
-                  <label className="radio__label" for="Level 2">
-                    <p>Level 2</p>
-                  </label>
-                </div>
-                <div className="form__radio-group">
-                  <input type="radio" id="Level 3" value="Level 3"></input>
-                  <label className="radio__label" for="Level 3">
-                    <p>Level 3</p>
-                  </label>
-                </div>
-                <div className="form__radio-group">
-                  <input type="radio" id="Level 4" value="Level 4"></input>
-                  <label className="radio__label" for="Level 4">
-                    <p>Level 4</p>
-                  </label>
-                </div>
+        )}
+        <div className="form__group">
+          <input
+            className="form__input"
+            id="email"
+            type="email"
+            placeholder="Email Address"
+            required
+            ref={emailInputRef}
+          />
+        </div>
+        <div className="form__group">
+          <input
+            className="form__input"
+            id="password"
+            type="password"
+            placeholder="Password"
+            minLength="6"
+            required
+            ref={passwordInputRef}
+          />
+        </div>
+        {/* {!isLogin && (
+          <div className="form_group">
+            <h4>Level Selection</h4>
+            <div className="form_radio-groups">
+              <div className="form__radio-group">
+                <input
+                  type="radio"
+                  id="Sound Detection"
+                  value="Sound Detection"
+                ></input>
+                <label className="radio__label" for="Sound Detection">
+                  <p>Sound Detection</p>
+                </label>
+              </div>
+              <div className="form__radio-group">
+                <input type="radio" id="Level 2" value="Level 2"></input>
+                <label className="radio__label" for="Level 2">
+                  <p>Level 2</p>
+                </label>
+              </div>
+              <div className="form__radio-group">
+                <input type="radio" id="Level 3" value="Level 3"></input>
+                <label className="radio__label" for="Level 3">
+                  <p>Level 3</p>
+                </label>
+              </div>
+              <div className="form__radio-group">
+                <input type="radio" id="Level 4" value="Level 4"></input>
+                <label className="radio__label" for="Level 4">
+                  <p>Level 4</p>
+                </label>
               </div>
             </div>
-          )} */}
-          <div className="form__group">
-            {!isLoading ? (
-              <button className="btn-yellow">
-                {isLogin ? "Sign In" : "Sign Up"} &rarr;
-              </button>
-            ) : (
-              <img
-                className="loading-img"
-                src={require("../../assets/images/loading.gif")}
-                alt="Loading"
-              />
-            )}
           </div>
-        </form>
-
-        <div className="form__switcher">
-          &nbsp;
-          <p onClick={switchHandler}>
-            {isLogin && (
-              <span>
-                Don't have an account?
-                <span className="span_underline">Sign Up</span>
-              </span>
-            )}
-            {!isLogin && (
-              <span>
-                Already have an account?
-                <span className="span_underline">Sign In</span>
-              </span>
-            )}
-          </p>
-          &nbsp;
+        )} */}
+        <div className="form__group">
+          {!isLoading ? (
+            <button className="btn-yellow">
+              {isLogin ? "Sign In" : "Sign Up"} &rarr;
+            </button>
+          ) : (
+            <img
+              className="loading-img"
+              src={require("../../assets/images/loading.gif")}
+              alt="Loading"
+            />
+          )}
         </div>
+      </form>
+
+      <div className="form__switcher">
+        &nbsp;
+        <p onClick={switchHandler}>
+          {isLogin && (
+            <span>
+              Don't have an account?
+              <span className="span_underline">Sign Up</span>
+            </span>
+          )}
+          {!isLogin && (
+            <span>
+              Already have an account?
+              <span className="span_underline">Sign In</span>
+            </span>
+          )}
+        </p>
+        &nbsp;
       </div>
+    </div>
     </>
   );
 }

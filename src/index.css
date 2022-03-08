@@ -128,6 +128,10 @@ li:hover:not(.active) {
   z-index: 2;
 }
 
+.loading-img {
+  z-index: 2;
+}
+
 .loading-img-container {
   height: 100vh;
   width: 100vw;
