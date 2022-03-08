@@ -1,0 +1,41 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(var(--main-blue), 0.5);
+  text-align: center;
+}
+
+.pop-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 55rem;
+  height: 60rem;
+  border-radius: 10px;
+  padding: 8rem 5rem;
+  background-color: rgba(var(--white));
+}
+
+.prompt__big {
+  color: rgba(var(--dark-grey));
+  margin: 2rem 0;
+}
+
+.prompt__small {
+  color: rgba(var(--dark-grey));
+  margin: 2rem 0;
+}
+
+.choice-container {
+  width: 60%;
+}
+
+.choices {
+  display: flex;
+  justify-content: space-around;
+}

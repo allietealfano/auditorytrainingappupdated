@@ -66,7 +66,8 @@ input:focus:invalid {
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  padding: 0.4rem 7rem;
+  padding: 0.7rem 5rem;
+  margin: 1rem;
   text-decoration: none;
   color: rgba(var(--white));
   font-size: 1.7rem;
@@ -114,13 +115,29 @@ li {
   text-decoration: none;
 }
 
-
-
 li:hover:not(.active) {
   background-color: rgb(202, 202, 202);
 }
 
 .active {
   background-color: rgba(var(--dark-blue));
-  color: #ffff
+  color: #ffff;
+}
+
+.loading-img {
+  z-index: 2;
+}
+
+.loading-img-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 1;
 }

@@ -39,7 +39,7 @@
 
 .form_radio-groups {
   display: flex;
-  margin: 2rem;
+  margin: 2rem 2rem 2rem 0.5rem;
   justify-content: space-around;
 }
 .form__radio-group {

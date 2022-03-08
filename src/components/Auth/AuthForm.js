@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { setDoc, doc } from "firebase/firestore";
+import AuthContext from "../store/auth-context";
+import { db, apiKey } from "../../firebase-config";
 
 import "./authForm.css";
 
@@ -15,6 +17,7 @@ function AuthForm(props) {
   const lastNameInputRef = useRef();
 
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const switchHandler = (e) => {
     e.preventDefault();
@@ -26,15 +29,15 @@ function AuthForm(props) {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+    const enteredFname = isLogin ? "" : firstNameInputRef.current.value;
+    const enteredLname = isLogin ? "" : lastNameInputRef.current.value;
 
     setIsLoading(true);
     let url;
     if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBn-xlzCV4WR2zXzYNsKvG9Q5Vby0AkRZM";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
     } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBn-xlzCV4WR2zXzYNsKvG9Q5Vby0AkRZM";
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`;
     }
 
     fetch(url, {
@@ -54,30 +57,55 @@ function AuthForm(props) {
           return res.json();
         } else {
           return res.json().then((data) => {
-            let errorMessage = "authentification Failed: ";
-            if (data && data.error.message) errorMessage += data.error.message;
+            let errorMessage = "Whoops: ";
+            if (data?.error.message) errorMessage += data.error.message;
             throw new Error(errorMessage);
           });
         }
       })
       .then((data) => {
-        navigate("/dashboard", { replace: true });
+        if (!isLogin) {
+          setIsLoading(true);
+          const userData = {
+            fName: enteredFname,
+            lName: enteredLname,
+            email: enteredEmail,
+          };
+          const UId = doc(db, `users/${data.localId}`);
+          setDoc(UId, userData);
+          setIsLoading(false);
+        } else {
+          // localStorage.setItem("refToken", data.refreshToken.toString());
+          const expTime = new Date(
+            new Date().getTime() + +data.expiresIn * 1000
+          );
+          authContext.login(data.idToken, expTime);
+          navigate("/dashboard", { replace: true });
+        }
       })
       .catch((err) => {
         alert(err.message.toLowerCase().replace("_", " ") + ".");
       });
   };
   return (
-    <><nav>
-      <ul>
-        <Link to="/"><li className="active">Mission Audition!</li></Link>
-        <Link to="/auth" state={{ signIn: true }}><li>Sign In</li></Link>
-        <Link to="/auth" state={{ signIn: false }}><li>Sign Up</li></Link>
-        <Link to="/dashboard"><li>Dashboard</li></Link>
-
-
-      </ul>
-    </nav><div className="form__container">
+    <>
+      <nav>
+        <ul>
+          <Link to="/">
+            <li className="active">Mission Audition!</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: true }}>
+            <li>Sign In</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: false }}>
+            <li>Sign Up</li>
+          </Link>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
+        </ul>
+      </nav>
+      <div className="form__container">
         <form onSubmit={submitHandler} className="form">
           &nbsp;
           <h2 className="form__header">{isLogin ? "Sign In" : "Sign Up"}</h2>
@@ -90,7 +118,8 @@ function AuthForm(props) {
                 type="text"
                 placeholder="First Name"
                 required
-                ref={firstNameInputRef} />
+                ref={firstNameInputRef}
+              />
               <label className="form__label" htmlFor="first-name"></label>
             </div>
           )}
@@ -102,7 +131,8 @@ function AuthForm(props) {
                 type="text"
                 placeholder="Last Name"
                 required
-                ref={lastNameInputRef} />
+                ref={lastNameInputRef}
+              />
             </div>
           )}
           <div className="form__group">
@@ -112,7 +142,8 @@ function AuthForm(props) {
               type="email"
               placeholder="Email Address"
               required
-              ref={emailInputRef} />
+              ref={emailInputRef}
+            />
           </div>
           <div className="form__group">
             <input
@@ -122,13 +153,14 @@ function AuthForm(props) {
               placeholder="Password"
               minLength="6"
               required
-              ref={passwordInputRef} />
+              ref={passwordInputRef}
+            />
           </div>
-          {!isLogin && (
+          {/* {!isLogin && (
             <div className="form_group">
               <h4>Level Selection</h4>
               <div className="form_radio-groups">
-                <div class="form__radio-group">
+                <div className="form__radio-group">
                   <input
                     type="radio"
                     id="Sound Detection"
@@ -138,19 +170,19 @@ function AuthForm(props) {
                     <p>Sound Detection</p>
                   </label>
                 </div>
-                <div class="form__radio-group">
+                <div className="form__radio-group">
                   <input type="radio" id="Level 2" value="Level 2"></input>
                   <label className="radio__label" for="Level 2">
                     <p>Level 2</p>
                   </label>
                 </div>
-                <div class="form__radio-group">
+                <div className="form__radio-group">
                   <input type="radio" id="Level 3" value="Level 3"></input>
                   <label className="radio__label" for="Level 3">
                     <p>Level 3</p>
                   </label>
                 </div>
-                <div class="form__radio-group">
+                <div className="form__radio-group">
                   <input type="radio" id="Level 4" value="Level 4"></input>
                   <label className="radio__label" for="Level 4">
                     <p>Level 4</p>
@@ -158,7 +190,7 @@ function AuthForm(props) {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
           <div className="form__group">
             {!isLoading ? (
               <button className="btn-yellow">
@@ -168,7 +200,8 @@ function AuthForm(props) {
               <img
                 className="loading-img"
                 src={require("../../assets/images/loading.gif")}
-                alt="Loading" />
+                alt="Loading"
+              />
             )}
           </div>
         </form>
@@ -177,21 +210,22 @@ function AuthForm(props) {
           &nbsp;
           <p onClick={switchHandler}>
             {isLogin && (
-              <p>
+              <span>
                 Don't have an account?
                 <span className="span_underline">Sign Up</span>
-              </p>
+              </span>
             )}
             {!isLogin && (
-              <p>
-                Don't have an account?
-                <span className="span_underline">Sign Up</span>
-              </p>
+              <span>
+                Already have an account?
+                <span className="span_underline">Sign In</span>
+              </span>
             )}
           </p>
           &nbsp;
         </div>
-      </div></>
+      </div>
+    </>
   );
 }
 

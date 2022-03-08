@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Nav from "../components/nav/Nav";
 import "./homepage.css";
 
 import Features from "../components/homepage-sects/Features";
@@ -9,22 +10,24 @@ import Mission from "../components/homepage-sects/Mission";
 function HomePage() {
   return (
     <main>
-       <nav>
+      <nav>
         <ul>
-          <Link to="/"><li className="active">Mission: Audition!</li></Link>
-          <Link to="/auth" state={{ signIn: true }}><li>Sign In</li></Link>
-          <Link to="/auth" state={{ signIn: false }}><li>Sign Up</li></Link>
-          <Link to="/dashboard"><li>Dashboard</li></Link>
-       
-
-      </ul>
-</nav>
+          <Link to="/">
+            <li className="active">Mission: Audition!</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: true }}>
+            <li>Sign In</li>
+          </Link>
+          <Link to="/auth" state={{ signIn: false }}>
+            <li>Sign Up</li>
+          </Link>
+          <Link to="/dashboard">
+            <li>Dashboard</li>
+          </Link>
+        </ul>
+      </nav>
 
       <header className="header">
-
-        <br />
-        <br />
-
         <div className="header__title">
           <h1>
             Helping
@@ -41,7 +44,6 @@ function HomePage() {
             src={require("../assets/images/test-img.jpg")}
             alt="main"
             className="header__img"
-            alt="Minimalist bank items"
           />
         </div>
       </header>
