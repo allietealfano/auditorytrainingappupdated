@@ -6,27 +6,12 @@ import "./homepage.css";
 
 import Features from "../components/homepage-sects/Features";
 import Mission from "../components/homepage-sects/Mission";
+import UserMission from "../components/homepage-sects/UserMission";
 
 function HomePage() {
   return (
     <main>
-      <nav>
-        <ul>
-          <Link to="/">
-            <li className="active">Mission: Audition!</li>
-          </Link>
-          <Link to="/auth" state={{ signIn: true }}>
-            <li>Sign In</li>
-          </Link>
-          <Link to="/auth" state={{ signIn: false }}>
-            <li>Sign Up</li>
-          </Link>
-          <Link to="/dashboard">
-            <li>Dashboard</li>
-          </Link>
-        </ul>
-      </nav>
-
+      <Nav />
       <header className="header">
         <div className="header__title">
           <h1>
@@ -49,6 +34,7 @@ function HomePage() {
       </header>
 
       <Features />
+      <UserMission />
       <Mission />
     </main>
   );

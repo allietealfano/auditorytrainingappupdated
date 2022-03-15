@@ -51,3 +51,9 @@
 .radio__label {
   margin: 0 1rem;
 }
+
+.reset__prompt {
+  text-align: center;
+  margin: 4rem 0;
+  font-weight: 600;
+}

@@ -1,0 +1,11 @@
+.reset__message {
+  text-align: center;
+  color: rgba(var(--white));
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 3rem;
+}

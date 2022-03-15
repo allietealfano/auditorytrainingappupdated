@@ -2,6 +2,8 @@ import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+
 import AuthContext from "../store/auth-context";
 import { db, apiKey } from "../../firebase-config";
 
@@ -9,6 +11,7 @@ import "./authForm.css";
 
 function AuthForm(props) {
   const [isLogin, setIsLogin] = useState(props.signIn);
+  const [isReset, setIsReset] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const emailInputRef = useRef();
@@ -26,6 +29,13 @@ function AuthForm(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    console.log(isReset);
+
+    if (isReset) {
+      resetPassword();
+      return;
+    }
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
@@ -64,8 +74,9 @@ function AuthForm(props) {
         }
       })
       .then((data) => {
+        setIsLoading(true);
+
         if (!isLogin) {
-          setIsLoading(true);
           const userData = {
             fName: enteredFname,
             lName: enteredLname,
@@ -73,43 +84,46 @@ function AuthForm(props) {
           };
           const UId = doc(db, `users/${data.localId}`);
           setDoc(UId, userData);
-          setIsLoading(false);
-        } else {
-          // localStorage.setItem("refToken", data.refreshToken.toString());
-          const expTime = new Date(
-            new Date().getTime() + +data.expiresIn * 1000
-          );
-          authContext.login(data.idToken, expTime);
-          navigate("/dashboard", { replace: true });
-        }
+        } // localStorage.setItem("refToken", data.refreshToken.toString());
+        const expTime = new Date(new Date().getTime() + +data.expiresIn * 1000);
+        authContext.login(data.idToken, expTime);
+        navigate("/dashboard", { replace: true });
+        setIsLoading(false);
       })
       .catch((err) => {
         alert(err.message.toLowerCase().replace("_", " ") + ".");
+        // Errors should be handled by a state that displays them to the user instead of an alert
       });
   };
+
+  const resetPassword = () => {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, "eluci005@fiu.edu")
+      .then(() => {
+        // alert("Password reset sent");
+        navigate("/reset", { replace: true });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // Errors should be handled by a state that displays them to the user
+      });
+  };
+
   return (
-    <>
-      <nav>
-        <ul>
-          <Link to="/">
-            <li className="active">Mission Audition!</li>
-          </Link>
-          <Link to="/auth" state={{ signIn: true }}>
-            <li>Sign In</li>
-          </Link>
-          <Link to="/auth" state={{ signIn: false }}>
-            <li>Sign Up</li>
-          </Link>
-          <Link to="/dashboard">
-            <li>Dashboard</li>
-          </Link>
-        </ul>
-      </nav>
-      <div className="form__container">
+    <div className="form__container">
       <form onSubmit={submitHandler} className="form">
         &nbsp;
-        <h2 className="form__header">{isLogin ? "Sign In" : "Sign Up"}</h2>
+        <h2 className="form__header">
+          {isReset ? "Password Reset" : isLogin ? "Sign In" : "Sign Up"}
+        </h2>
         &nbsp;
+        {isReset && (
+          <p className="reset__prompt">
+            Please enter your email address below, and a link to reset your
+            password will be sent your email.
+          </p>
+        )}
         {!isLogin && (
           <div className="form__group">
             <input
@@ -145,56 +159,34 @@ function AuthForm(props) {
             ref={emailInputRef}
           />
         </div>
-        <div className="form__group">
-          <input
-            className="form__input"
-            id="password"
-            type="password"
-            placeholder="Password"
-            minLength="6"
-            required
-            ref={passwordInputRef}
-          />
-        </div>
-        {/* {!isLogin && (
-          <div className="form_group">
-            <h4>Level Selection</h4>
-            <div className="form_radio-groups">
-              <div className="form__radio-group">
-                <input
-                  type="radio"
-                  id="Sound Detection"
-                  value="Sound Detection"
-                ></input>
-                <label className="radio__label" for="Sound Detection">
-                  <p>Sound Detection</p>
-                </label>
-              </div>
-              <div className="form__radio-group">
-                <input type="radio" id="Level 2" value="Level 2"></input>
-                <label className="radio__label" for="Level 2">
-                  <p>Level 2</p>
-                </label>
-              </div>
-              <div className="form__radio-group">
-                <input type="radio" id="Level 3" value="Level 3"></input>
-                <label className="radio__label" for="Level 3">
-                  <p>Level 3</p>
-                </label>
-              </div>
-              <div className="form__radio-group">
-                <input type="radio" id="Level 4" value="Level 4"></input>
-                <label className="radio__label" for="Level 4">
-                  <p>Level 4</p>
-                </label>
-              </div>
-            </div>
+        {!isReset && (
+          <div className="form__group">
+            <input
+              className="form__input"
+              id="password"
+              type="password"
+              placeholder="Password"
+              minLength="6"
+              required
+              ref={passwordInputRef}
+            />
           </div>
-        )} */}
+        )}
+        {isLogin && (
+          <div className="form__group">
+            <span
+              onClick={() => setIsReset(!isReset)}
+              className="span_underline"
+            >
+              {isReset ? "Sign In?" : "Forgot Password"}
+            </span>
+          </div>
+        )}
         <div className="form__group">
           {!isLoading ? (
             <button className="btn-yellow">
-              {isLogin ? "Sign In" : "Sign Up"} &rarr;
+              {isReset ? "Reset Password" : isLogin ? "Sign In" : "Sign Up"}
+              &rarr;
             </button>
           ) : (
             <img
@@ -209,12 +201,14 @@ function AuthForm(props) {
       <div className="form__switcher">
         &nbsp;
         <p onClick={switchHandler}>
-          {isLogin && (
-            <span>
-              Don't have an account?
-              <span className="span_underline">Sign Up</span>
-            </span>
-          )}
+          {isReset
+            ? ""
+            : isLogin && (
+                <span>
+                  Don't have an account?
+                  <span className="span_underline">Sign Up</span>
+                </span>
+              )}
           {!isLogin && (
             <span>
               Already have an account?
@@ -225,7 +219,6 @@ function AuthForm(props) {
         &nbsp;
       </div>
     </div>
-    </>
   );
 }
 

@@ -1,0 +1,26 @@
+.mission__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 115rem;
+  margin: 0 auto;
+}
+
+.mission__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mission__card__info {
+  padding: 0 10rem;
+  width: 50%;
+}
+.mission__card__img {
+  width: 50%;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
