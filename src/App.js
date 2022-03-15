@@ -11,7 +11,7 @@ import AuthPage from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
 import AuthContext from "./components/store/auth-context";
 import IdleTimerContainer from "./components/store/IdleTimerContainer";
-
+import ResetPage from "./pages/reset/ResetPage";
 function App() {
   const authContext = useContext(AuthContext);
 
@@ -20,6 +20,7 @@ function App() {
       <IdleTimerContainer />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/reset" element={<ResetPage />} />
         <Route
           path="/dashboard"
           element={

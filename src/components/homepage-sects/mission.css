@@ -1,5 +1,7 @@
 .mission {
-  width: 45%;
+  max-width: 85rem;
+  min-height: 35rem;
+  padding: 0 3rem;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(var(--black), 0.1);
   background-color: rgba(var(--white), 0.6);

@@ -18,7 +18,7 @@ function DashboardPage() {
   };
 
   return (
-    <div>
+    <>
       <Nav />
       {pop && (
         <Pop
@@ -32,7 +32,7 @@ function DashboardPage() {
           pop={pop}
         />
       )}
-    </div>
+    </>
   );
 }
 
