@@ -1,6 +1,7 @@
 .button-container {
-  width: 15rem;
-  height: 15rem;
+  margin: 0 5rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   background-color: rgba(var(--light-blue));
   position: relative;
@@ -16,8 +17,8 @@
 
 .play-button {
   transform: translate(-35%, -50%);
-  height: 40%;
-  width: 40%;
+  height: 60%;
+  width: 50%;
   background-color: rgba(var(--light-yellow));
   clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
 }
@@ -31,6 +32,6 @@
 
 .pause-half {
   width: 25%;
-  height: 7rem;
+  height: 5rem;
   background-color: rgba(var(--light-yellow));
 }
