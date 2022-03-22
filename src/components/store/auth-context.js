@@ -49,6 +49,7 @@ export const AuthContextProvider = (props) => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("expTime");
+    localStorage.removeItem("user");
 
     if (logoutTimer) clearTimeout(logoutTimer);
   }, []);

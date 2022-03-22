@@ -1,0 +1,81 @@
+.cards {
+  margin-top: 3rem;
+  padding: 5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.card {
+  height: 25rem;
+  width: 25rem;
+  margin: 8px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  color: rgba(var(--dark-blue));
+  box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+}
+
+.card__upper {
+  border-radius: 10px 10px 0 0;
+  height: 55%;
+  width: 100%;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(var(--main-yellow), 0.2),
+      rgba(var(--dark-yellow), 0.2)
+    ),
+    url(https://blogs.cdn.medel.com/blog.medel.com/uploads/20191121173439/auditory-training-cochlear-implant.jpg);
+  background-size: cover;
+}
+
+.card__title {
+  margin-left: 1rem;
+  font-size: 2.2rem;
+}
+
+.card__subH {
+  margin-left: 1rem;
+  color: rgba(var(--main-blue));
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+
+.card__levels {
+  width: 100%;
+  display: flex;
+  padding: 20px 15px;
+  justify-content: space-between;
+}
+
+.card__level {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-weight: 900;
+}
+
+.card__level:first-child {
+  background-color: rgba(var(--light-blue));
+}
+
+.card__level:nth-child(2) {
+  background-color: rgba(var(--dark-blue));
+}
+
+.card__level:nth-child(3) {
+  background-color: rgba(var(--main-yellow));
+}
+
+.card__level:nth-child(4) {
+  background-color: rgba(var(--dark-yellow));
+}
