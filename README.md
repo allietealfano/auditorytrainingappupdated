@@ -28,9 +28,19 @@ The following tree structure will be useful to visualize how the project is stru
 
 │           ├── assets
 
-│           ├── Components
-
-│           ├── css
+│           ├── components
+                
+                ├── card
+                
+                ├── homepage-sects
+                
+                ├── nav
+                
+                ├── playButton
+                
+                ├── pop
+                
+                ├── store
 
 │           ├── pages
 
