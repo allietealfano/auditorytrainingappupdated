@@ -8,7 +8,8 @@
 }
 
 .play-button,
-.pause-button {
+.pause-button,
+.circle {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -34,4 +35,17 @@
   width: 25%;
   height: 5rem;
   background-color: rgba(var(--light-yellow));
+}
+
+.scale {
+  transform: translate(-50%, -50%) scale(2) !important;
+  transition: all 0.4s ease-in;
+}
+
+.circle {
+  height: 70%;
+  width: 70%;
+  border-radius: 50%;
+  background-color: rgba(var(--light-yellow));
+  transform: translate(-50%, -50%);
 }

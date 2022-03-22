@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "./pop.css";
 
@@ -14,7 +14,7 @@ function Pop(props) {
             )}
           </div>
 
-          {props.mid}
+          {props.mid ?? ""}
 
           <div className="choice-container">
             {props.sub && <p className="prompt__small"> {props.sub}</p>}

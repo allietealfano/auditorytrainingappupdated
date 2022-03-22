@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { setDoc, doc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
@@ -13,6 +13,7 @@ function AuthForm(props) {
   const [isLogin, setIsLogin] = useState(props.signIn);
   const [isReset, setIsReset] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -29,8 +30,6 @@ function AuthForm(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    console.log(isReset);
 
     if (isReset) {
       resetPassword();
@@ -85,6 +84,7 @@ function AuthForm(props) {
           const UId = doc(db, `users/${data.localId}`);
           setDoc(UId, userData);
         } // localStorage.setItem("refToken", data.refreshToken.toString());
+        localStorage.setItem("user", data.localId.toString());
         const expTime = new Date(new Date().getTime() + +data.expiresIn * 1000);
         authContext.login(data.idToken, expTime);
         navigate("/dashboard", { replace: true });
@@ -98,14 +98,22 @@ function AuthForm(props) {
 
   const resetPassword = () => {
     const auth = getAuth();
-    sendPasswordResetEmail(auth, "eluci005@fiu.edu")
+    const getFName = async function () {
+      const docRef = doc(db, "users", localStorage.getItem("user"));
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) setEmail(docSnap.data().email);
+    };
+    getFName();
+
+    sendPasswordResetEmail(auth, email)
       .then(() => {
         // alert("Password reset sent");
         navigate("/reset", { replace: true });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
         // Errors should be handled by a state that displays them to the user
       });
   };
