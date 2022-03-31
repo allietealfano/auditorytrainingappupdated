@@ -8,8 +8,10 @@ import { db } from "../firebase-config";
 
 import "./dashboardPage.css";
 import Card from "../components/card/Card";
+
 function DashboardPage() {
-  const [pop, setPop] = useState(true);
+  const soundCheck = parseInt(localStorage.getItem("soundCheck"));
+  const [pop, setPop] = useState(!soundCheck);
   const [fName, setFname] = useState("");
 
   const getFName = async function () {
@@ -22,6 +24,7 @@ function DashboardPage() {
   getFName();
 
   const sondOk = () => {
+    localStorage.setItem("soundCheck", "1");
     setPop(false);
   };
 
@@ -52,9 +55,13 @@ function DashboardPage() {
         />
       )}
       {!pop && (
-        <div className="main__container">
-          <h1>Welcome, {fName}</h1>
-          <Card />
+        <div>
+          <div className="main__container">
+            <h1>Welcome, {fName}</h1>
+            <Card destination={"/lingActivity"} title={"Detection"} bg={""} />
+            <Card destination={"/lingActivity"} title={"Detection"} bg={""} />
+            <Card destination={"/lingActivity"} title={"Detection"} bg={""} />
+          </div>
         </div>
       )}
     </>

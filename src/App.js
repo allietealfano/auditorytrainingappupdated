@@ -1,4 +1,4 @@
-import { React, useContext } from "react";
+import { React, useContext, useEffect, useCallback } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,6 +12,7 @@ import DashboardPage from "./pages/DashboardPage";
 import AuthContext from "./components/store/auth-context";
 import IdleTimerContainer from "./components/store/IdleTimerContainer";
 import ResetPage from "./pages/reset/ResetPage";
+import LingPage from "./pages/ling/LingPage";
 function App() {
   const authContext = useContext(AuthContext);
 
@@ -25,6 +26,12 @@ function App() {
           path="/dashboard"
           element={
             authContext.isLoggedIn ? <DashboardPage /> : <Navigate to="/auth" />
+          }
+        />
+        <Route
+          path="/lingactivity"
+          element={
+            authContext.isLoggedIn ? <LingPage /> : <Navigate to="/auth" />
           }
         />
         <Route

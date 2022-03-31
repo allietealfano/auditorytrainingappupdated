@@ -21,7 +21,7 @@
 
 body {
   background: rgba(var(--main-blue));
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
 h1 {
@@ -47,6 +47,11 @@ h5 {
 p,
 span {
   font-size: 1.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 input:valid {
