@@ -7,12 +7,19 @@ import Nav from "../components/nav/Nav";
 import { db } from "../firebase-config";
 
 import "./dashboardPage.css";
-import Card from "../components/card/Card";
+import Cards from "../components/cards/Cards";
 
 function DashboardPage() {
   const soundCheck = parseInt(localStorage.getItem("soundCheck"));
   const [pop, setPop] = useState(!soundCheck);
   const [fName, setFname] = useState("");
+
+  //Activities grouped in arrays
+  const lingActs = [
+    { title: "Detection", link: "/lingActivity/detection" },
+    { title: "Discrimination", link: "/lingActivity/discrimination" },
+    { title: "Identification", link: "/lingActivity/identification" },
+  ];
 
   const getFName = async function () {
     const docRef = doc(db, "users", localStorage.getItem("user"));
@@ -23,7 +30,7 @@ function DashboardPage() {
 
   getFName();
 
-  const sondOk = () => {
+  const soundOk = () => {
     localStorage.setItem("soundCheck", "1");
     setPop(false);
   };
@@ -48,7 +55,7 @@ function DashboardPage() {
             />
           }
           option1={"Yes"}
-          option1Func={sondOk}
+          option1Func={soundOk}
           option2={"No"}
           option2Func={soundNotOk}
           pop={pop}
@@ -57,10 +64,9 @@ function DashboardPage() {
       {!pop && (
         <div>
           <div className="main__container">
-            <h1>Welcome, {fName}</h1>
-            <Card destination={"/lingActivity"} title={"Detection"} bg={""} />
-            <Card destination={"/lingActivity"} title={"Detection"} bg={""} />
-            <Card destination={"/lingActivity"} title={"Detection"} bg={""} />
+            {/* <h1>Welcome, {fName}</h1> */}
+            <Cards title={"Ling Activities"} bg={""} cardsArr={lingActs} />
+            <Cards title={"Activity 2"} bg={""} cardsArr={lingActs} />
           </div>
         </div>
       )}

@@ -1,18 +1,15 @@
-import { React, useEffect, useCallback, useState } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
 
-import { db } from "../../firebase-config";
-import Progress from "../../components/progressBar/Progress";
-import Pop from "../../components/pop/Pop";
+import Progress from "../progressBar/Progress";
+import Pop from "../pop/Pop";
+import PlayButton from "../playButton/PlayButton";
 
-import PlayButton from "../../components/playButton/PlayButton";
-import "./ling.css";
+import "./lingDetection.css";
 
-function Ling(props) {
+function LingDetection(props) {
   let score = props.score;
   let sound = props.sound;
-  // let choice = null;
   let lingSound = null;
 
   const [choice, setChoice] = useState(null);
@@ -20,23 +17,40 @@ function Ling(props) {
 
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 2)][1];
 
-  console.log(props.arr, sound, lingSound, score);
-
-  const scoreHandler = () => {
+  const checkHandler = async () => {
     if (choice === null) return;
-    if (props.prog + 10 === 100) setPop(true);
-    if (choice && sound) score += 1;
-    if (choice === false && !sound) score += 1;
+
+    if ((choice && sound) || (choice === false && !sound)) {
+      score += 1;
+      document.querySelector(`.card__${choice}`).style.border =
+        "8px green solid";
+    }
+
+    if ((choice && !sound) || (choice === false && sound)) {
+      document.querySelector(`.card__${choice}`).style.border = "8px red solid";
+    }
 
     document.querySelector(".activity__progress-FG").style.width = `${
       props.prog + 10
     }%`;
+    setTimeout(() => {
+      document.querySelector(".card__true").style.border = "0";
+      document.querySelector(".card__false").style.border = "0";
+    }, 300);
 
-    document.querySelector(".card__true").style.border = "0";
-    document.querySelector(".card__false").style.border = "0";
     props.progressHandler(props.prog + 10, score, sound);
 
     setChoice(null);
+
+    if (props.prog + 10 === 100) {
+      setPop(true);
+      return;
+    }
+
+    if (props.prog + 10 === 100) {
+      setPop(true);
+      return;
+    }
   };
 
   const choiceHandler = (choice) => {
@@ -70,7 +84,7 @@ function Ling(props) {
       <div className="bg-container">
         <section className="activity">
           <Progress />
-          <div className="idk">
+          <div className="activity__items">
             <div className="opts">
               <PlayButton
                 audUrl={
@@ -102,7 +116,7 @@ function Ling(props) {
               </div>
               <button
                 className={`${choice !== null ? "btn-blue" : "btn"}`}
-                onClick={scoreHandler}
+                onClick={checkHandler}
               >
                 Check
               </button>
@@ -114,4 +128,4 @@ function Ling(props) {
   );
 }
 
-export default Ling;
+export default LingDetection;

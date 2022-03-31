@@ -12,7 +12,7 @@ import DashboardPage from "./pages/DashboardPage";
 import AuthContext from "./components/store/auth-context";
 import IdleTimerContainer from "./components/store/IdleTimerContainer";
 import ResetPage from "./pages/reset/ResetPage";
-import LingPage from "./pages/ling/LingPage";
+import LingDetectionPage from "./pages/ling/LingDetectionPage";
 function App() {
   const authContext = useContext(AuthContext);
 
@@ -29,9 +29,13 @@ function App() {
           }
         />
         <Route
-          path="/lingactivity"
+          path="/lingActivity/detection"
           element={
-            authContext.isLoggedIn ? <LingPage /> : <Navigate to="/auth" />
+            authContext.isLoggedIn ? (
+              <LingDetectionPage />
+            ) : (
+              <Navigate to="/auth" />
+            )
           }
         />
         <Route

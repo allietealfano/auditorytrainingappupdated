@@ -1,11 +1,10 @@
-import { React, useEffect, useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import { React, useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
-import Ling from "./Ling";
+import LingDetection from "../../components/lingDetection/LingDetection";
 
-function LingPage() {
+function LingDetectionPage() {
   const [progress, setProgress] = useState(0);
   const [score, setScore] = useState(0);
   const [arr, setArr] = useState([[0, 0]]);
@@ -16,7 +15,7 @@ function LingPage() {
   };
 
   useEffect(() => {
-    const getFName = async function () {
+    const getLingSounds = async function () {
       const docRef = doc(db, "audio", "ling");
       const docSnap = await getDoc(docRef);
 
@@ -27,19 +26,19 @@ function LingPage() {
       }
     };
 
-    getFName();
+    getLingSounds();
   }, []);
   return (
-    <div>
-      <Ling
+    <>
+      <LingDetection
         score={score}
         prog={progress}
         progressHandler={progressHandler}
         sound={Math.floor(Math.random() * 2)}
         arr={arr}
       />
-    </div>
+    </>
   );
 }
 
-export default LingPage;
+export default LingDetectionPage;

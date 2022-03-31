@@ -41,7 +41,6 @@ function Pop(props) {
           </div>
         </div>
       </div>
-      ) : ( ""
     </>
   );
 }

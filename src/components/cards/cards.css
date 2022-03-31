@@ -1,0 +1,18 @@
+.cards {
+  margin-top: 3rem;
+  padding: 5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.cards__yellow {
+  background-color: rgba(var(--light-yellow));
+}
+
+.cards__blue {
+  background-color: rgba(var(--dark-blue));
+}
