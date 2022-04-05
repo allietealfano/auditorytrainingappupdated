@@ -1,18 +1,22 @@
-import React from "react";
+import { React, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import "./progress.css";
+import classes from "./progress.module.css";
 
-function Progress() {
+function Progress({ refSetter }) {
+  const progressRef = useRef(null);
+  refSetter(progressRef);
   return (
     <>
-      <div className="progress__container">
+      <div className={classes.progress__container}>
         <div>
-          <div className="activity__progress">&nbsp;</div>
-          <div className="activity__progress-FG">&nbsp;</div>
+          <div className={classes.activity__progress}>&nbsp;</div>
+          <div className={classes.activity__progress_FG} ref={progressRef}>
+            &nbsp;
+          </div>
         </div>
         <Link to={"/dashboard"}>
-          <div className="exit"></div>
+          <div className={classes.exit}></div>
         </Link>
       </div>
     </>

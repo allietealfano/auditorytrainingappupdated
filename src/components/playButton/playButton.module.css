@@ -1,4 +1,4 @@
-.button-container {
+.button__container {
   margin: 0 5rem;
   width: 10rem;
   height: 10rem;
@@ -7,8 +7,8 @@
   position: relative;
 }
 
-.play-button,
-.pause-button,
+.play__button,
+.pause__button,
 .circle {
   position: absolute;
   top: 50%;
@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 
-.play-button {
+.play__button {
   transform: translate(-35%, -50%);
   height: 60%;
   width: 50%;
@@ -24,14 +24,14 @@
   clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%);
 }
 
-.pause-button {
+.pause__button {
   display: flex;
   width: 8rem;
   transform: translate(-50%, -50%);
   justify-content: space-around;
 }
 
-.pause-half {
+.pause__half {
   width: 25%;
   height: 5rem;
   background-color: rgba(var(--light-yellow));

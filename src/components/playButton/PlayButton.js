@@ -1,35 +1,31 @@
 import { useState, React, useRef } from "react";
 
-import "./playButton.css";
+import classes from "./playButton.module.css";
 
 function PlayButton(props) {
   const [isPlay, setIsPlay] = useState(true);
-  const [throb, setThrob] = useState(false);
-
-  const audioPlayer = useRef();
+  const audioPlayer = useRef(null);
 
   const playHandler = () => {
-    const time = document.querySelector(".audio").duration;
+    const time = audioPlayer.current.duration;
     setIsPlay(false);
     if (isPlay) {
       audioPlayer.current.play();
+
+      //changes play effect for the duration of the audio
       setTimeout(() => {
         setIsPlay((prevState) => !prevState);
       }, 1000 * parseFloat(time));
-
-      setInterval(() => {
-        setThrob((prevState) => !prevState);
-      }, 75);
     }
   };
+
   return (
-    //playHandler(5) mimicks an audio that runs for 5 seconds
-    <div className="button-container" onClick={playHandler}>
-      <audio className="audio" ref={audioPlayer} src={props.audUrl} />
+    <div className={classes.button__container} onClick={playHandler}>
+      <audio className={classes.audio} ref={audioPlayer} src={props.audUrl} />
       {isPlay ? (
-        <div className={`play-button `}>&nbsp;</div>
+        <div className={`${classes.play__button}`}>&nbsp;</div>
       ) : (
-        <div className={`circle ${throb ? "scale" : ""}`}>&nbsp;</div>
+        <div className={`${classes.circle}`}>&nbsp;</div>
       )}
     </div>
   );

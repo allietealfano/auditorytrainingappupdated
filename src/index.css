@@ -78,18 +78,18 @@ input:focus:invalid {
   font-weight: 400;
 }
 
-.btn-yellow {
+.btn__yellow {
   background-color: rgba(var(--main-yellow));
 }
-.btn-yellow:hover {
+.btn__yellow:hover {
   background-color: rgba(var(--dark-yellow));
 }
 
-.btn-blue {
+.btn__blue {
   background-color: rgba(var(--main-blue));
 }
 
-.btn-blue:hover {
+.btn__blue:hover {
   background-color: rgba(var(--dark-blue));
 }
 
@@ -98,15 +98,11 @@ input:focus:invalid {
   top: 1px;
 }
 
-.loading-img {
+.loading__img {
   z-index: 2;
 }
 
-.loading-img {
-  z-index: 2;
-}
-
-.loading-img-container {
+.loading__img__container {
   height: 100vh;
   width: 100vw;
   display: flex;

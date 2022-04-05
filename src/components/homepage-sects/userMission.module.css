@@ -21,6 +21,6 @@
   width: 50%;
 }
 
-.row-reverse {
+.row__reverse {
   flex-direction: row-reverse;
 }

@@ -1,28 +1,27 @@
 import React from "react";
 
-import "./sections.css";
-import "./mission.css";
+import classes from "./mission.module.css";
+import styles from "./sections.module.css";
 
 function Mission() {
   return (
     <>
-      <section className="section" id="section--2">
-        <div className="mission">
-          <div className="section__title">
-            <h2 className="section__description">Our Mission</h2>
-            <h3 className="section__header"></h3>
+      <section className={styles.section} id="section--2">
+        <div className={classes.mission}>
+          <div className={styles.section__title}>
+            <h2 className={styles.section__description}>Our Mission</h2>\{" "}
           </div>
-          <figure className="mission__shape">
+          <figure className={classes.mission__shape}>
             <img
               src={require("../../assets/images/test-founder.jpg")}
               alt="Founder"
-              className="story__img"
+              className={classes.story__img}
             />
-            <figcaption className="mission__caption">
+            <figcaption className={classes.mission__caption}>
               Dr. Alliete Alfano
             </figcaption>
           </figure>
-          <div className="mission__text">
+          <div className={classes.mission__text}>
             <p>
               Mission: Audition! is an auditory training application designed to
               help people who use cochlear implants train their hearing ability

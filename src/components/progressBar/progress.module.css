@@ -4,7 +4,7 @@
   background-color: #c9c9c9;
 }
 
-.activity__progress-FG {
+.activity__progress_FG {
   display: block;
   content: "";
   height: 3rem;

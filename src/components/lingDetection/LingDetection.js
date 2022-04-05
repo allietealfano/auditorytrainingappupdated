@@ -1,41 +1,44 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import Progress from "../progressBar/Progress";
 import Pop from "../pop/Pop";
 import PlayButton from "../playButton/PlayButton";
 
-import "./lingDetection.css";
+import classes from "./lingDetection.module.css";
+import styles from "../card/card.module.css";
 
 function LingDetection(props) {
+  const [choice, setChoice] = useState(null);
+  const [pop, setPop] = useState(false);
+
+  const cardTrueRef = useRef(null);
+  const cardFalseRef = useRef(null);
+  let progressFGRef;
+  const refSetter = (ref) => (progressFGRef = ref);
+
   let score = props.score;
   let sound = props.sound;
   let lingSound = null;
 
-  const [choice, setChoice] = useState(null);
-  const [pop, setPop] = useState(false);
-
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 2)][1];
 
   const checkHandler = async () => {
-    if (choice === null) return;
+    const card = choice ? cardTrueRef : cardFalseRef;
 
+    if (choice === null) return;
     if ((choice && sound) || (choice === false && !sound)) {
       score += 1;
-      document.querySelector(`.card__${choice}`).style.border =
-        "8px green solid";
+      card.current.style.border = "8px green solid";
     }
-
     if ((choice && !sound) || (choice === false && sound)) {
-      document.querySelector(`.card__${choice}`).style.border = "8px red solid";
+      card.current.style.border = "8px red solid";
     }
 
-    document.querySelector(".activity__progress-FG").style.width = `${
-      props.prog + 10
-    }%`;
+    progressFGRef.current.style.width = `${props.prog + 10}%`;
     setTimeout(() => {
-      document.querySelector(".card__true").style.border = "0";
-      document.querySelector(".card__false").style.border = "0";
+      cardTrueRef.current.style.border = "0";
+      cardFalseRef.current.style.border = "0";
     }, 300);
 
     props.progressHandler(props.prog + 10, score, sound);
@@ -55,9 +58,11 @@ function LingDetection(props) {
 
   const choiceHandler = (choice) => {
     setChoice(choice);
-    document.querySelector(`.card__${choice}`).style.border =
-      "4px  rgba(93, 173, 226, 0.5) solid";
-    document.querySelector(`.card__${!choice}`).style.border = "0";
+    const card = choice ? cardTrueRef : cardFalseRef;
+    const otherCard = choice ? cardFalseRef : cardTrueRef;
+
+    card.current.style.border = "4px  rgba(93, 173, 226, 0.5) solid";
+    otherCard.current.style.border = "0";
   };
 
   return (
@@ -81,11 +86,11 @@ function LingDetection(props) {
           }
         />
       )}
-      <div className="bg-container">
-        <section className="activity">
-          <Progress />
-          <div className="activity__items">
-            <div className="opts">
+      <div className={classes.bg__container}>
+        <section className={classes.activity}>
+          <Progress refSetter={refSetter} />
+          <div className={classes.activity__items}>
+            <div className={classes.opts}>
               <PlayButton
                 audUrl={
                   sound
@@ -94,28 +99,30 @@ function LingDetection(props) {
                 }
               />
 
-              <div className="select">
+              <div className={classes.select}>
                 <div
-                  className="card card__true"
+                  className={styles.card}
+                  ref={cardTrueRef}
                   onClick={() => choiceHandler(true)}
                 >
-                  <div className="card__mid">
+                  <div className={styles.card__mid}>
                     <h1>🔊</h1>
                     <p>Sound</p>
                   </div>
                 </div>
                 <div
-                  className="card card__false"
+                  className={styles.card}
+                  ref={cardFalseRef}
                   onClick={() => choiceHandler(false)}
                 >
-                  <div className="card__mid">
+                  <div className={styles.card__mid}>
                     <h1>🔈</h1>
                     <p>No Sound</p>
                   </div>
                 </div>
               </div>
               <button
-                className={`${choice !== null ? "btn-blue" : "btn"}`}
+                className={`${choice !== null ? "btn btn__blue" : "btn"}`}
                 onClick={checkHandler}
               >
                 Check

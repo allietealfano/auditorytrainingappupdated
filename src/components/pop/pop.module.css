@@ -10,7 +10,7 @@
   z-index: 50000;
 }
 
-.pop-up {
+.pop__up {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -31,7 +31,7 @@
   margin: 2rem 0;
 }
 
-.choice-container {
+.choice__container {
   width: 60%;
 }
 

@@ -20,7 +20,7 @@
       rgba(var(--main-yellow), 0.2),
       rgba(var(--dark-yellow), 0.2)
     ),
-    url(https://blogs.cdn.medel.com/blog.medel.com/uploads/20191121173439/auditory-training-cochlear-implant.jpg);
+    url(https://blogs.cdn.medel.com/blog.medel.com/uploads/20191121173439/auditory-training-cochlear-implant.jpg); /*placeholder img*/
   background-size: cover;
 }
 

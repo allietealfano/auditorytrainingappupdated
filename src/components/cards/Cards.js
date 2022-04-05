@@ -2,11 +2,11 @@ import React from "react";
 
 import Card from "../card/Card";
 
-import "./cards.css";
+import classes from "./cards.module.css";
 
 function Cards(props) {
   return (
-    <div className={`cards cards__${props.bg ?? ""}`}>
+    <div className={`${classes.cards} ${classes.props?.bg}`}>
       {props.cardsArr.map((card, i) => (
         <Card key={i} title={card.title} link={card.link} />
       ))}

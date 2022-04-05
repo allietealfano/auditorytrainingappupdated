@@ -1,19 +1,18 @@
 import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { setDoc, doc, getDoc } from "firebase/firestore";
-
+import { setDoc, doc } from "firebase/firestore";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 import AuthContext from "../store/auth-context";
 import { db, apiKey } from "../../firebase-config";
 
-import "./authForm.css";
+import classes from "./authForm.module.css";
 
 function AuthForm(props) {
   const [isLogin, setIsLogin] = useState(props.signIn);
   const [isReset, setIsReset] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -65,16 +64,18 @@ function AuthForm(props) {
         if (res.ok) {
           return res.json();
         } else {
+          //catch error
           return res.json().then((data) => {
             let errorMessage = "Whoops: ";
-            if (data?.error.message) errorMessage += data.error.message;
-            throw new Error(errorMessage);
+            if (data?.error.message)
+              errorMessage += data.error.message.toLowerCase();
+            throw errorMessage;
           });
         }
       })
       .then((data) => {
         setIsLoading(true);
-
+        //sign up
         if (!isLogin) {
           const userData = {
             fName: enteredFname,
@@ -83,7 +84,8 @@ function AuthForm(props) {
           };
           const UId = doc(db, `users/${data.localId}`);
           setDoc(UId, userData);
-        } // localStorage.setItem("refToken", data.refreshToken.toString());
+        }
+        //sign in
         localStorage.setItem("user", data.localId.toString());
         const expTime = new Date(new Date().getTime() + +data.expiresIn * 1000);
         authContext.login(data.idToken, expTime);
@@ -91,24 +93,16 @@ function AuthForm(props) {
         setIsLoading(false);
       })
       .catch((err) => {
-        alert(err.message.toLowerCase().replace("_", " ") + ".");
-        // Errors should be handled by a state that displays them to the user instead of an alert
+        setError(err.replaceAll("_", " ") + "!");
       });
   };
 
   const resetPassword = () => {
     const auth = getAuth();
-    const getFName = async function () {
-      const docRef = doc(db, "users", localStorage.getItem("user"));
-      const docSnap = await getDoc(docRef);
+    const enteredEmail = emailInputRef.current.value;
 
-      if (docSnap.exists()) setEmail(docSnap.data().email);
-    };
-    getFName();
-
-    sendPasswordResetEmail(auth, email)
+    sendPasswordResetEmail(auth, enteredEmail)
       .then(() => {
-        // alert("Password reset sent");
         navigate("/reset", { replace: true });
       })
       .catch((error) => {
@@ -119,36 +113,34 @@ function AuthForm(props) {
   };
 
   return (
-    <div className="form__container">
-      <form onSubmit={submitHandler} className="form">
-        &nbsp;
-        <h2 className="form__header">
+    <div className={classes.form__container}>
+      <form onSubmit={submitHandler} className={classes.form}>
+        <h2 className={classes.form__header}>
           {isReset ? "Password Reset" : isLogin ? "Sign In" : "Sign Up"}
         </h2>
-        &nbsp;
         {isReset && (
-          <p className="reset__prompt">
+          <p className={classes.reset__prompt}>
             Please enter your email address below, and a link to reset your
             password will be sent your email.
           </p>
         )}
         {!isLogin && (
-          <div className="form__group">
+          <div className={classes.form__group}>
             <input
-              className="form__input"
+              className={classes.form__input}
               id="first-name"
               type="text"
               placeholder="First Name"
               required
               ref={firstNameInputRef}
             />
-            <label className="form__label" htmlFor="first-name"></label>
+            <label className={classes.form__label} htmlFor="first-name"></label>
           </div>
         )}
         {!isLogin && (
-          <div className="form__group">
+          <div className={classes.form__group}>
             <input
-              className="form__input"
+              className={classes.form__input}
               id="last-name"
               type="text"
               placeholder="Last Name"
@@ -157,9 +149,9 @@ function AuthForm(props) {
             />
           </div>
         )}
-        <div className="form__group">
+        <div className={classes.form__group}>
           <input
-            className="form__input"
+            className={classes.form__input}
             id="email"
             type="email"
             placeholder="Email Address"
@@ -168,9 +160,9 @@ function AuthForm(props) {
           />
         </div>
         {!isReset && (
-          <div className="form__group">
+          <div className={classes.form__group}>
             <input
-              className="form__input"
+              className={classes.form__input}
               id="password"
               type="password"
               placeholder="Password"
@@ -181,50 +173,48 @@ function AuthForm(props) {
           </div>
         )}
         {isLogin && (
-          <div className="form__group">
+          <div className={classes.form__group}>
             <span
               onClick={() => setIsReset(!isReset)}
-              className="span_underline"
+              className={classes.span_underline}
             >
               {isReset ? "Sign In?" : "Forgot Password"}
             </span>
           </div>
         )}
-        <div className="form__group">
+        <div className={classes.form__group}>
           {!isLoading ? (
-            <button className="btn-yellow">
+            <button className="btn btn__yellow">
               {isReset ? "Reset Password" : isLogin ? "Sign In" : "Sign Up"}
               &rarr;
             </button>
           ) : (
             <img
-              className="loading-img"
+              className="loading__img"
               src={require("../../assets/images/loading.gif")}
               alt="Loading"
             />
           )}
         </div>
       </form>
-
-      <div className="form__switcher">
-        &nbsp;
+      {error && <p>{`${error}`}</p>}
+      <div className={classes.form__switcher}>
         <p onClick={switchHandler}>
           {isReset
             ? ""
             : isLogin && (
                 <span>
                   Don't have an account?
-                  <span className="span_underline">Sign Up</span>
+                  <span className={classes.span_underline}>Sign Up</span>
                 </span>
               )}
           {!isLogin && (
             <span>
               Already have an account?
-              <span className="span_underline">Sign In</span>
+              <span className={classes.span_underline}>Sign In</span>
             </span>
           )}
         </p>
-        &nbsp;
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-.nav-ul {
+.nav__ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@
 }
 
 .active,
-.not-active {
+.not__active {
   float: left;
   display: block;
   color: #444;
@@ -21,7 +21,7 @@
   text-decoration: none;
 }
 
-.not-active:hover {
+.not__active:hover {
   background-color: rgb(202, 202, 202);
 }
 
