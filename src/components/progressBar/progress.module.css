@@ -1,0 +1,51 @@
+.activity__progress {
+  height: 3rem;
+  border-radius: 5rem;
+  background-color: #c9c9c9;
+}
+
+.activity__progress_FG {
+  display: block;
+  content: "";
+  height: 3rem;
+  width: 0%;
+  z-index: 2;
+  border-radius: 5rem;
+  background-color: green;
+  transform: translateY(-3rem);
+  transition: all 0.2s ease-in;
+}
+
+.exit {
+  position: relative;
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  margin-right: 5rem;
+  background-color: #c9c9c9;
+  z-index: 2;
+}
+
+.exit:hover {
+  background-color: rgba(var(--dark-yellow));
+  cursor: pointer;
+}
+
+.exit::before,
+.exit::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  /* left: 50%; */
+  /* transform: translate(-50%); */
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+.exit::after {
+  transform: rotate(135deg);
+}

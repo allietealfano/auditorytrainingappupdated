@@ -1,6 +1,7 @@
 .main__container {
-  width: 100vw;
+  max-width: 170rem;
   height: 100vh;
   padding: 10rem 20rem;
+  margin: auto;
   color: #fff;
 }

@@ -1,29 +1,29 @@
 import React from "react";
 
-import "./pop.css";
+import classes from "./pop.module.css";
 
 function Pop(props) {
   return (
     <>
-      <div className="container">
-        <div className="pop-up">
-          <div className="prompt">
-            <h3 className="prompt__big">{props.headerBig}</h3>
+      <div className={classes.container}>
+        <div className={classes.pop__up}>
+          <div className={classes.prompt}>
+            <h3 className={classes.prompt__big}>{props.headerBig}</h3>
             {props.headerSmall && (
-              <p className="prompt__small"> {props.headerSmall}</p>
+              <p className={classes.prompt__small}> {props.headerSmall}</p>
             )}
           </div>
 
           {props.mid ?? ""}
 
-          <div className="choice-container">
-            {props.sub && <p className="prompt__small"> {props.sub}</p>}
-            <div className="choices">
+          <div className={classes.choice__container}>
+            {props.sub && <p className={classes.prompt__small}> {props.sub}</p>}
+            <div className={classes.choices}>
               <button
                 onClick={function (event) {
                   props.option1Func();
                 }}
-                className="btn-blue"
+                className="btn btn__blue"
               >
                 {props.option1}
               </button>
@@ -32,7 +32,7 @@ function Pop(props) {
                   onClick={function (event) {
                     props.option2Func();
                   }}
-                  className="btn-blue"
+                  className="btn btn__blue"
                 >
                   {props.option2}
                 </button>
@@ -41,7 +41,6 @@ function Pop(props) {
           </div>
         </div>
       </div>
-      ) : ( ""
     </>
   );
 }

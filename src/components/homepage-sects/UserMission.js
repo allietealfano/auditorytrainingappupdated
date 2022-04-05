@@ -1,6 +1,7 @@
 import React from "react";
 
-import "./userMission.css";
+import classes from "./userMission.module.css";
+import styles from "./sections.module.css";
 
 function UserMission() {
   //This array will likely be handled by a database
@@ -27,26 +28,28 @@ function UserMission() {
   ];
 
   return (
-    <section className="section" id="section--1">
-      <div className="section__title">
-        <h2 className="section__description">Your Mission</h2>
+    <section className={styles.section} id="section--1">
+      <div className={styles.section__title}>
+        <h2 className={styles.section__description}>Your Mission</h2>
       </div>
 
-      <div className="mission__cards">
+      <div className={classes.mission__cards}>
         {missionssArr.map((miss, i) => {
           return (
             <div
-              className={`mission__card  ${i % 2 === 0 ? "row-reverse" : ""}`}
+              className={`${classes.mission__card}  ${
+                i % 2 === 0 ? classes.row__reverse : ""
+              }`}
               key={i}
             >
-              <div className="mission__card__info">
-                <h5 className="mission__card__header">{miss.title}</h5>
-                <p className="mission__card__text">{miss.detail}</p>
+              <div className={classes.mission__card__info}>
+                <h5 className={classes.mission__card__header}>{miss.title}</h5>
+                <p className={classes.mission__card__text}>{miss.detail}</p>
               </div>
               <img
                 src={miss.pic}
                 alt="Mission"
-                className="mission__card__img"
+                className={classes.mission__card__img}
               />
             </div>
           );

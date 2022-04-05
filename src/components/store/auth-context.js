@@ -50,6 +50,7 @@ export const AuthContextProvider = (props) => {
     localStorage.removeItem("token");
     localStorage.removeItem("expTime");
     localStorage.removeItem("user");
+    localStorage.removeItem("soundCheck");
 
     if (logoutTimer) clearTimeout(logoutTimer);
   }, []);

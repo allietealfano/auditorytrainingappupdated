@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./sections.css";
-import "./features.css";
+import classes from "./features.module.css";
+import styles from "./sections.module.css";
 
 function Features() {
   //This array will likely be handled by a database
-  //It's a placeholder that should probably be deleted
+  //It's a placeholder that should probably be deleted in the future
 
   const featuresArr = [
     {
@@ -29,19 +29,18 @@ function Features() {
   ];
 
   return (
-    <section className="section" id="section--1">
-      <div className="section__title">
-        <h2 className="section__description">Features</h2>
-        <h3 className="section__header"></h3>
+    <section className={styles.section} id="section--1">
+      <div className={styles.section__title}>
+        <h2 className={styles.section__description}>Features</h2>
       </div>
 
-      <div className="feature__cards">
+      <div className={classes.feature__cards}>
         {featuresArr.map((feat, i) => {
           return (
-            <div className="feature__card" key={i}>
-              <h5 className="card__header">{feat.title}</h5>
-              <p className="card__text">{feat.detail}</p>
-              <img src={feat.pic} alt="Feature" className="card__img" />
+            <div className={classes.feature__card} key={i}>
+              <h5 className={classes.card__header}>{feat.title}</h5>
+              <p className={classes.card__text}>{feat.detail}</p>
+              <img src={feat.pic} alt="Feature" className={classes.card__img} />
             </div>
           );
         })}

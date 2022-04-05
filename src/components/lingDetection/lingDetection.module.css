@@ -1,0 +1,35 @@
+.bg__container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+}
+
+.activity {
+  position: relative;
+  padding: 4rem;
+  max-width: 120rem;
+  height: 100vh;
+  margin: auto;
+}
+
+.opts {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity__items {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.select {
+  width: 80%;
+  margin: 5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
