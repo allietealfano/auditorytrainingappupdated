@@ -1,0 +1,18 @@
+.acts__container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  color: #444;
+}
+
+.acts__title {
+  max-width: 80rem;
+  margin-top: 2rem;
+}
+
+.acts__title h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
