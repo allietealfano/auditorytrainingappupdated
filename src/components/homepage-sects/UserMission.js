@@ -5,25 +5,27 @@ import styles from "./sections.module.css";
 
 function UserMission() {
   //This array will likely be handled by a database
-  //It's a placeholder that should probably be deleted
 
   const missionssArr = [
+    {
+      title: "Discern",
+      detail:
+        "You will be asked to listen, detect, discriminate, identify, and comprehend different sounds, words, phrases, and sentences. ",
+      pic: "test-magnify",
+      picAlt: "description of the image for SEO",
+    },
     {
       title: "Master",
       detail:
         "Your mission is to travel through and master each level of auditory training.",
-      pic: "https://images.unsplash.com/40/OSASuBX1SGu4kb3ozvne_IMG_1088.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      title: "Discern",
-      detail:
-        " You will be asked to listen, detect, discriminate, identify, and comprehend different sounds, words, phrases, and sentences. ",
-      pic: "https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      pic: "test-step",
+      picAlt: "description of the image for SEO",
     },
     {
       title: "Fun",
       detail: "Above all, your main mission is to have fun!",
-      pic: "https://images.unsplash.com/photo-1489367874814-f5d040621dd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1146&q=80",
+      pic: "test-fun",
+      picAlt: "description of the image for SEO",
     },
   ];
 
@@ -34,7 +36,7 @@ function UserMission() {
       </div>
 
       <div className={classes.mission__cards}>
-        {missionssArr.map((miss, i) => {
+        {missionssArr.map((mission, i) => {
           return (
             <div
               className={`${classes.mission__card}  ${
@@ -43,12 +45,14 @@ function UserMission() {
               key={i}
             >
               <div className={classes.mission__card__info}>
-                <h5 className={classes.mission__card__header}>{miss.title}</h5>
-                <p className={classes.mission__card__text}>{miss.detail}</p>
+                <h5 className={classes.mission__card__header}>
+                  {mission.title}
+                </h5>
+                <p className={classes.mission__card__text}>{mission.detail}</p>
               </div>
               <img
-                src={miss.pic}
-                alt="Mission"
+                src={require(`../../assets/images/${mission.pic}.jpg`)}
+                alt={mission.picAlt}
                 className={classes.mission__card__img}
               />
             </div>

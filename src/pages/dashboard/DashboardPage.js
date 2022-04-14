@@ -1,11 +1,10 @@
 import { React, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
 
 import Pop from "../../components/pop/Pop";
 import PlayButton from "../../components/playButton/PlayButton";
 import Nav from "../../components/nav/Nav";
-import { db } from "../../firebase-config";
-import Cards from "../../components/cards/Cards";
+import Cards from "../../components/cardsLatest/Cards";
+import Activities from "../../components/activities/Activities";
 
 import classes from "./dashboardPage.module.css";
 
@@ -13,24 +12,28 @@ function DashboardPage() {
   //soundCheck in local storage prevents many sound checks during one session
   const soundCheck = parseInt(localStorage.getItem("soundCheck"));
   const [pop, setPop] = useState(!soundCheck);
-  const [fName, setFname] = useState("");
 
   //Activities grouped in different arrays
   const lingActs = [
-    { title: "Detection", link: "/lingActivity/detection" },
-    { title: "Discrimination", link: "/lingActivity/discrimination" },
-    { title: "Identification", link: "/lingActivity/identification" },
+    {
+      title: "Detection",
+      link: "/lingActivity/detection",
+      src: "volume",
+      level: 1,
+    },
+    {
+      title: "Discrimination",
+      link: "/lingActivity/discrimination",
+      src: "arrows",
+      level: 2,
+    },
+    {
+      title: "Identification",
+      link: "/lingActivity/identification",
+      src: "ear",
+      level: 3,
+    },
   ];
-
-  //To be used later, gets the logged in user's first name
-  const getFName = async function () {
-    const docRef = doc(db, "users", localStorage.getItem("user"));
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) setFname(docSnap.data().fName);
-  };
-
-  getFName();
 
   const soundOk = () => {
     localStorage.setItem("soundCheck", "1");
@@ -66,10 +69,9 @@ function DashboardPage() {
       {!pop && (
         <div>
           <div className={classes.main__container}>
-            <h1>{`Hi ${fName}!`}</h1>
-            {/* bg can receice "cards__yellow or "cards__blue" */}
-            <Cards title={"Ling Activities"} bg={""} cardsArr={lingActs} />
-            {/* <Cards title={"Activity 2"} bg={""} cardsArr={lingActs} /> */}
+            <h3 className={classes.header__title}>Recent Activities</h3>
+            <Cards cardsArr={lingActs} />
+            <Activities title={"Ling Activities"} activitiesArr={lingActs} />
           </div>
         </div>
       )}
