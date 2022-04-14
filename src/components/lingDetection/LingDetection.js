@@ -21,12 +21,15 @@ function LingDetection(props) {
   let sound = props.sound;
   let lingSound = null;
 
+  //randomly set on of the ling sounds from the databased passed an array from the parent component
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 2)][1];
 
   const checkHandler = async () => {
     const card = choice ? cardTrueRef : cardFalseRef;
 
+    //No card was selected before the check
     if (choice === null) return;
+
     if ((choice && sound) || (choice === false && !sound)) {
       score += 1;
       card.current.style.border = "8px green solid";
@@ -45,11 +48,7 @@ function LingDetection(props) {
 
     setChoice(null);
 
-    if (props.prog + 10 === 100) {
-      setPop(true);
-      return;
-    }
-
+    //Finish at 10 tests
     if (props.prog + 10 === 100) {
       setPop(true);
       return;

@@ -20,6 +20,7 @@ function AuthForm(props) {
   const lastNameInputRef = useRef();
 
   const navigate = useNavigate();
+
   const authContext = useContext(AuthContext);
 
   const switchHandler = (e) => {
@@ -75,7 +76,7 @@ function AuthForm(props) {
       })
       .then((data) => {
         setIsLoading(true);
-        //sign up
+        //sign up and store baasic user info on the users doc in Firebase
         if (!isLogin) {
           const userData = {
             fName: enteredFname,
@@ -106,9 +107,9 @@ function AuthForm(props) {
         navigate("/reset", { replace: true });
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // Errors should be handled by a state that displays them to the user
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setError(errorMessage.replaceAll("_", " ") + "!");
       });
   };
 

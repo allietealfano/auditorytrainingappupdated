@@ -20,14 +20,15 @@ function PlayButton(props) {
   };
 
   return (
-    <div className={classes.button__container} onClick={playHandler}>
+    <button className={classes.button} onClick={playHandler}>
+      Play Sound
       <audio className={classes.audio} ref={audioPlayer} src={props.audUrl} />
       {isPlay ? (
         <div className={`${classes.play__button}`}>&nbsp;</div>
       ) : (
         <div className={`${classes.circle}`}>&nbsp;</div>
       )}
-    </div>
+    </button>
   );
 }
 
