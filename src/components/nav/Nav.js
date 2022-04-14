@@ -1,6 +1,7 @@
 import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import NavProfile from "./NavProfile";
 import classes from "./nav.module.css";
 
 import AuthContext from "../store/auth-context";
@@ -41,11 +42,7 @@ function Nav() {
               <p>Dashboard</p>
             </li>
           </Link>
-          <Link to="/">
-            <li className={classes.not__active} onClick={authContext.logout}>
-              <p>Logout</p>
-            </li>
-          </Link>
+          <NavProfile />
         </ul>
       )}
     </nav>

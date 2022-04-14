@@ -17,10 +17,11 @@
   --main-blue: 93, 173, 226;
   --light-blue: 133, 193, 233;
   --dark-blue: 63, 137, 187;
+  --light-purple: 192, 165, 255;
 }
 
 body {
-  background: rgba(var(--main-blue));
+  /* background: rgba(var(--main-blue)); */
 }
 
 h1 {
@@ -114,4 +115,8 @@ input:focus:invalid {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 1;
+}
+
+.card:first-child {
+  background-color: aqua;
 }
