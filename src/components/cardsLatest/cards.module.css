@@ -8,6 +8,11 @@
   background-color: #fff;
 }
 
+.header__title {
+  margin: 5rem 0;
+  color: #444;
+}
+
 .cards__yellow {
   background-color: rgba(var(--light-yellow));
 }

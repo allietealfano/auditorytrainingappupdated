@@ -11,7 +11,6 @@ function NavProfile() {
   const [fName, setFName] = useState("");
   const authContext = useContext(AuthContext);
 
-  //To be used later, gets the logged in user's first name
   const getFName = async function () {
     const docRef = doc(db, "users", localStorage.getItem("user"));
     const docSnap = await getDoc(docRef);

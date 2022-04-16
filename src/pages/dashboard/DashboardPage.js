@@ -5,6 +5,7 @@ import PlayButton from "../../components/playButton/PlayButton";
 import Nav from "../../components/nav/Nav";
 import Cards from "../../components/cardsLatest/Cards";
 import Activities from "../../components/activities/Activities";
+import { allActivities } from "../../helpers/allActivities";
 
 import classes from "./dashboardPage.module.css";
 
@@ -12,28 +13,6 @@ function DashboardPage() {
   //soundCheck in local storage prevents many sound checks during one session
   const soundCheck = parseInt(localStorage.getItem("soundCheck"));
   const [pop, setPop] = useState(!soundCheck);
-
-  //Activities grouped in different arrays
-  const lingActs = [
-    {
-      title: "Detection",
-      link: "/lingActivity/detection",
-      src: "volume",
-      level: 1,
-    },
-    {
-      title: "Discrimination",
-      link: "/lingActivity/discrimination",
-      src: "arrows",
-      level: 2,
-    },
-    {
-      title: "Identification",
-      link: "/lingActivity/identification",
-      src: "ear",
-      level: 3,
-    },
-  ];
 
   const soundOk = () => {
     localStorage.setItem("soundCheck", "1");
@@ -69,9 +48,11 @@ function DashboardPage() {
       {!pop && (
         <div>
           <div className={classes.main__container}>
-            <h3 className={classes.header__title}>Recent Activities</h3>
-            <Cards cardsArr={lingActs} />
-            <Activities title={"Ling Activities"} activitiesArr={lingActs} />
+            <Cards />
+            <Activities
+              title={"Ling Activities"}
+              activitiesArr={allActivities.lingActs}
+            />
           </div>
         </div>
       )}

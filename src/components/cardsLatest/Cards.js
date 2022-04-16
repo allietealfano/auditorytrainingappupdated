@@ -3,11 +3,11 @@ import { React, useState, useEffect } from "react";
 import { getDoc, doc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
-import CardDB from "../card_2/CardDB";
+import CardDB from "../cardDB/CardDB";
 
 import classes from "./cards.module.css";
 
-function Cards(props) {
+function Cards() {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Cards(props) {
     getLatestActivities();
   }, []);
 
-  const lvlColorHandler = (col) => {
+  const colorHandler = (col) => {
     if (col === 0) return `rgb(192, 165, 255)`;
     if (col === 1) return `rgb(133, 193, 233)`;
     if (col === 2) return `rgb(218, 247, 166)`;
@@ -29,17 +29,29 @@ function Cards(props) {
   };
 
   return (
-    <div className={`${classes.cards} ${classes.props?.bg}`}>
-      {userData.map((data, i) => (
-        <CardDB
-          key={i}
-          title={data.title}
-          link={data.link}
-          date={data.date}
-          col={lvlColorHandler(i)}
-        />
-      ))}
-    </div>
+    <>
+      {userData[0] && (
+        <div>
+          <h3 className={classes.header__title}>Recent Activities</h3>
+          <div className={classes.cards}>
+            {userData.map((data, i) => {
+              if (data) {
+                return (
+                  <CardDB
+                    key={i}
+                    title={data.title}
+                    link={data.link}
+                    date={data.date}
+                    col={colorHandler(i)}
+                  />
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

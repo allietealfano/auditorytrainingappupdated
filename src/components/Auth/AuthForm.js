@@ -5,6 +5,7 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 import AuthContext from "../store/auth-context";
 import { db, apiKey } from "../../firebase-config";
+import { allActivities } from "../../helpers/allActivities";
 
 import classes from "./authForm.module.css";
 
@@ -27,6 +28,16 @@ function AuthForm(props) {
     e.preventDefault();
     setIsLogin((prevState) => !prevState);
   };
+
+  let allActivitiesObj = {};
+  const activities = { completions: [], lastVisited: "" };
+
+  Object.entries(allActivities).forEach((activityGroup) => {
+    activityGroup[1].forEach((activity) => {
+      const newObj = { [activity.link.replaceAll("/", "")]: { ...activities } };
+      allActivitiesObj = { ...allActivitiesObj, ...newObj };
+    });
+  });
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -82,6 +93,8 @@ function AuthForm(props) {
             fName: enteredFname,
             lName: enteredLname,
             email: enteredEmail,
+            latestActivities: [],
+            allActivitiesObj,
           };
           const UId = doc(db, `users/${data.localId}`);
           setDoc(UId, userData);
@@ -107,7 +120,7 @@ function AuthForm(props) {
         navigate("/reset", { replace: true });
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
         setError(errorMessage.replaceAll("_", " ") + "!");
       });

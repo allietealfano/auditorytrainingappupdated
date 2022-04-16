@@ -31,6 +31,7 @@ function LingDetectionPage() {
   return (
     <>
       <LingDetection
+        objKey={"lingActivitydetection"}
         score={score}
         prog={progress}
         progressHandler={progressHandler}

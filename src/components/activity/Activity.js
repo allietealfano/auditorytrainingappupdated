@@ -10,6 +10,8 @@ function Activity(props) {
   const user = `users/${localStorage.getItem("user")}`;
   const [userData, setUserData] = useState([]);
 
+  const key = `${props.link}`.replaceAll("/", "");
+
   useEffect(() => {
     const getLatestActivities = async function () {
       const docRef = doc(db, "users", localStorage.getItem("user"));
@@ -22,17 +24,23 @@ function Activity(props) {
   }, []);
 
   const setLatest = () => {
-    if (props.link === userData[0].link) return;
+    const UId = doc(db, user);
+
+    //if activity was already the latest activity, only update its lastVisited time
+    if (userData[0] && props.link === userData[0].link) {
+      updateDoc(UId, {
+        [`allActivitiesObj.${key}.lastVisited`]: new Date().toISOString(),
+      });
+      return;
+    }
 
     const newUserData = userData.filter((data, i) => {
       if (props.link !== data.link) return data;
       return null;
     });
 
-    console.log(newUserData);
-
-    const UId = doc(db, user);
     updateDoc(UId, {
+      [`allActivitiesObj.${key}.lastVisited`]: new Date().toISOString(),
       latestActivities: [
         { title: props.title, link: props.link },
         newUserData[0] || "",

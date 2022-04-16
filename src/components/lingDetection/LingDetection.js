@@ -1,5 +1,9 @@
-import { React, useState, useRef } from "react";
+import { React, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+
+import { db } from "../../firebase-config";
 
 import Progress from "../progressBar/Progress";
 import Pop from "../pop/Pop";
@@ -11,6 +15,9 @@ import styles from "../card/card.module.css";
 function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [pop, setPop] = useState(false);
+  const [currentScores, setCurrentScores] = useState([]);
+
+  const user = `users/${localStorage.getItem("user")}`;
 
   const cardTrueRef = useRef(null);
   const cardFalseRef = useRef(null);
@@ -21,7 +28,21 @@ function LingDetection(props) {
   let sound = props.sound;
   let lingSound = null;
 
-  //randomly set on of the ling sounds from the databased passed an array from the parent component
+  useEffect(() => {
+    const getCompletions = async function () {
+      const docRef = doc(db, "users", localStorage.getItem("user"));
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists())
+        setCurrentScores(
+          docSnap.data().allActivitiesObj[props.objKey].completions
+        );
+    };
+
+    getCompletions();
+  }, [props.objKey]);
+
+  //randomly set one of the ling sounds from the databased passed an array from the parent component
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 2)][1];
 
   const checkHandler = async () => {
@@ -51,6 +72,14 @@ function LingDetection(props) {
     //Finish at 10 tests
     if (props.prog + 10 === 100) {
       setPop(true);
+      const UId = doc(db, user);
+      updateDoc(UId, {
+        [`allActivitiesObj.${props.objKey}.completions`]: [
+          { score: score / 10, date: new Date().toISOString() },
+          ...currentScores,
+        ],
+      });
+
       return;
     }
   };
