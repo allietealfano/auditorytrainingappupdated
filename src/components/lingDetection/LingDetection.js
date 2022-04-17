@@ -90,7 +90,7 @@ function LingDetection(props) {
                 audUrl={
                   sound
                     ? lingSound
-                    : "https://firebasestorage.googleapis.com/v0/b/Auditory Trainning App.appspot.com/o/audio%2Fno_sound%2Fno_sound.mp3?alt=media&token=450bfb7d-f051-4633-8093-8fb5d8921596"
+                    : "https://firebasestorage.googleapis.com/v0/b/mission-audition.appspot.com/o/audio%2Fno_sound%2Fno_sound.mp3?alt=media&token=450bfb7d-f051-4633-8093-8fb5d8921596"
                 }
               />
 

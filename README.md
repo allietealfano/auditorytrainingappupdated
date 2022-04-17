@@ -67,7 +67,7 @@ After Node.js is installed, and you can run git commands/or the app, you will ne
 
 ```
 
-git clone https://github.com/Elton360/Auditory Trainning App.git or use the Desktop App by going to File, then clone repository.
+git clone https://github.com/Elton360/mission-audition.git or use the Desktop App by going to File, then clone repository.
 
 ```
 
