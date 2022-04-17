@@ -1,4 +1,4 @@
-import { React, useRef, useContext, useState, useCallback } from "react";
+import { React, useRef, useContext, useState } from "react";
 import IdleTimer from "react-idle-timer";
 
 import Pop from "../../components/pop/Pop";

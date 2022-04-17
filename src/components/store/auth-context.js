@@ -4,7 +4,9 @@ let logoutTimer;
 
 const AuthContext = React.createContext({
   token: "",
+  fbUser: "",
   isLoggedIn: false,
+  locale: "",
   login: (token) => {},
   logout: () => {},
 });
@@ -45,6 +47,8 @@ export const AuthContextProvider = (props) => {
 
   const userIsLoggedIn = !!token;
 
+  const user = `users/${localStorage.getItem("user")}`;
+
   const logoutHandler = useCallback(() => {
     setToken(null);
     localStorage.removeItem("token");
@@ -74,6 +78,8 @@ export const AuthContextProvider = (props) => {
   const contextValue = {
     token: token,
     isLoggedIn: userIsLoggedIn,
+    fbUser: user,
+    locale: "en-us",
     login: loginHandler,
     logout: logoutHandler,
   };

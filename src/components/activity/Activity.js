@@ -1,38 +1,38 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { updateDoc, getDoc, doc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
+import AuthContext from "../store/auth-context";
+import useFetch from "../custHooks/useFetch";
 
 import classes from "./act.module.css";
 
 function Activity(props) {
-  const user = `users/${localStorage.getItem("user")}`;
-  const [userData, setUserData] = useState([]);
+  const [[userData], isPending, err] = useFetch("latestActivities");
 
-  useEffect(() => {
-    const getLatestActivities = async function () {
-      const docRef = doc(db, "users", localStorage.getItem("user"));
-      const docSnap = await getDoc(docRef);
+  const user = useContext(AuthContext).fbUser;
 
-      if (docSnap.exists()) setUserData(docSnap.data().latestActivities);
-    };
-
-    getLatestActivities();
-  }, []);
+  const key = `${props.link}`.replaceAll("/", "");
 
   const setLatest = () => {
-    if (props.link === userData[0].link) return;
+    const UId = doc(db, user);
+
+    //if activity was already the latest activity, only update its lastVisited time
+    if (userData[0] && props.link === userData[0].link) {
+      updateDoc(UId, {
+        [`allActivitiesObj.${key}.lastVisited`]: new Date().toISOString(),
+      });
+      return;
+    }
 
     const newUserData = userData.filter((data, i) => {
       if (props.link !== data.link) return data;
       return null;
     });
 
-    console.log(newUserData);
-
-    const UId = doc(db, user);
     updateDoc(UId, {
+      [`allActivitiesObj.${key}.lastVisited`]: new Date().toISOString(),
       latestActivities: [
         { title: props.title, link: props.link },
         newUserData[0] || "",

@@ -1,16 +1,24 @@
-import { React, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { React, useState, useRef, useEffect } from "react";
 
+import useFetch from "../custHooks/useFetch";
 import Progress from "../progressBar/Progress";
-import Pop from "../pop/Pop";
 import PlayButton from "../playButton/PlayButton";
+import Completed from "../Completed/Completed";
 
 import classes from "./lingDetection.module.css";
-import styles from "../card/card.module.css";
 
 function LingDetection(props) {
   const [choice, setChoice] = useState(null);
+  const [currentScores, setCurrentScores] = useState([]);
   const [pop, setPop] = useState(false);
+
+  const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
+
+  useEffect(() => {
+    setCurrentScores(
+      allActivitiesObj?.lingActivitydetection?.completions.map((comp) => comp)
+    );
+  }, [allActivitiesObj]);
 
   const cardTrueRef = useRef(null);
   const cardFalseRef = useRef(null);
@@ -21,8 +29,8 @@ function LingDetection(props) {
   let sound = props.sound;
   let lingSound = null;
 
-  //randomly set on of the ling sounds from the databased passed an array from the parent component
-  if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 2)][1];
+  //randomly set one of the ling sounds from the database passed as an array from the parent component
+  if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 4)][1];
 
   const checkHandler = async () => {
     const card = choice ? cardTrueRef : cardFalseRef;
@@ -67,22 +75,10 @@ function LingDetection(props) {
   return (
     <>
       {pop && (
-        <Pop
-          headerBig={"You have completed your mission!"}
-          headerSmall={"Would you like to try again?"}
-          option1={"Retry"}
-          option1Func={() => window.location.reload(false)}
-          option2={
-            <Link to="/dashboard">
-              <p>Activities</p>
-            </Link>
-          }
-          mid={
-            <div>
-              <h1>🏆</h1>
-              <h2 style={{ color: "rgb(93, 173, 226)" }}>{score}/10</h2>
-            </div>
-          }
+        <Completed
+          objKey={props.objKey}
+          currentScores={currentScores}
+          score={score * 10}
         />
       )}
       <div className={classes.bg__container}>
@@ -100,21 +96,21 @@ function LingDetection(props) {
 
               <div className={classes.select}>
                 <div
-                  className={styles.card}
+                  className={classes.card}
                   ref={cardTrueRef}
                   onClick={() => choiceHandler(true)}
                 >
-                  <div className={styles.card__mid}>
+                  <div className={classes.card__mid}>
                     <h1>🔊</h1>
                     <p>Sound</p>
                   </div>
                 </div>
                 <div
-                  className={styles.card}
+                  className={classes.card}
                   ref={cardFalseRef}
                   onClick={() => choiceHandler(false)}
                 >
-                  <div className={styles.card__mid}>
+                  <div className={classes.card__mid}>
                     <h1>🔈</h1>
                     <p>No Sound</p>
                   </div>
