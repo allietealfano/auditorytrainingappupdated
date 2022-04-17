@@ -1,10 +1,10 @@
-# Mission Audition
+# Auditory Trainning App
 
 Authors: Elton Lucien, Miguel Pacillo, Fernando Diaz, Dmitrii Chzhao, Jason Francis, Taylor Rivera, Tomas Alvarez Lopez, Musa Jean, Alejandro Carvajal
 
 Product Owner: Alliete Alfano
 
-The Mission Audition Web App is currently in its first version. It is designed for adults with
+The Auditory Trainning App is currently in its first version. It is designed for adults with
 hearing loss who have received a hearing aid or cochlear implant and want to improve their hearing
 via fun games and other listening activities.
 
