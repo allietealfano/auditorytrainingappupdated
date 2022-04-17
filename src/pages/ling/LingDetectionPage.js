@@ -7,7 +7,7 @@ import LingDetection from "../../components/lingDetection/LingDetection";
 function LingDetectionPage() {
   const [progress, setProgress] = useState(0);
   const [score, setScore] = useState(0);
-  const [arr, setArr] = useState([[0, 0]]);
+  const [soundsArr, setSoundsArr] = useState([[0, 0]]);
 
   const progressHandler = (newProgress, newScore) => {
     setProgress(newProgress);
@@ -20,7 +20,7 @@ function LingDetectionPage() {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setArr(
+        setSoundsArr(
           Object.keys(docSnap.data()).map((key) => [key, docSnap.data()[key]])
         );
       }
@@ -36,7 +36,7 @@ function LingDetectionPage() {
         prog={progress}
         progressHandler={progressHandler}
         sound={Math.floor(Math.random() * 2)}
-        arr={arr}
+        arr={soundsArr}
       />
     </>
   );

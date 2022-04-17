@@ -192,7 +192,7 @@ function AuthForm(props) {
               onClick={() => setIsReset(!isReset)}
               className={classes.span_underline}
             >
-              {isReset ? "Sign In?" : "Forgot Password"}
+              {isReset ? "Sign In?" : "Forgot Password?"}
             </span>
           </div>
         )}

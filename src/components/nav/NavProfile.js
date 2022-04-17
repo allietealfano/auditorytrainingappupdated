@@ -1,38 +1,32 @@
-import { React, useState, useContext } from "react";
+import { React, useContext } from "react";
 import { Link } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
 
 import AuthContext from "../store/auth-context";
-import { db } from "../../firebase-config";
-
+import useFetch from "../custHooks/useFetch";
 import classes from "./nav.module.css";
 
 function NavProfile() {
-  const [fName, setFName] = useState("");
+  const [[fName], isPending, err] = useFetch("fName", "lName");
+
   const authContext = useContext(AuthContext);
-
-  const getFName = async function () {
-    const docRef = doc(db, "users", localStorage.getItem("user"));
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) setFName(docSnap.data().fName);
-  };
-
-  getFName();
 
   return (
     <div className={classes.nav__right}>
       <div className={classes.profile__items}>
-        <div className={classes.profile__pic_name}>
-          <span className={classes.profile__text}>{fName}</span>
-          <div className={classes.img__container}>
-            <img
-              className={classes.profile__img}
-              src={require("../../assets/images/test-founder.jpg")}
-              alt="profile"
-            />
+        {err ? (
+          "Firebase Document Not FOund!"
+        ) : (
+          <div className={classes.profile__pic_name}>
+            <span className={classes.profile__text}>{fName}</span>
+            <div className={classes.img__container}>
+              <img
+                className={classes.profile__img}
+                src={require("../../assets/images/test-founder.jpg")}
+                alt="profile"
+              />
+            </div>
           </div>
-        </div>
+        )}
         <ul className={classes.list__container}>
           <Link to="/dashboard">
             <li className={classes.list__item}>

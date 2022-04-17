@@ -1,34 +1,26 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import useFetch from "../custHooks/useFetch";
+import AuthContext from "../store/auth-context";
 
-import { db } from "../../firebase-config";
 import classes from "./cardDB.module.css";
 
 function CardDB(props) {
-  const [lastVisit, setLastVisit] = useState();
-  const [completions, setCompletions] = useState([]);
+  const [allScores, setAllScores] = useState();
+  const [lastVisited, setLastVisited] = useState();
 
-  const allScores = completions.map((comp) => comp.score);
+  const locale = useContext(AuthContext).locale;
 
-  let lastVisitMDY = `${new Date(lastVisit).getUTCMonth() + 1}-${new Date(
-    lastVisit
-  ).getUTCDate()}-${new Date(lastVisit).getUTCFullYear()}`;
+  const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
+
   const key = `${props.link}`.replaceAll("/", "");
 
   useEffect(() => {
-    const getLastVisit = async function () {
-      const docRef = doc(db, "users", localStorage.getItem("user"));
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        setLastVisit(docSnap.data().allActivitiesObj[key].lastVisited);
-        setCompletions(docSnap.data().allActivitiesObj[key].completions);
-      }
-    };
-
-    getLastVisit();
-  }, [props.link, key]);
+    setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));
+    setLastVisited(
+      new Date(allActivitiesObj?.[key].lastVisited).toLocaleDateString(locale)
+    );
+  }, [allActivitiesObj]);
 
   const imgSetter = () => {
     if (props.link === "/lingActivity/detection") return "volume";
@@ -37,27 +29,29 @@ function CardDB(props) {
     return "notes";
   };
 
+  let lastVisit = lastVisited;
+
   return (
     <>
-      <Link to={props.link}>
-        <div style={{ backgroundColor: props.col }} className={classes.card}>
-          <img
-            alt=""
-            src={require(`../../assets/icons/${imgSetter()}.png`)}
-            className={classes.card__img}
-          />
-          <div className={classes.card__upper}>
-            <span>{props.title}</span>
-            <span>{`Visited: ${lastVisitMDY}`}</span>
+      {allScores && (
+        <Link to={props.link} params={{ testvalue: "hello" }}>
+          <div style={{ backgroundColor: props.col }} className={classes.card}>
+            <img
+              alt=""
+              src={require(`../../assets/icons/${imgSetter()}.png`)}
+              className={classes.card__img}
+            />
+            <div className={classes.card__upper}>
+              <span>{props.title}</span>
+              <span>{`Visited: ${lastVisited}`}</span>
+            </div>
+            <div className={classes.card__lower}>
+              <span>High Score:</span>
+              <span>{allScores[0] ? `${Math.max(...allScores)}%` : "0%"}</span>
+            </div>
           </div>
-          <div className={classes.card__lower}>
-            <span>High Score:</span>
-            <span>
-              {allScores[0] ? `${Math.max(...allScores) * 100}%` : "0%"}
-            </span>
-          </div>
-        </div>
-      </Link>
+        </Link>
+      )}
     </>
   );
 }

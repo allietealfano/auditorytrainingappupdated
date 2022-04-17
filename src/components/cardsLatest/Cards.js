@@ -1,8 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 
 import { getDoc, doc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
+import AuthContext from "../store/auth-context";
 import CardDB from "../cardDB/CardDB";
 
 import classes from "./cards.module.css";
@@ -10,16 +11,18 @@ import classes from "./cards.module.css";
 function Cards() {
   const [userData, setUserData] = useState([]);
 
+  const user = useContext(AuthContext).fbUser;
+
   useEffect(() => {
     const getLatestActivities = async function () {
-      const docRef = doc(db, "users", localStorage.getItem("user"));
+      const docRef = doc(db, user);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) setUserData(docSnap.data().latestActivities);
     };
 
     getLatestActivities();
-  }, []);
+  }, [user]);
 
   const colorHandler = (col) => {
     if (col === 0) return `rgb(192, 165, 255)`;

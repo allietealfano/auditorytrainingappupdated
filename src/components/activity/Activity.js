@@ -1,27 +1,19 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { updateDoc, getDoc, doc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
+import AuthContext from "../store/auth-context";
+import useFetch from "../custHooks/useFetch";
 
 import classes from "./act.module.css";
 
 function Activity(props) {
-  const user = `users/${localStorage.getItem("user")}`;
-  const [userData, setUserData] = useState([]);
+  const [[userData], isPending, err] = useFetch("latestActivities");
+
+  const user = useContext(AuthContext).fbUser;
 
   const key = `${props.link}`.replaceAll("/", "");
-
-  useEffect(() => {
-    const getLatestActivities = async function () {
-      const docRef = doc(db, "users", localStorage.getItem("user"));
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) setUserData(docSnap.data().latestActivities);
-    };
-
-    getLatestActivities();
-  }, []);
 
   const setLatest = () => {
     const UId = doc(db, user);
