@@ -24,23 +24,50 @@ The following tree structure will be useful to visualize how the project is stru
 
 │       ├── node_modules (not in the repository, it will be created when you install all the dependencies)
 
+│       └── public
+
 │       └── src
 
 │           ├── assets
+                ├── audios
+
+                ├── images
+
+                ├── icons
+
+                ├── videos
 
 │           ├── components
 
-                ├── card
+                ├── activities
+
+                ├── activity
+             
+                ├── auth
+
+                ├── cardDB
+
+                ├── cardLatest
+                
+                ├── completed
+                
+                ├── custHooks
 
                 ├── homepage-sects
+                
+                ├── lingDetection
 
                 ├── nav
 
                 ├── playButton
 
                 ├── pop
+                
+                ├── progressBar
 
                 ├── store
+
+│           ├── helpers
 
 │           ├── pages
 
@@ -53,7 +80,7 @@ The Auditory Trainning App/src directory is where all the source code for the ap
 
 ### Installation & Running steps
 
-The easiest way to get started with //waiting on official name// is to install install Node.js. You can do that by going to :
+The easiest way to get started with Auditory Trainning App is to install install Node.js. You can do that by going to :
 
 ```
 https://nodejs.org/en/.
@@ -78,6 +105,9 @@ Using your terminal, You can now install all the necessary dependencies for the 
 npm install
 
 ```
+
+It is necessary to have the firebase key, which is a file that should be plced in the src folder :
+
 
 The app can now be started on your local machine by running:
 
