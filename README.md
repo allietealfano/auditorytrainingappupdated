@@ -18,9 +18,9 @@ The following tree structure will be useful to visualize how the project is stru
 
 ├── Code
 
-│   └── mission-audition
+│   └── Auditory Trainning App
 
-│       ├── public 
+│       ├── public
 
 │       ├── node_modules (not in the repository, it will be created when you install all the dependencies)
 
@@ -29,17 +29,17 @@ The following tree structure will be useful to visualize how the project is stru
 │           ├── assets
 
 │           ├── components
-                
+
                 ├── card
-                
+
                 ├── homepage-sects
-                
+
                 ├── nav
-                
+
                 ├── playButton
-                
+
                 ├── pop
-                
+
                 ├── store
 
 │           ├── pages
@@ -47,9 +47,9 @@ The following tree structure will be useful to visualize how the project is stru
 
 ```
 
-Code/mission-audition is the directory that contains all of the code required to make app functional. If/When other directories are added, they will be used for documentation.
+Code/Auditory Trainning App is the directory that contains all of the code required to make app functional. If/When other directories are added, they will be used for documentation.
 
-The mission-audition/src directory is where all the source code for the application lies. The main entrypoint of the application is through index.js, which is where the application is created, and immediately calls App.js where all other components that change the UI must be referenced.
+The Auditory Trainning App/src directory is where all the source code for the application lies. The main entrypoint of the application is through index.js, which is where the application is created, and immediately calls App.js where all other components that change the UI must be referenced.
 
 ### Installation & Running steps
 
@@ -61,14 +61,13 @@ https://nodejs.org/en/.
 
 This will automatically install the Node Package Manager (NPM).
 
-
 It is also necessary to be able to run git commands in your terminal (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), or use the dektop app (https://desktop.github.com/).
 
 After Node.js is installed, and you can run git commands/or the app, you will need to clone the GitHub repository to your local machine:
 
 ```
 
-git clone https://github.com/Elton360/mission-audition.git or use the Desktop App by going to File, then clone repository.
+git clone https://github.com/Elton360/Auditory Trainning App.git or use the Desktop App by going to File, then clone repository.
 
 ```
 
