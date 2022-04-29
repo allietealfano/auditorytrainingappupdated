@@ -16,7 +16,7 @@ function Nav() {
         <ul className={classes.nav__ul}>
           <Link to="/">
             <li className={classes.active}>
-              <p>Auditory Trainning App!</p>
+              <p>Auditory Training App!</p>
             </li>
           </Link>
           <Link to="/auth" state={{ signIn: true }}>
@@ -34,7 +34,7 @@ function Nav() {
         <ul className={classes.nav__ul}>
           <Link to="/">
             <li className={classes.active}>
-              <p>Auditory Trainning App!</p>
+              <p>Auditory Training App!</p>
             </li>
           </Link>
           <Link to="/dashboard">

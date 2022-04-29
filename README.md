@@ -1,10 +1,10 @@
-# Auditory Trainning App
+# Auditory Training App
 
 Authors: Elton Lucien, Miguel Pacillo, Fernando Diaz, Dmitrii Chzhao, Jason Francis, Taylor Rivera, Tomas Alvarez Lopez, Musa Jean, Alejandro Carvajal
 
 Product Owner: Alliete Alfano
 
-The Auditory Trainning App is currently in its first version. It is designed for adults with
+The Auditory Training App is currently in its first version. It is designed for adults with
 hearing loss who have received a hearing aid or cochlear implant and want to improve their hearing
 via fun games and other listening activities.
 
@@ -18,7 +18,7 @@ The following tree structure will be useful to visualize how the project is stru
 
 ├── Code
 
-│   └── Auditory Trainning App
+│   └── Auditory Training App
 
 │       ├── public
 
@@ -42,19 +42,19 @@ The following tree structure will be useful to visualize how the project is stru
                 ├── activities
 
                 ├── activity
-             
+
                 ├── auth
 
                 ├── cardDB
 
                 ├── cardLatest
-                
+
                 ├── completed
-                
+
                 ├── custHooks
 
                 ├── homepage-sects
-                
+
                 ├── lingDetection
 
                 ├── nav
@@ -62,7 +62,7 @@ The following tree structure will be useful to visualize how the project is stru
                 ├── playButton
 
                 ├── pop
-                
+
                 ├── progressBar
 
                 ├── store
@@ -74,13 +74,13 @@ The following tree structure will be useful to visualize how the project is stru
 
 ```
 
-Code/Auditory Trainning App is the directory that contains all of the code required to make app functional. If/When other directories are added, they will be used for documentation.
+Code/Auditory Training App is the directory that contains all of the code required to make app functional. If/When other directories are added, they will be used for documentation.
 
-The Auditory Trainning App/src directory is where all the source code for the application lies. The main entrypoint of the application is through index.js, which is where the application is created, and immediately calls App.js where all other components that change the UI must be referenced.
+The Auditory Training App/src directory is where all the source code for the application lies. The main entrypoint of the application is through index.js, which is where the application is created, and immediately calls App.js where all other components that change the UI must be referenced.
 
 ### Installation & Running steps
 
-The easiest way to get started with Auditory Trainning App is to install install Node.js. You can do that by going to :
+The easiest way to get started with Auditory Training App is to install install Node.js. You can do that by going to :
 
 ```
 https://nodejs.org/en/.
@@ -107,7 +107,6 @@ npm install
 ```
 
 It is necessary to have the firebase key, which is a file that should be plced in the src folder :
-
 
 The app can now be started on your local machine by running:
 
