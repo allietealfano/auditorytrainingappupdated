@@ -1,6 +1,11 @@
 # Auditory Training App
 
-Authors: Elton Lucien, Miguel Pacillo, Fernando Diaz, Dmitrii Chzhao, Jason Francis, Taylor Rivera, Tomas Alvarez Lopez, Musa Jean, Alejandro Carvajal
+Authors:
+Capstone 2 
+Eric Segura, Juan Sanchez, Miguel Pacillo, Joshua Yaques, Brandon Castano, 
+ 
+Capstone 1 
+Andrew Andersen, Lyn Quintana, Leandro Alvarez, Tatiana Summerrall, Fares Amamou, Alex Rodriguez 
 
 Product Owner: Alliete Alfano
 
