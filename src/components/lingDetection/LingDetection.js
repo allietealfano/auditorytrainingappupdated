@@ -59,7 +59,6 @@ function LingDetection(props) {
     //Finish at 10 tests
     if (props.prog + 10 === 100) {
       setPop(true);
-      return;
     }
   };
 
