@@ -92,7 +92,6 @@ function LingDetection(props) {
           </div>
         }
       />
-  );
         <Completed
           objKey={props.objKey}
           currentScores={currentScores}
