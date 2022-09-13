@@ -82,7 +82,7 @@ function LingDetection(props) {
         option1={"Retry"}
         option1Func={() => window.location.reload(false)}
         option2={
-          <Link to="/dashboard">
+          <Link to=".../dashboard">
             <span>Activities</span>
           </Link>
         }
