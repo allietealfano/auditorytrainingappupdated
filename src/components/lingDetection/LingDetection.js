@@ -74,6 +74,26 @@ function LingDetection(props) {
   return (
     <>
       {pop && (
+            <Pop
+        headerBig={"You have completed your mission!"}
+        headerSmall={"Would you like to try again?"}
+        option1={"Retry"}
+        option1Func={() => window.location.reload(false)}
+        option2={
+          <Link to="/dashboard">
+            <span>Activities</span>
+          </Link>
+        }
+        option2Func={() => ""}
+        mid={
+          <div>
+            <h1>🏆</h1>
+            <h2 style={{ color: "rgb(93, 173, 226)" }}>{props.score}%</h2>
+          </div>
+        }
+      />
+    </>
+  );
         <Completed
           objKey={props.objKey}
           currentScores={currentScores}
