@@ -9,7 +9,7 @@ import AuthContext from "../store/auth-context";
  
 function Completed(props) {
   const user = useContext(AuthContext).fbUser;
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(null);
   const refresh = ()=>{
         // re-renders the component
         setValue({});
