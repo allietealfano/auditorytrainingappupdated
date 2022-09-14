@@ -11,7 +11,7 @@ function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
   const [pop, setPop] = useState(false);
-
+  const [value, setValue] = useState();
   const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
 
   useEffect(() => {
@@ -72,11 +72,10 @@ function LingDetection(props) {
     otherCard.current.style.border = "0";
   };
   
- refresh = () => {
-      // re-renders the component
-      this.setState({});
-    };
-render() {
+   const refresh = ()=>{
+        // re-renders the component
+        setValue({});
+    }
   return (
     <>
       {pop && (
@@ -85,7 +84,7 @@ render() {
          headerSmall={"Would you like to try again?"}
          option1={"Retry"}
 		 option1Func={ <div>
-                          <button onClick={ this.refresh }>Restart activity</button>
+                          <button onClick={ refresh }>Restart activity</button>
                       </div>
                       }
           objKey={props.objKey}
@@ -149,7 +148,8 @@ render() {
       </div>
     </>
   );
-  }
+  
 }
 
 export default LingDetection;
+
