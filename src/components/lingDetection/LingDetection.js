@@ -97,8 +97,9 @@ function LingDetection(props) {
           objKey={props.objKey}
           currentScores={currentScores}
           score={score * 10}
-          return;
+          
         />
+        return;
       )}
       <div className={classes.bg__container}>
         <section className={classes.activity}>
