@@ -6,7 +6,6 @@ import PlayButton from "../playButton/PlayButton";
 import Completed from "../Completed/Completed";
 
 import classes from "./lingDetection.module.css";
-restart (
 function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
@@ -71,6 +70,10 @@ function LingDetection(props) {
     card.current.style.border = "4px  rgba(93, 173, 226, 0.5) solid";
     otherCard.current.style.border = "0";
   };
+  
+   function refreshPage() {
+    window.location.reload();
+  }
 
   return (
     <>
@@ -79,12 +82,11 @@ function LingDetection(props) {
          headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
-        option1Func={  <button
-                className={`${choice !== null ? "btn btn__blue" : "btn"}`}
-                onClick={restart;}
-              >
-                retry
-              </button>}
+        option1Func={   <div>
+      <button onClick={ refreshPage }>Refresh!</button>
+    </div>
+  );
+}
         option2={ "Back to Dashboard"
         }
         option2Func={() => ""}
@@ -148,6 +150,6 @@ function LingDetection(props) {
     </>
   );
 }
-)
+
 
 export default LingDetection;
