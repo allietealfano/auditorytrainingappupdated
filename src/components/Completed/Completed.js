@@ -46,8 +46,9 @@ function Completed(props) {
             <h1>🏆</h1>
             <h2 style={{ color: "rgb(93, 173, 226)" }}>{props.score}%</h2>
           </div>
-         </div>
+        
         }
+       </div>
       />
     </>
   );
