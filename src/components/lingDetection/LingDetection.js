@@ -80,7 +80,7 @@ function LingDetection(props) {
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
         option1Func={() => window.location.reload(false)}
-        option2={
+        option2={ "Back to Dashboard"
         }
         option2Func={() => ""}
         mid={
