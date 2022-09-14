@@ -85,6 +85,7 @@ function LingDetection(props) {
         option1Func={   <div>
       <button onClick={ refreshPage }>Refresh!</button>
     </div>
+>
   );
 }
         option2={ "Back to Dashboard"
