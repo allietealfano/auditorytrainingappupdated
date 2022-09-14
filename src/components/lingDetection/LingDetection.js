@@ -4,7 +4,6 @@ import useFetch from "../custHooks/useFetch";
 import Progress from "../progressBar/Progress";
 import PlayButton from "../playButton/PlayButton";
 import Completed from "../Completed/Completed";
-import { Link } from "react-router-dom";
 
 import classes from "./lingDetection.module.css";
 
