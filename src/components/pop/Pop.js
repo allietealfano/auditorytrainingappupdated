@@ -1,11 +1,11 @@
- import {React,useState} from "react";
+import React from "react";
 
 import classes from "./pop.module.css";
 
 
-function Pop(props) {
-      //const [choice, setChoice] = useState(null)
-    //if (choice === null) return;
+export function Pop(props) = () =>{
+
+  return (
     <>
       <div className={classes.container}>
         <div className={classes.pop__up}>
@@ -44,6 +44,7 @@ function Pop(props) {
         </div>
       </div>
     </>
+  );
 }
 
 export default Pop;
