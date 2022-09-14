@@ -28,7 +28,6 @@ function Completed(props) {
   return (
     <>
       <Pop
-       <div className={classes.bg__container}>
         headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
@@ -48,7 +47,6 @@ function Completed(props) {
           </div>
         
         }
-       </div>
       />
     </>
   );
