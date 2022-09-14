@@ -75,6 +75,7 @@ function LingDetection(props) {
   return (
     <>
       {pop && (
+       <form onSubmit={(e) =>e.preventDefault()}></form>
         <Completed
          headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
