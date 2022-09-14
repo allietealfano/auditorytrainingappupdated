@@ -79,7 +79,7 @@ function LingDetection(props) {
          headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
-        option1Func={<button type="button" onClick={ () }>
+        option1Func={<button type="button" onClick={() => ()} >
   <span>Reload</span>
 </button>}
         option2={ "Back to Dashboard"
