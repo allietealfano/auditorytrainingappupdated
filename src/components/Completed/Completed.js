@@ -6,10 +6,14 @@ import Pop from "../pop/Pop";
 import { db } from "../../firebase-config";
 
 import AuthContext from "../store/auth-context";
-
+ 
 function Completed(props) {
   const user = useContext(AuthContext).fbUser;
-
+  const [value, setValue] = useState();
+  const refresh = ()=>{
+        // re-renders the component
+        setValue({});
+    }
   useEffect(() => {
     const UId = doc(db, user);
     updateDoc(UId, {
@@ -26,9 +30,11 @@ function Completed(props) {
         headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
-        option1Func={() => window.location.reload(false)}
+        option1Func={<div>
+                          <button onClick={ refresh }>Restart activity</button>
+                      </div>}
         option2={
-          <Link to="/dashboard">
+          <Link to=".../dashboard">
             <span>Activities</span>
           </Link>
         }
