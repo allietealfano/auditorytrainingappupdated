@@ -5,6 +5,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import Pop from "../pop/Pop";
 import { db } from "../../firebase-config";
 
+import classes from "./comp.module.css";
 import AuthContext from "../store/auth-context";
  
 function Completed(props) {
