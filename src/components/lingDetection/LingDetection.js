@@ -6,6 +6,7 @@ import PlayButton from "../playButton/PlayButton";
 import Completed from "../Completed/Completed";
 
 import classes from "./lingDetection.module.css";
+
 function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
@@ -71,7 +72,7 @@ function LingDetection(props) {
     otherCard.current.style.border = "0";
   };
   
-   function refreshPage() {
+    function refreshPage() {
     window.location.reload();
   }
 
@@ -79,16 +80,17 @@ function LingDetection(props) {
     <>
       {pop && (
         <Completed
-         headerBig={"You have completed your mission!"}
-        headerSmall={"Would you like to try again?"}
-        option1={"Retry"}
-        option1Func={ <div>
+		 headerBig={"You have completed your mission!"}
+         headerSmall={"Would you like to try again?"}
+         option1={"Retry"}
+		 option1Func={ <div>
                           <button onClick={ refreshPage }>Refresh!</button>
                       </div>
-        />
-  );
-}
-        option2={ "Back to Dashboard"
+                      }
+          objKey={props.objKey}
+          currentScores={currentScores}
+          score={score * 10}
+		    option2={ "Back to Dashboard"
         }
         option2Func={() => ""}
         mid={
@@ -97,10 +99,6 @@ function LingDetection(props) {
             <h2 style={{ color: "rgb(93, 173, 226)" }}>{props.score}%</h2>
           </div>
         }
-          objKey={props.objKey}
-          currentScores={currentScores}
-          score={score * 10}
-          
         />
       )}
       <div className={classes.bg__container}>
@@ -151,6 +149,5 @@ function LingDetection(props) {
     </>
   );
 }
-
 
 export default LingDetection;
