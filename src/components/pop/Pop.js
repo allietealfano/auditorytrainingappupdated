@@ -1,8 +1,12 @@
-import React from "react";
+  import {React,useState} from "react";
 
 import classes from "./pop.module.css";
 
+
 function Pop(props) {
+      const [choice, setChoice] = useState(null);
+    if (choice === null) return;
+
   return (
     <>
       <div className={classes.container}>
