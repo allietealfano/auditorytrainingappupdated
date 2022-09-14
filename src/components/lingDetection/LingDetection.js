@@ -72,10 +72,11 @@ function LingDetection(props) {
     otherCard.current.style.border = "0";
   };
   
-    function refreshPage() {
-    window.location.reload();
-  }
-
+ refresh = () => {
+      // re-renders the component
+      this.setState({});
+    };
+render() {
   return (
     <>
       {pop && (
@@ -84,7 +85,7 @@ function LingDetection(props) {
          headerSmall={"Would you like to try again?"}
          option1={"Retry"}
 		 option1Func={ <div>
-                          <button onClick={ refreshPage }>Refresh!</button>
+                          <button onClick={ this.refresh }>Restart activity</button>
                       </div>
                       }
           objKey={props.objKey}
@@ -148,6 +149,7 @@ function LingDetection(props) {
       </div>
     </>
   );
+  }
 }
 
 export default LingDetection;
