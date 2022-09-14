@@ -6,7 +6,7 @@ import PlayButton from "../playButton/PlayButton";
 import Completed from "../Completed/Completed";
 
 import classes from "./lingDetection.module.css";
-
+restart (
 function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
@@ -81,7 +81,7 @@ function LingDetection(props) {
         option1={"Retry"}
         option1Func={  <button
                 className={`${choice !== null ? "btn btn__blue" : "btn"}`}
-                onClick={checkHandler}
+                onClick={restart;}
               >
                 retry
               </button>}
@@ -99,7 +99,6 @@ function LingDetection(props) {
           score={score * 10}
           
         />
-        return;
       )}
       <div className={classes.bg__container}>
         <section className={classes.activity}>
@@ -149,5 +148,6 @@ function LingDetection(props) {
     </>
   );
 }
+)
 
 export default LingDetection;
