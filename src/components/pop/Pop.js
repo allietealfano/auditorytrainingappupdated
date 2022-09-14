@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./pop.module.css";
 
 
-export function Pop(props) = () =>{
+export function Pop(props) = () => {
 
   return (
     <>
