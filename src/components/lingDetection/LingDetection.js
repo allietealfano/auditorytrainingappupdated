@@ -79,7 +79,9 @@ function LingDetection(props) {
          headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
-        option1Func={() => window.location.reload(false)}
+        option1Func={<button type="button" onClick={ setPop(false) }>
+  <span>Reload</span>
+</button>}
         option2={ "Back to Dashboard"
         }
         option2Func={() => ""}
