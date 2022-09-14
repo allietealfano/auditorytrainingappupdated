@@ -4,8 +4,8 @@ import classes from "./pop.module.css";
 
 
 function Pop(props) {
-      const [choice, setChoice] = useState(null);
-    if (choice === null) return;
+      const [choice, setChoice] = useState(true);
+    if (choice === true) return;
 
   return (
     <>
