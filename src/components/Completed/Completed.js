@@ -28,6 +28,7 @@ function Completed(props) {
   return (
     <>
       <Pop
+       <div className={classes.bg__container}>
         headerBig={"You have completed your mission!"}
         headerSmall={"Would you like to try again?"}
         option1={"Retry"}
@@ -45,6 +46,7 @@ function Completed(props) {
             <h1>🏆</h1>
             <h2 style={{ color: "rgb(93, 173, 226)" }}>{props.score}%</h2>
           </div>
+         </div>
         }
       />
     </>
