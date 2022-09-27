@@ -51,6 +51,8 @@ function AuthForm(props) {
     const enteredPassword = passwordInputRef.current.value;
     const enteredFname = isLogin ? "" : firstNameInputRef.current.value;
     const enteredLname = isLogin ? "" : lastNameInputRef.current.value;
+    const defaultProfilePic = "default/default.jpg";
+    const defaultAboutMe = "";
 
     setIsLoading(true);
     let url;
@@ -93,6 +95,8 @@ function AuthForm(props) {
             fName: enteredFname,
             lName: enteredLname,
             email: enteredEmail,
+            profilePic: defaultProfilePic,
+            aboutMe: defaultAboutMe,
             latestActivities: [],
             allActivitiesObj,
           };
