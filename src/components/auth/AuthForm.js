@@ -6,6 +6,11 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import AuthContext from "../store/auth-context";
 import { db, apiKey } from "../../firebase-config";
 import { allActivities } from "../../helpers/allActivities";
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData,
+} from "react-country-region-selector";
 
 import classes from "./authForm.module.css";
 
@@ -23,6 +28,9 @@ function AuthForm(props) {
   const navigate = useNavigate();
 
   const authContext = useContext(AuthContext);
+
+  const [country, setCountry] = useState(null);
+  const [region, setRegion] = useState(null);
 
   const switchHandler = (e) => {
     e.preventDefault();
@@ -51,8 +59,12 @@ function AuthForm(props) {
     const enteredPassword = passwordInputRef.current.value;
     const enteredFname = isLogin ? "" : firstNameInputRef.current.value;
     const enteredLname = isLogin ? "" : lastNameInputRef.current.value;
-    const defaultProfilePic = "default/default.jpg";
+    const enteredCountry = country;
+    const enteredRegion = region;
+    const defaultProfilePic =
+      "https://firebasestorage.googleapis.com/v0/b/auditorytrainingapp.appspot.com/o/profilePictures%2Fdefault%2Fdefault.jpg?alt=media&token=276e66bb-1827-403b-bb6a-839d6cb9916b";
     const defaultAboutMe = "";
+    const defaultAboutHearingLoss = "";
 
     setIsLoading(true);
     let url;
@@ -97,6 +109,9 @@ function AuthForm(props) {
             email: enteredEmail,
             profilePic: defaultProfilePic,
             aboutMe: defaultAboutMe,
+            aboutHearingLoss: defaultAboutHearingLoss,
+            country: enteredCountry,
+            region: enteredRegion,
             latestActivities: [],
             allActivitiesObj,
           };
@@ -187,6 +202,21 @@ function AuthForm(props) {
               minLength="6"
               required
               ref={passwordInputRef}
+            />
+          </div>
+        )}
+        {!isLogin && (
+          <div className={classes.form__group}>
+            <CountryDropdown
+              className={classes.form__input}
+              value={country}
+              onChange={(val) => setCountry(val)}
+            />
+            <RegionDropdown
+              className={classes.form__input}
+              country={country}
+              value={region}
+              onChange={(val) => setRegion(val)}
             />
           </div>
         )}
