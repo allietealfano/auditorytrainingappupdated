@@ -20,6 +20,7 @@
   box-sizing: border-box;
   border-top-left-radius: 3rem;
   border-bottom-left-radius: 3rem;
+  height: 48rem;
 }
 
 .aboutMe_container {
@@ -31,7 +32,8 @@
   box-sizing: border-box;
   border-top-right-radius: 3rem;
   border-bottom-right-radius: 3rem;
-  overflow: hidden;
+  overflow-y: auto;
+  height: 48rem;
 }
 
 .img_container {
@@ -51,7 +53,7 @@
   position: absolute;
   height: 5rem;
   width: 15rem;
-  top: 45rem;
+  top: 50rem;
   left: 50%;
   font-size: 1.7rem;
   border-radius: 2rem;
@@ -73,6 +75,8 @@
   background-color: #ffffff;
   text-align: left;
   padding: 1.5rem;
+  overflow-y: auto;
+  height: 48rem;
 }
 
 input:valid.choose_file {
@@ -98,13 +102,14 @@ input:valid.choose_file {
   border-radius: 2rem;
   border: none;
   padding: 1rem;
+  resize: none;
 }
 
 .save_button {
   position: absolute;
   height: 5rem;
   width: 12rem;
-  top: 45rem;
+  top: 50rem;
   left: 45%;
   font-size: 1.7rem;
   border-radius: 2rem;
@@ -118,7 +123,7 @@ input:valid.choose_file {
   position: absolute;
   height: 5rem;
   width: 12rem;
-  top: 45rem;
+  top: 50rem;
   left: 55%;
   font-size: 1.7rem;
   border-radius: 2rem;
@@ -126,4 +131,34 @@ input:valid.choose_file {
   color: #ffffff;
   border: none;
   cursor: pointer;
+}
+
+.date_select {
+  width: 30%;
+  height: 3rem;
+  font-size: 1.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.drop_down {
+  width: 30%;
+  height: 3rem;
+  font-size: 1.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.upload_button {
+  height: 4rem;
+  width: 15rem;
+  font-size: 1.7rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 2rem;
+}
+
+.upload_msg {
+  margin-bottom: 1rem;
 }
