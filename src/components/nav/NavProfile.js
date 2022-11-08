@@ -28,6 +28,16 @@ function NavProfile() {
           </div>
         )}
         <ul className={classes.list__container}>
+          <Link to="/myprofile">
+            <li className={classes.list__item}>
+              <span>My Profile</span>
+              <img
+                className={classes.ul__img}
+                src={require("../../assets/icons/profile.png")}
+                alt="settings"
+              />
+            </li>
+          </Link>
           <Link to="/dashboard">
             <li className={classes.list__item}>
               <span>Settings</span>

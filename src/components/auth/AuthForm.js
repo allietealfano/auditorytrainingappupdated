@@ -6,7 +6,11 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import AuthContext from "../store/auth-context";
 import { db, apiKey } from "../../firebase-config";
 import { allActivities } from "../../helpers/allActivities";
-
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData,
+} from "react-country-region-selector";
 import classes from "./authForm.module.css";
 
 function AuthForm(props) {
@@ -19,10 +23,16 @@ function AuthForm(props) {
   const passwordInputRef = useRef();
   const firstNameInputRef = useRef();
   const lastNameInputRef = useRef();
+  const birthDateRef = useRef();
+  const genderRef1 = useRef();
+  const genderRef2 = useRef();
 
   const navigate = useNavigate();
 
   const authContext = useContext(AuthContext);
+
+  const [country, setCountry] = useState(null);
+  const [region, setRegion] = useState(null);
 
   const switchHandler = (e) => {
     e.preventDefault();
@@ -47,10 +57,24 @@ function AuthForm(props) {
       return;
     }
 
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
-    const enteredFname = isLogin ? "" : firstNameInputRef.current.value;
-    const enteredLname = isLogin ? "" : lastNameInputRef.current.value;
+    var enteredEmail = emailInputRef.current.value;
+    var enteredPassword = passwordInputRef.current.value;
+    var enteredFname = isLogin ? "" : firstNameInputRef.current.value;
+    var enteredLname = isLogin ? "" : lastNameInputRef.current.value;
+    var enteredCountry = country;
+    var enteredRegion = region;
+    var defaultProfilePic =
+      "https://firebasestorage.googleapis.com/v0/b/auditorytrainingapp.appspot.com/o/profilePictures%2Fdefault%2Fdefault.jpg?alt=media&token=276e66bb-1827-403b-bb6a-839d6cb9916b";
+    var defaultAboutMe = "";
+    var defaultAboutHearingLoss = "";
+    var enteredBirthDate = null;
+    var enteredGender1 = null;
+    var enteredGender2 = null;
+    if (!isLogin) {
+      enteredBirthDate = birthDateRef.current.value;
+      enteredGender1 = genderRef1.current.value;
+      enteredGender2 = genderRef2.current.value;
+    }
 
     setIsLoading(true);
     let url;
@@ -93,6 +117,14 @@ function AuthForm(props) {
             fName: enteredFname,
             lName: enteredLname,
             email: enteredEmail,
+            profilePic: defaultProfilePic,
+            aboutMe: defaultAboutMe,
+            aboutHearingLoss: defaultAboutHearingLoss,
+            country: enteredCountry,
+            region: enteredRegion,
+            birthDate: enteredBirthDate,
+            genderPronoun1: enteredGender1,
+            genderPronoun2: enteredGender2,
             latestActivities: [],
             allActivitiesObj,
           };
@@ -184,6 +216,51 @@ function AuthForm(props) {
               required
               ref={passwordInputRef}
             />
+          </div>
+        )}
+        {!isLogin && (
+          <div className={classes.form__group}>
+            <p>Country and Region:</p>
+            <CountryDropdown
+              className={classes.form__input}
+              value={country}
+              onChange={(val) => setCountry(val)}
+            />
+            <RegionDropdown
+              className={classes.form__input}
+              country={country}
+              value={region}
+              onChange={(val) => setRegion(val)}
+            />
+            <p>Birth Date:</p>
+            <input
+              className={classes.form__input}
+              type="date"
+              ref={birthDateRef}
+            ></input>
+            <p>Gender Pronouns:</p>
+            <select className={classes.form__input} ref={genderRef1}>
+              <option value="She">She</option>
+              <option value="He">He</option>
+              <option value="They">They</option>
+              <option value="Zie">Zie</option>
+              <option value="Sie">Sie</option>
+              <option value="Ey">Ey</option>
+              <option value="Ve">Ve</option>
+              <option value="Tey">Tey</option>
+              <option value="E">E</option>
+            </select>
+            <select className={classes.form__input} ref={genderRef2}>
+              <option value="Her">Her</option>
+              <option value="Him">Him</option>
+              <option value="Them">Them</option>
+              <option value="Zim">Zim</option>
+              <option value="Sie">Sie</option>
+              <option value="Em">Em</option>
+              <option value="Ver">Ver</option>
+              <option value="Ter">Ter</option>
+              <option value="Em">Em</option>
+            </select>
           </div>
         )}
         {isLogin && (
