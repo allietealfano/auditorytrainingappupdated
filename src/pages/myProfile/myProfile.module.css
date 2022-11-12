@@ -162,3 +162,9 @@ input:valid.choose_file {
 .upload_msg {
   margin-bottom: 1rem;
 }
+
+.checkbox_label {
+  font-size: 1.7rem;
+  margin-right: 2rem;
+  font-weight: bold;
+}

@@ -125,6 +125,9 @@ function AuthForm(props) {
             birthDate: enteredBirthDate,
             genderPronoun1: enteredGender1,
             genderPronoun2: enteredGender2,
+            privateAge: false,
+            privateLocation: false,
+            privatePronouns: false,
             latestActivities: [],
             allActivitiesObj,
           };
