@@ -34,6 +34,9 @@ function MyProfilePage() {
   const [uploadMsg, setUploadMsg] = useState("");
   const [oldPicURL, setOldPicURL] = useState(null);
   const [picURL, setPicURL] = useState(null);
+  const [hideLocation, setHideLocation] = useState(null);
+  const [hideAge, setHideAge] = useState(null);
+  const [hidePronouns, setHidePronouns] = useState(null);
   const user = useContext(AuthContext).fbUser;
 
   useEffect(async () => {
@@ -42,6 +45,9 @@ function MyProfilePage() {
       setUId(myUId);
       const result = await getDoc(myUId);
       setUserData(result.data());
+      setHideLocation(result.data().privateLocation);
+      setHideAge(result.data().privateAge);
+      setHidePronouns(result.data().privatePronouns);
       setOldPicURL(result.data().profilePic);
       console.log(userData);
     };
@@ -110,6 +116,9 @@ function MyProfilePage() {
       birthDate: enteredBirthDate,
       genderPronoun1: enteredGender1,
       genderPronoun2: enteredGender2,
+      privateLocation: hideLocation,
+      privateAge: hideAge,
+      privatePronouns: hidePronouns,
     };
 
     if (country != null) {
@@ -137,19 +146,25 @@ function MyProfilePage() {
                 src={userData.profilePic}
               />
               <h1>{userData.fName + " " + userData.lName}</h1>
-              <p className={classes.user_subinfo}>
-                {userData.country}, {userData.region}
-              </p>
-              <p className={classes.user_subinfo}>
-                {Math.floor(
-                  Math.abs(new Date() - Date.parse(userData.birthDate)) /
-                    31536000000
-                )}{" "}
-                years old
-              </p>
-              <p className={classes.user_subinfo}>
-                {userData.genderPronoun1} / {userData.genderPronoun2}
-              </p>
+              {!hideLocation && (
+                <p className={classes.user_subinfo}>
+                  {userData.country}, {userData.region}
+                </p>
+              )}
+              {!hideAge && (
+                <p className={classes.user_subinfo}>
+                  {Math.floor(
+                    Math.abs(new Date() - Date.parse(userData.birthDate)) /
+                      31536000000
+                  )}{" "}
+                  years old
+                </p>
+              )}
+              {!hidePronouns && (
+                <p className={classes.user_subinfo}>
+                  {userData.genderPronoun1} / {userData.genderPronoun2}
+                </p>
+              )}
             </div>
             <div className={classes.aboutMe_container}>
               {!editProfile && (
@@ -251,6 +266,37 @@ function MyProfilePage() {
                     <option value="Ter">Ter</option>
                     <option value="Em">Em</option>
                   </select>
+                  <br></br>
+                  <input
+                    type="checkbox"
+                    id="hideLocation"
+                    defaultChecked={userData.privateLocation}
+                    onChange={(e) => setHideLocation(e.target.checked)}
+                  />
+                  <label for="hideLocation" className={classes.checkbox_label}>
+                    {" "}
+                    Hide Location
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="hideAge"
+                    defaultChecked={userData.privateAge}
+                    onChange={(e) => setHideAge(e.target.checked)}
+                  />
+                  <label for="hideAge" className={classes.checkbox_label}>
+                    {" "}
+                    Hide Age
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="hidePronouns"
+                    defaultChecked={userData.privatePronouns}
+                    onChange={(e) => setHidePronouns(e.target.checked)}
+                  />
+                  <label for="hidePronouns" className={classes.checkbox_label}>
+                    {" "}
+                    Hide Pronouns
+                  </label>
                 </div>
               )}
             </div>
