@@ -120,3 +120,18 @@ input:focus:invalid {
 .card:first-child {
   background-color: aqua;
 }
+
+.btn_game {
+  background-color: #75abcf;
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  cursor: pointer;
+  color: white;
+  padding: 15px;
+  width: 100%;
+  border: dotted;
+  border-color: black;
+  text-align: center;
+  outline: none;
+  font-size: 25px;
+}

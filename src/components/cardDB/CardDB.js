@@ -16,11 +16,11 @@ function CardDB(props) {
   const key = `${props.link}`.replaceAll("/", "");
 
   useEffect(() => {
-    setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));
+    //setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));      //Causing Crashes with Dashboard
     setLastVisited(
       new Date(allActivitiesObj?.[key].lastVisited).toLocaleDateString(locale)
     );
-  }, [allActivitiesObj]);
+  }, [allActivitiesObj, key, locale]);
 
   const imgSetter = () => {
     if (props.link === "/lingActivity/detection") return "volume";

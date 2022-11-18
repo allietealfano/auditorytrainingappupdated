@@ -52,7 +52,11 @@ function Activity(props) {
               alt=""
             />
             <figcaption className={classes.info}>
-              <span className={classes.main__info}> {props.title}</span>
+              <span className={classes.main__info}>
+                {" "}
+                {props.title}
+                <br></br>
+              </span>
               <span className={classes.sub__info}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </span>

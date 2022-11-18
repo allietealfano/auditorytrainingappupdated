@@ -1,0 +1,42 @@
+.main__container {
+    max-width: 170rem;
+    height: 100vh;
+    padding: 10rem 20rem;
+    margin: auto;
+    color: #fff;
+  }
+
+  .header {
+    text-align: center;
+    padding: 10rem 20rem;
+    color: black;
+    font-size: 30px;
+  }
+
+  .section_dropdown {
+    background-color: #3f89bb;
+    cursor: pointer;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    border: solid;
+    border-color: black;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+  }
+
+  .buttonlayout {
+    display: grid;
+    grid-template-areas: "button1 button2 button3"
+                         "button4 button5 button5";
+    grid-gap: 5px;
+  }
+
+  .btn_specs {
+    width: auto;
+    height: auto;
+    padding: auto;
+    font-size: 800px;
+}
+  

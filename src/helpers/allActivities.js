@@ -4,21 +4,27 @@ const allActivities = {
   lingActs: [
     {
       title: "Detection",
-      link: "/lingActivity/detection",
+      link: "/activity/detection",
       src: "volume",
       level: 1,
     },
     {
       title: "Discrimination",
-      link: "/lingActivity/discrimination",
+      link: "/activity/discrimination",
       src: "arrows",
       level: 2,
     },
     {
       title: "Identification",
-      link: "/lingActivity/identification",
+      link: "/activity/identification",
       src: "ear",
       level: 3,
+    },
+    {
+      title: "Comprehension",
+      link: "/activity/comprehension",
+      src: "ear",
+      level: 4,
     },
   ],
 };

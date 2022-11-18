@@ -8,7 +8,7 @@
   padding-top: 2em;
   padding-left: 2em;
   border-radius: 12px;
-  border: 1px solid #4f3580;
+  border: 1px solid #4F3580; 
   /* border-bottom: 1px transparent solid; */
 }
 
@@ -17,6 +17,7 @@
   /* border-bottom: 1px rgba(68, 68, 68, 0.292) solid; */
   transform: translateY(-3px);
 }
+
 
 .col_1,
 .col_2,
@@ -42,7 +43,7 @@
 .info {
   flex-direction: column;
   justify-content: space-between;
-
+  
   /* background-color: aqua; */
 }
 

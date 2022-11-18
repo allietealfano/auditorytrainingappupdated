@@ -13,7 +13,8 @@ import AuthContext from "./components/store/auth-context";
 import IdleTimerContainer from "./components/store/IdleTimerContainer";
 import ResetPage from "./pages/reset/ResetPage";
 import LingDetectionPage from "./pages/ling/LingDetectionPage";
-import MyProfilePage from "./pages/myProfile/MyProfilePage";
+import ActivityPage from "./pages/activityPage/ActivityPage";
+import GamePageDetection from "./pages/gamePage/GamePageDetection";
 
 function App() {
   const authContext = useContext(AuthContext);
@@ -28,6 +29,22 @@ function App() {
           path="/dashboard"
           element={
             authContext.isLoggedIn ? <DashboardPage /> : <Navigate to="/auth" />
+          }
+        />
+        <Route
+          path="/activity"
+          element={
+            authContext.isLoggedIn ? <ActivityPage /> : <Navigate to="/auth" />
+          }
+        />
+        <Route
+          path="/activity/detection"
+          element={
+            authContext.isLoggedIn ? (
+              <GamePageDetection />
+            ) : (
+              <Navigate to="/auth" />
+            )
           }
         />
         <Route
@@ -48,12 +65,6 @@ function App() {
             ) : (
               <Navigate to="/dashboard" />
             )
-          }
-        />
-        <Route
-          path="/myprofile"
-          element={
-            authContext.isLoggedIn ? <MyProfilePage /> : <Navigate to="/auth" />
           }
         />
         <Route path="*" element={<HomePage />} />

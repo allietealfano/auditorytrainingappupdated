@@ -1,10 +1,10 @@
 import { React } from "react";
 
-import Activity from "../activity/Activity";
+import Option from "../Option/Option";
 
 import classes from "./acts.module.css";
 
-function Activities(props) {
+function Options(props) {
   const lvlColorHandler = (lvl) => {
     if (lvl === 1) return `rgb(218, 247, 166)`;
     if (lvl === 2) return `rgb(133, 193, 233)`;
@@ -15,17 +15,17 @@ function Activities(props) {
 
   return (
     <div className={classes.acts__container}>
-      <h3>All Activities</h3>
+      <h3>What would you like to do today?</h3>
       <div className={classes.acts__title}>
         <h2>{props.title}</h2>
       </div>
 
-      {props.activitiesArr.map((card, i) => (
-        <Activity
+      {props.optionsArr.map((card, i) => (
+        <Option
           key={i}
           title={card.title}
           src={card.src}
-          link={card.link} //Adjust link to new
+          link={card.link}                      
           level={lvlColorHandler(card.level)}
         />
       ))}
@@ -33,4 +33,4 @@ function Activities(props) {
   );
 }
 
-export default Activities;
+export default Options;
