@@ -13,6 +13,9 @@ import AuthContext from "./components/store/auth-context";
 import IdleTimerContainer from "./components/store/IdleTimerContainer";
 import ResetPage from "./pages/reset/ResetPage";
 import LingDetectionPage from "./pages/ling/LingDetectionPage";
+import LingDiscriminationPage from "./pages/ling/LingDiscriminationPage";
+import LingIdentificationPage from "./pages/ling/LingIdentificationPage";
+import LingIdentificationPage2 from "./pages/ling/LingIdentificationPage2";
 import ActivityPage from "./pages/activityPage/ActivityPage";
 import GamePageDetection from "./pages/gamePage/GamePageDetection";
 import MyProfilePage from "./pages/myProfile/MyProfilePage";
@@ -53,6 +56,36 @@ function App() {
           element={
             authContext.isLoggedIn ? (
               <LingDetectionPage />
+            ) : (
+              <Navigate to="/auth" />
+            )
+          }
+        />
+        <Route
+          path="/lingActivity/discrimination"
+          element={
+            authContext.isLoggedIn ? (
+              <LingDiscriminationPage />
+            ) : (
+              <Navigate to="/auth" />
+            )
+          }
+        />
+        <Route
+          path="/lingActivity/identification"
+          element={
+            authContext.isLoggedIn ? (
+              <LingIdentificationPage />
+            ) : (
+              <Navigate to="/auth" />
+            )
+          }
+        />
+        <Route
+          path="/lingActivity/identification2"
+          element={
+            authContext.isLoggedIn ? (
+              <LingIdentificationPage2 />
             ) : (
               <Navigate to="/auth" />
             )
