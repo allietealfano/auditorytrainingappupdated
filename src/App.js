@@ -18,6 +18,9 @@ import LingIdentificationPage from "./pages/ling/LingIdentificationPage";
 import LingIdentificationPage2 from "./pages/ling/LingIdentificationPage2";
 import ActivityPage from "./pages/activityPage/ActivityPage";
 import GamePageDetection from "./pages/gamePage/GamePageDetection";
+import DetectionForum from "./pages/forum/DetectionForum";
+import DiscriminationForum from "./pages/forum/DiscriminationForum";
+import IdentificationForum from "./pages/forum/IdentificationForum";
 import MyProfilePage from "./pages/myProfile/MyProfilePage";
 
 function App() {
@@ -101,6 +104,11 @@ function App() {
             )
           }
         />
+        <Route path="/DetectionForum" element={<DetectionForum />} />
+        <Route path="*" element={<HomePage />} />
+        <Route path="/DiscriminationForum" element={<DiscriminationForum />} />
+        <Route path="*" element={<HomePage />} />
+        <Route path="/IdentificationForum" element={<IdentificationForum />} />
         <Route
           path="/myprofile"
           element={

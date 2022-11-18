@@ -43,7 +43,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  right: 2rem;
+  right: 6.5rem;
   color: #444;
   margin-right: 2rem;
 }
@@ -81,10 +81,25 @@ nav {
 .notification__img {
   padding: 1rem 1rem;
   height: 4.5rem;
+  right: 4rem;
   width: auto;
+  position: absolute;
 }
 
 .notification__img:hover {
+  cursor: pointer;
+  background-color: rgb(202, 202, 202);
+}
+
+.forum__img {
+  padding: 1rem 1rem;
+  height: 4.5rem;
+  width: auto;
+  position: relative;
+  right: 0rem;
+}
+
+.forum__img:hover {
   cursor: pointer;
   background-color: rgb(202, 202, 202);
 }
@@ -138,4 +153,37 @@ nav {
 }
 
 .list__item:hover {
+}
+
+.forum__items {
+  padding: 0 1.5rem;
+  width: 12rem;
+  display: flex;
+  height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: -4rem;
+  color: #444;
+  margin-right: 2rem;
+}
+
+.forum__items:hover {
+  opacity: 1;
+  cursor: pointer;
+  background-color: rgb(202, 202, 202);
+}
+
+.forum__pic_name {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.forum__items:hover .list__container {
+  opacity: 1;
+  cursor: pointer;
+  /* background-color: rgb(202, 202, 202); */
 }

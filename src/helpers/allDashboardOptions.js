@@ -10,7 +10,7 @@ const allDashboardOptions = {
     },
     {
       title: "Forum",
-      link: "/forum",
+      link: "/DetectionForum",
       src: "arrows",
       level: 2,
     },

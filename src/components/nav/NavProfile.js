@@ -14,7 +14,7 @@ function NavProfile() {
     <div className={classes.nav__right}>
       <div className={classes.profile__items}>
         {err ? (
-          "Firebase Document Not FOund!"
+          "Firebase Document Not Found!"
         ) : (
           <div className={classes.profile__pic_name}>
             <span className={classes.profile__text}>{fName}</span>
@@ -60,6 +60,52 @@ function NavProfile() {
           </Link>
         </ul>
       </div>
+      <div className={classes.forum__items}>
+        <div className={classes.forum__pic_name}>
+          <span className={classes.forum__text}>Forums</span>
+          <div>
+            <img
+              className={classes.forum__img}
+              src={require("../../assets/icons/forum.png")}
+              alt="profile"
+            />
+          </div>
+        </div>
+
+        <ul className={classes.list__container}>
+          <Link to="/DetectionForum">
+            <li className={classes.list__item}>
+              <span>Detection</span>
+              <img
+                className={classes.ul__img}
+                src={require("../../assets/icons/volume.png")}
+                alt="profile"
+              />
+            </li>
+          </Link>
+          <Link to="/DiscriminationForum">
+            <li className={classes.list__item}>
+              <span>Discrimination</span>
+              <img
+                className={classes.ul__img}
+                src={require("../../assets/icons/arrows.png")}
+                alt="profile"
+              />
+            </li>
+          </Link>
+          <Link to="/IdentificationForum">
+            <li className={classes.list__item}>
+              <span>Identification</span>
+              <img
+                className={classes.ul__img}
+                src={require("../../assets/icons/ear.png")}
+                alt="profile"
+              />
+            </li>
+          </Link>
+        </ul>
+      </div>
+
       <img
         className={classes.notification__img}
         src={require("../../assets/icons/notification.png")}
