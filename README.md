@@ -8,7 +8,7 @@ Capstone 1: Andrew Andersen, Lyn Quintana, Leandro Alvarez, Tatiana Summerrall, 
 
 Product Owner: Alliete Alfano
 
-The Auditory Training App is currently in its first version. It is designed for adults with
+The Auditory Training App is currently in its second version. It is designed for adults with
 hearing loss who have received a hearing aid or cochlear implant and want to improve their hearing
 via fun games and other listening activities.
 
@@ -19,63 +19,66 @@ via fun games and other listening activities.
 The following tree structure will be useful to visualize how the project is structured:
 
 ```
-
-├── Code
-
-│   └── Auditory Training App
-
-│       ├── public
-
-│       ├── node_modules (not in the repository, it will be created when you install all the dependencies)
-
-│       └── public
-
-│       └── src
-
-│           ├── assets
-                ├── audios
-
-                ├── images
-
-                ├── icons
-
-                ├── videos
-
-│           ├── components
-
-                ├── activities
-
-                ├── activity
-
-                ├── auth
-
-                ├── cardDB
-
-                ├── cardLatest
-
-                ├── completed
-
-                ├── custHooks
-
-                ├── homepage-sects
-
-                ├── lingDetection
-
-                ├── nav
-
-                ├── playButton
-
-                ├── pop
-
-                ├── progressBar
-
-                ├── store
-
-│           ├── helpers
-
-│           ├── pages
-
-
+mission-audition/
+┣ node_modules/
+┣ public/
+┃ ┣ favicon.ico
+┃ ┣ index.html
+┃ ┣ logo192.png
+┃ ┣ logo512.png
+┃ ┣ manifest.json
+┃ ┗ robots.txt
+┣ src/
+┃ ┣ assets/
+┃ ┃ ┣ icons/
+┃ ┃ ┗ images/
+┃ ┣ components/
+┃ ┃ ┣ activities/
+┃ ┃ ┣ activity/
+┃ ┃ ┣ auth/
+┃ ┃ ┣ cardDB/
+┃ ┃ ┣ cardsLatest/
+┃ ┃ ┣ Completed/
+┃ ┃ ┣ custHooks/
+┃ ┃ ┣ forumComp/
+┃ ┃ ┣ Game Option/
+┃ ┃ ┣ Game Options/
+┃ ┃ ┣ homepage-sects/
+┃ ┃ ┣ lingDetection/
+┃ ┃ ┣ lingDiscrimination/
+┃ ┃ ┣ lingIdentification/
+┃ ┃ ┣ nav/
+┃ ┃ ┣ Option/
+┃ ┃ ┣ options/
+┃ ┃ ┣ playButton/
+┃ ┃ ┣ pop/
+┃ ┃ ┣ progressBar/
+┃ ┃ ┗ store/
+┃ ┣ helpers/
+┃ ┃ ┣ allActivities.js
+┃ ┃ ┣ allDashboardOptions.js
+┃ ┃ ┗ allDetectionGames.js
+┃ ┣ pages/
+┃ ┃ ┣ activityPage/
+┃ ┃ ┣ auth/
+┃ ┃ ┣ dashboard/
+┃ ┃ ┣ forum/
+┃ ┃ ┣ gamePage/
+┃ ┃ ┣ homePage/
+┃ ┃ ┣ ling/
+┃ ┃ ┣ myProfile/
+┃ ┃ ┣ reset/
+┃ ┃ ┗ settings/
+┃ ┣ App.js
+┃ ┣ firebase-config.js
+┃ ┣ index.css
+┃ ┗ index.js
+┣ .env
+┣ .gitattributes
+┣ .gitignore
+┣ package-lock.json
+┣ package.json
+┗ README.md
 ```
 
 Code/Auditory Training App is the directory that contains all of the code required to make app functional. If/When other directories are added, they will be used for documentation.
