@@ -4,6 +4,8 @@ import useFetch from "../custHooks/useFetch";
 import Progress from "../progressBar/Progress";
 import PlayButton from "../playButton/PlayButton";
 import Completed from "../Completed/Completed";
+import Modal from "../modal/Modal";
+import Backdrop from "../backdrop/Backdrop";
 
 import classes from "./lingDetection.module.css";
 
@@ -11,6 +13,7 @@ function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
   const [pop, setPop] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
 
@@ -31,6 +34,10 @@ function LingDetection(props) {
 
   //randomly set one of the ling sounds from the database passed as an array from the parent component
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 4)][1];
+
+  function closeModalHandler() {
+    setModalOpen(false);
+  }
 
   const checkHandler = async () => {
     const card = choice ? cardTrueRef : cardFalseRef;
@@ -56,9 +63,10 @@ function LingDetection(props) {
 
     setChoice(null);
 
-    //Finish at 10 tests
+    //Finish at 10 tests!!
     if (props.prog + 10 === 100) {
       setPop(true);
+      setModalOpen(true);
       return;
     }
   };
@@ -74,13 +82,13 @@ function LingDetection(props) {
 
   return (
     <>
-      {pop && (
+      {/* {pop && (
         <Completed
           objKey={props.objKey}
           currentScores={currentScores}
           score={score * 10}
         />
-      )}
+      )} */}
       <div className={classes.bg__container}>
         <section className={classes.activity}>
           <Progress refSetter={refSetter} />
@@ -125,6 +133,10 @@ function LingDetection(props) {
             </div>
           </div>
         </section>
+        {modalOpen && (
+          <Modal score={score} onCancel={closeModalHandler} onConfirm={closeModalHandler} />
+        )}
+        {modalOpen && <Backdrop onClick={closeModalHandler} />}
       </div>
     </>
   );

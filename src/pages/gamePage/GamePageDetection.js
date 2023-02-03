@@ -15,7 +15,7 @@ function GamePageDetection() {
     <Nav />
     {(
       <div>
-        <div class = {classes.header}>
+        <div className = {classes.header}>
           <h1>Detection Games</h1>
           <p>Please select your activity!</p>
         </div>
