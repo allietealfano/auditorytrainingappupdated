@@ -17,6 +17,7 @@ function LingDetection(props) {
 
   const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
 
+  //Completions in the db is empty - not iterable because empty array.
   useEffect(() => {
     setCurrentScores(
       allActivitiesObj?.lingActivitydetection?.completions.map((comp) => comp)
@@ -35,9 +36,9 @@ function LingDetection(props) {
   //randomly set one of the ling sounds from the database passed as an array from the parent component
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 4)][1];
 
-  function closeModalHandler() {
-    setModalOpen(false);
-  }
+  // function closeModalHandler() {
+  //   setModalOpen(false);
+  // }
 
   const checkHandler = async () => {
     const card = choice ? cardTrueRef : cardFalseRef;
@@ -82,13 +83,13 @@ function LingDetection(props) {
 
   return (
     <>
-      {/* {pop && (
+      {pop && (
         <Completed
           objKey={props.objKey}
           currentScores={currentScores}
           score={score * 10}
         />
-      )} */}
+      )}
       <div className={classes.bg__container}>
         <section className={classes.activity}>
           <Progress refSetter={refSetter} />
@@ -133,10 +134,10 @@ function LingDetection(props) {
             </div>
           </div>
         </section>
-        {modalOpen && (
+        {/* {modalOpen && (
           <Modal score={score} onCancel={closeModalHandler} onConfirm={closeModalHandler} />
         )}
-        {modalOpen && <Backdrop onClick={closeModalHandler} />}
+        {modalOpen && <Backdrop onClick={closeModalHandler} />} */}
       </div>
     </>
   );

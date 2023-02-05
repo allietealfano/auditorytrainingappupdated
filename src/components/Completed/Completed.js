@@ -10,12 +10,13 @@ import AuthContext from "../store/auth-context";
 function Completed(props) {
   const user = useContext(AuthContext).fbUser;
 
+  /*TODO: db is inconsistent when referring to objKey (lingactivitydetection vs activitydetection) */
   useEffect(() => {
     const UId = doc(db, user);
     updateDoc(UId, {
       [`allActivitiesObj.${props.objKey}.completions`]: [
-        { score: props.score, date: new Date().toISOString() },
-        ...props.currentScores,
+        { score: props.score, date: new Date().toISOString()},
+        // ...props.currentScores,
       ],
     });
   }, []);
