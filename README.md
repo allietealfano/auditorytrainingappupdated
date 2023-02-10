@@ -2,9 +2,7 @@
 
 Authors:
 
-Capstone 2: Eric Segura, Juan Sanchez, Miguel Pacillo, Joshua Yaques, Brandon Castano, 
- 
-Capstone 1: Andrew Andersen, Lyn Quintana, Leandro Alvarez, Tatiana Summerrall, Fares Amamou, Alex Rodriguez 
+Capstone 2: Alex Rodriguez, Barbarella Castillo, Casey Sit, Joseph Tran, Maney Wu
 
 Product Owner: Alliete Alfano
 
