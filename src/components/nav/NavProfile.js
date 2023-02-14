@@ -38,7 +38,7 @@ function NavProfile() {
               />
             </li>
           </Link>
-          <Link to="/dashboard">
+          <Link to="/settings">
             <li className={classes.list__item}>
               <span>Settings</span>
               <img

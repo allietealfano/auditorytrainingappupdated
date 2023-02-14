@@ -22,6 +22,7 @@ import DetectionForum from "./pages/forum/DetectionForum";
 import DiscriminationForum from "./pages/forum/DiscriminationForum";
 import IdentificationForum from "./pages/forum/IdentificationForum";
 import MyProfilePage from "./pages/myProfile/MyProfilePage";
+import Settings from "./pages/settings/Settings" 
 
 function App() {
   const authContext = useContext(AuthContext);
@@ -105,6 +106,10 @@ function App() {
           }
         />
         <Route path="/DetectionForum" element={<DetectionForum />} />
+        <Route path="/settings" element={
+            authContext.isLoggedIn ? <Settings /> : <Navigate to="/auth" />
+          } 
+          />
         <Route path="*" element={<HomePage />} />
         <Route path="/DiscriminationForum" element={<DiscriminationForum />} />
         <Route path="*" element={<HomePage />} />
