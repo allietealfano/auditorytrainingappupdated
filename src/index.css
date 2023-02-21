@@ -53,10 +53,10 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+/* 
 input:valid {
   border-bottom: 1px rgba(var(--main-blue)) solid;
-}
+} */
 input:focus:invalid {
   border-bottom: 1px rgba(var(--main-yellow)) solid;
 }
