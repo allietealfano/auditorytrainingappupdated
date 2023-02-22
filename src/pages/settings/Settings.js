@@ -7,12 +7,12 @@ function Settings(){
   var a;
   function pass(){
     if(a==1){
-      document.getElementById('password1').type='password';
-      document.getElementById('eye-hide').src="eye-hide.png";
+      document.getElementById('P1').type='password';
+      document.getElementById('E1').src="eye-hide.png";
       a = 0;
     }else{
-      document.getElementById('password1').type='text';
-      document.getElementById('eye-hide').src="eye-view.png";
+      document.getElementById('P1').type='text';
+      document.getElementById('E1').src="eye-view.png";
       a=1
     }
   }
@@ -90,9 +90,9 @@ function Settings(){
                         className={classes.text_box}
                         type="password"
                         placeholder="Current Password"
-                        id="password1"
+                        id="P1"
                       ></input>
-                      <img className={classes.image} src="eye-hide.png" onClick={pass} id="eye-hide"></img>
+                      <img className={classes.image} src="eye-hide.png" onClick={pass} id="E1"></img>
                       
 
                     </div>
