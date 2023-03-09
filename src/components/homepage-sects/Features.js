@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./features.module.css";
 import styles from "./sections.module.css";
 
+//Purpose: Display the different features, description, and picture
 function Features() {
   //This array will likely be handled by a database in the future
 
@@ -32,10 +33,12 @@ function Features() {
 
   return (
     <section className={styles.section} id="section--1">
+      {/* Title */}
       <div className={styles.section__title}>
         <h2 className={styles.section__description}>Features</h2>
       </div>
 
+      {/* Display features available along with img */}
       <div className={classes.feature__cards}>
         {featuresArr.map((feat, i) => {
           return (

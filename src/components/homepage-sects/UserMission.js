@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./userMission.module.css";
 import styles from "./sections.module.css";
 
+//Purpose: Display user mission in the section
 function UserMission() {
   //This array will likely be handled by a database
 
@@ -35,6 +36,7 @@ function UserMission() {
         <h2 className={styles.section__description}>Your Mission</h2>
       </div>
 
+      {/* Display the user missions in the home page */}
       <div className={classes.mission__cards}>
         {missionssArr.map((mission, i) => {
           return (

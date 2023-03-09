@@ -8,11 +8,16 @@ import Header from "../../components/homepage-sects/Header";
 
 import classes from "./homepage.module.css";
 
+//Home page 
 function HomePage() {
   return (
     <main className={classes.main}>
+      {/* Navigation Bar and Header */}
       <Nav />
       <Header />
+
+      {/* Sections here refer to different parts of the home page */}
+      {/* If you'd like to edit home page components, please refer to homepage-sects */}
       <Features />
       <UserMission />
       <Mission />
