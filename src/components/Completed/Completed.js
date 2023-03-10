@@ -1,13 +1,13 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 
 import Pop from "../pop/Pop";
 import { db } from "../../firebase-config";
 
 import AuthContext from "../store/auth-context";
-
 import classes from "./completed.module.css";
+import useFetch from "../custHooks/useFetch";
 
 //Purpose: Completed Modal when a user finishes an activity.
 function Completed(props) {
@@ -22,8 +22,7 @@ function Completed(props) {
   const key = `${props.objKey}`.replaceAll("/", "");
 
   //Retrieve user history
-  const [[history], isPending, err] = useFetch("allActivitiesObj");
-
+  const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
 
   /*TODO: db is inconsistent when referring to objKey (lingactivitydetection vs activitydetection)*/
   //Retrieving user data from fb db.
@@ -31,16 +30,17 @@ function Completed(props) {
     //Update db to contain most recent activity 
     const UId = doc(db, user);
     updateDoc(UId, {
-      [`allActivitiesObj.${props.objKey}.completions`]: [
-        { score: props.score, date: new Date().toISOString()},
+      [`allActivitiesObj.${props.objKey}.completions`]: arrayUnion(
+        { score: props.score, date: new Date().toLocaleString('en-GB',{timeZone: 'EST'})},
         // ...props.currentScores,
-      ],
+      ),
     });
 
     //Grab the data from the db
-    setData(history?.[key].completions) //Access the history...
+    //console.log("TEST",allActivitiesObj);
+    setData(allActivitiesObj?.[key].completions); //Access the history...
 
-  }, []);
+  }, [allActivitiesObj]);
 
   return (
     <>
@@ -67,17 +67,19 @@ function Completed(props) {
           <div>
             <h1>🏆</h1>
             <h2 style={{ color: "rgb(93, 173, 226)" }}>{props.score}%</h2>
-            {/* Change styling for Scores */}
             <h5 style={{color: "rgb(93,173,226)"}}>Previous Scores</h5>
-            <ol className={classes.scoreList}>
-              {data.map((data) => (
-                <li key={data.date}>Score:{data.score}     Date:{data.date}</li>
-              ))}
-              {/* {data.map((data, index) => {
-                if(index >= data.length-6)
-                <li key={data.date}>Score:{data.score}     Date:{data.date}</li>
-              })} */}
-            </ol>
+            <ul className={classes.scoreul}>
+              <li className={classes.scoreHeading}>Score</li>
+              {data?.slice(-10).map((dataDisplay) => 
+                <li>{dataDisplay.score}</li>
+            )}
+            </ul>
+            <ul className={classes.dateul}>
+              <li className={classes.scoreHeading}>Date</li>
+              {data?.slice(-10).map((dataDisplay) => 
+                <li>{dataDisplay.date}</li>
+            )}
+            </ul>
           </div>
         }
       />

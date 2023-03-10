@@ -1,7 +1,16 @@
-.h5{
-
+.scoreHeading{
+    font-size:smaller;
+    font-weight: bold;
 }
 
-.scoreList{
-    
+.scoreul{
+    list-style-type: none;
+    font-size: medium;
+    display: inline-block;
+}
+
+.dateul{
+    list-style-type: none;
+    font-size: medium;
+    display: inline-block;
 }
