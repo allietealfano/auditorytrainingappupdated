@@ -1,12 +1,11 @@
-import { React, useContext, useEffect, useState } from "react";
+import { React, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
 import Pop from "../pop/Pop";
 import { db } from "../../firebase-config";
 
 import AuthContext from "../store/auth-context";
-import useFetch from "../custHooks/useFetch";
 
 import classes from "./completed.module.css";
 
@@ -32,17 +31,16 @@ function Completed(props) {
     //Update db to contain most recent activity 
     const UId = doc(db, user);
     updateDoc(UId, {
-      [`allActivitiesObj.${props.objKey}.completions`]: arrayUnion(
-        { score: props.score, date: new Date().toLocaleString('en-GB',{timeZone: 'EST'})},
+      [`allActivitiesObj.${props.objKey}.completions`]: [
+        { score: props.score, date: new Date().toISOString()},
         // ...props.currentScores,
-      ),
+      ],
     });
 
     //Grab the data from the db
     setData(history?.[key].completions) //Access the history...
 
   }, []);
-
 
   return (
     <>

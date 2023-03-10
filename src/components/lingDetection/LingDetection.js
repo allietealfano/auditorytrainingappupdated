@@ -14,6 +14,7 @@ function LingDetection(props) {
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
   const [pop, setPop] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   //Fetch activites from db
   const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
@@ -150,6 +151,10 @@ function LingDetection(props) {
             </div>
           </div>
         </section>
+        {/* {modalOpen && (
+          <Modal score={score} onCancel={closeModalHandler} onConfirm={closeModalHandler} />
+        )}
+        {modalOpen && <Backdrop onClick={closeModalHandler} />} */}
       </div>
     </>
   );
