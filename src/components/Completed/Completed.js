@@ -68,18 +68,20 @@ function Completed(props) {
             <h1>🏆</h1>
             <h2 style={{ color: "rgb(93, 173, 226)" }}>{props.score}%</h2>
             <h5 style={{color: "rgb(93,173,226)"}}>Previous Scores</h5>
-            <ul className={classes.scoreul}>
-              <li className={classes.scoreHeading}>Score</li>
-              {data?.slice(-10).map((dataDisplay) => 
-                <li>{dataDisplay.score}</li>
-            )}
-            </ul>
-            <ul className={classes.dateul}>
-              <li className={classes.scoreHeading}>Date</li>
-              {data?.slice(-10).map((dataDisplay) => 
-                <li>{dataDisplay.date}</li>
-            )}
-            </ul>
+            <div className={classes.prevScore}>
+              <ul className={classes.scoreul}>
+                <li className={classes.scoreHeading}>Score</li>
+                {data?.slice(-10).map((dataDisplay) => 
+                  <li>{dataDisplay.score}</li>
+              )}
+              </ul>
+              <ul className={classes.dateul}>
+                <li className={classes.scoreHeading}>Date</li>
+                {data?.slice(-10).map((dataDisplay) => 
+                  <li>{dataDisplay.date.slice(0,dataDisplay.date.indexOf(","))}</li>
+              )}
+              </ul>
+            </div>
           </div>
         }
       />

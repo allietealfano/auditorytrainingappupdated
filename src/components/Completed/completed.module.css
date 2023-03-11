@@ -3,6 +3,11 @@
     font-weight: bold;
 }
 
+.prevScore{
+    display: inline-flex;
+    column-gap: 40px;
+}
+
 .scoreul{
     list-style-type: none;
     font-size: medium;
