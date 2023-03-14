@@ -1,6 +1,6 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext, useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 
 import Pop from "../pop/Pop";
 import { db } from "../../firebase-config";
@@ -9,6 +9,7 @@ import AuthContext from "../store/auth-context";
 
 function Completed(props) {
   const user = useContext(AuthContext).fbUser;
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const UId = doc(db, user);
@@ -18,6 +19,15 @@ function Completed(props) {
         ...props.currentScores,
       ],
     });
+
+    const getHistory = async () => {
+      const UId = doc(db, user);
+      const prevHistory = await getDoc(UId);
+      setData(prevHistory.data().allActivitiesObj.activitydetection.completions);
+    }
+
+    getHistory();
+
   }, []);
 
   return (

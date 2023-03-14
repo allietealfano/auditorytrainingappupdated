@@ -29,6 +29,7 @@ const useFetch = (...requests) => {
     };
 
     getData();
+    console.log("FETCH DATA",arr);
   }, []);
 
   return [FBDoc, isPending, err];

@@ -22,6 +22,7 @@ import DetectionForum from "./pages/forum/DetectionForum";
 import DiscriminationForum from "./pages/forum/DiscriminationForum";
 import IdentificationForum from "./pages/forum/IdentificationForum";
 import MyProfilePage from "./pages/myProfile/MyProfilePage";
+import ReportsPage2 from "./pages/reportsPage/reportsPage2";
 
 function App() {
   const authContext = useContext(AuthContext);
@@ -92,6 +93,12 @@ function App() {
             ) : (
               <Navigate to="/auth" />
             )
+          }
+        />
+        <Route
+          path="/reportsPage2"
+          element={
+            authContext.isLoggedIn ? <ReportsPage2 /> : <Navigate to="/auth" />
           }
         />
         <Route
