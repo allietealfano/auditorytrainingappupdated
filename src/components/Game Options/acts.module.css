@@ -28,3 +28,13 @@
   grid-auto-flow: row;
   grid-auto-columns: 300px 100px;
 }
+
+.display{
+  display: inline-flex;
+  gap: 50px;
+  justify-content: center;
+}
+
+.flex_item{
+  flex-shrink: 3;
+}

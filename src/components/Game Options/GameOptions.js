@@ -24,16 +24,20 @@ function GameOptions(props) {
         <h2>{props.title}</h2>
       </div>
 
-      {/* Display game options within cards - changing game options requires going to associated handler */}
-      {props.optionsArr.map((card, i) => (
-        <GameOption
-          key={i}
-          title={card.title}
-          src={card.src}
-          link={card.link}                      
-          level={lvlColorHandler(card.level)}
-        />
-      ))}
+      <div className={classes.display}>
+        {/* Display game options within cards - changing game options requires going to associated handler */}
+        {props.optionsArr.map((card, i) => (
+          <div className={classes.flex_item}>
+          <GameOption
+            key={i}
+            title={card.title}
+            src={card.src}
+            link={card.link}                      
+            level={lvlColorHandler(card.level)}
+          />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
