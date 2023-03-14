@@ -4,7 +4,10 @@ import GameOption from "../Game Option/GameOption";
 
 import classes from "./acts.module.css";
 
+//Purpose: Display the game options in the game page
 function GameOptions(props) {
+
+  //Changes colors depending on level
   const lvlColorHandler = (lvl) => {
     if (lvl === 1) return `rgb(218, 247, 166)`;
     if (lvl === 2) return `rgb(133, 193, 233)`;
@@ -13,11 +16,15 @@ function GameOptions(props) {
     return `rgb(${(63, 137, 187)})`;
   };
 
+  //Actual display for different games
   return (
     <div className={classes.acts__container}>
+      {/* Title */}
       <div className={classes.acts__title}>
         <h2>{props.title}</h2>
       </div>
+
+      {/* Display game options within cards - changing game options requires going to associated handler */}
       {props.optionsArr.map((card, i) => (
         <GameOption
           key={i}

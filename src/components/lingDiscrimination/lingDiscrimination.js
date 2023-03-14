@@ -10,24 +10,34 @@ import Completed from "../Completed/Completed";
 
 import classes from "./lingDiscrimation.module.css";
 
+//Purpose: LingDiscrimination Activity Page
 function LingDiscrimination(props) {
+
+  //State variable setup
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
   const [pop, setPop] = useState(false);
   const [soundS, setSound] = useState(false);
+
+  //Fetching activities
   const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
    
+  //Update current scores for completed modal
   useEffect(() => {
     setCurrentScores(
       allActivitiesObj?.lingActivitydiscrimination?.completions.map((comp) => comp)
     );
   }, [allActivitiesObj]);
 
+  //Set up variables for correct/false card.
   const cardTrueRef = useRef(null);
   const cardFalseRef = useRef(null);
+
+  //Set up progress bar
   let progressFGRef;
   const refSetter = (ref) => (progressFGRef = ref);
 
+  //Setting up variables for correct/wrong sound and score
   let score = props.score;
   let sound = props.sound;
   let lingSound = null;
@@ -35,103 +45,111 @@ function LingDiscrimination(props) {
   var sound2;
   var rightsound = "https://firebasestorage.googleapis.com/v0/b/auditorytrainingapp.appspot.com/o/audio%2Fchoicesound%2Frightanswer-95219.mp3?alt=media&token=d9168b1b-904c-4af8-8a87-89e0bcbdc582;"
   var wrongsound = "https://firebasestorage.googleapis.com/v0/b/auditorytrainingapp.appspot.com/o/audio%2Fchoicesound%2Fwronganswer-37702.mp3?alt=media&token=ade043bd-c027-4fd6-94ce-3c4c4133182b;"
- function isSoundEqual(a, b) {
-  if (a === b) return true;
-  return false;
-}
+ 
+  //Checks if a and b is equal
+  function isSoundEqual(a, b) {
+    // if (a === b) return true;
+    // return false;
+    return a===b;
+  }
 
-  
+  //Playing sound function
   const playSound = (sound) => {
+    const audioContext = new AudioContext();   
+    audioContext.resume();
 
-  const audioContext = new AudioContext();   
-  audioContext.resume();
+    const audioClip = new Audio(sound);
 
-  const audioClip = new Audio(sound);
-
-  const audioClipDuration = 1000;
-  audioClip.loop = true;
- setTimeout(() => audioClip.loop = false, (audioClipDuration * (1-1)));
-  audioClip.play();
-}
-
+    const audioClipDuration = 1000;
+    audioClip.loop = true;
+    setTimeout(() => audioClip.loop = false, (audioClipDuration * (1-1)));
+    audioClip.play();
+  }
+  
+  //Playing the correct sound functin
   const playRightSound = (rightsound) => {
 
-  const audioContext = new AudioContext();   
-  audioContext.resume();
+    const audioContext = new AudioContext();   
+    audioContext.resume();
 
-  const audioClip = new Audio(rightsound);
+    const audioClip = new Audio(rightsound);
 
-  const audioClipDuration = 1000;
-  audioClip.loop = true;
- setTimeout(() => audioClip.loop = false, (audioClipDuration * (1-1)));
-  audioClip.play();
-}
- const playwrongSound = (wrongsound) => {
-
-  const audioContext = new AudioContext();   
-  audioContext.resume();
-
-  const audioClip = new Audio(wrongsound);
-
-  const audioClipDuration = 1000;
-  audioClip.loop = true;
- setTimeout(() => audioClip.loop = false, (audioClipDuration * (1-1)));
-  audioClip.play();
-}
-  function soundHandler () {
-
-  if (soundS){
-		if (props.arr[0][1])  sound1 = props.arr[Math.floor(Math.random() * 4)][1];
-		window.sound1=sound1;
-		if (props.arr[0][1])  sound2 = props.arr[Math.floor(Math.random() * 4)][1];
-		window.sound2=sound2;
-		setSound(false);
-	}
-	if(!soundS) return;
- }
+    const audioClipDuration = 1000;
+    audioClip.loop = true;
+    setTimeout(() => audioClip.loop = false, (audioClipDuration * (1-1)));
+    audioClip.play();
+  }
  
+  //Playing the incorrect sound
+  const playwrongSound = (wrongsound) => {
 
+    const audioContext = new AudioContext();   
+    audioContext.resume();
 
+    const audioClip = new Audio(wrongsound);
+
+    const audioClipDuration = 1000;
+    audioClip.loop = true;
+    setTimeout(() => audioClip.loop = false, (audioClipDuration * (1-1)));
+    audioClip.play();
+  }
+
+  //Handler for sound
+  function soundHandler () {
+    //Confirm sound is not null
+    if (soundS){
+      //Randomize sound played
+      if (props.arr[0][1])  sound1 = props.arr[Math.floor(Math.random() * 4)][1];
+      window.sound1=sound1;
+      if (props.arr[0][1])  sound2 = props.arr[Math.floor(Math.random() * 4)][1];
+      window.sound2=sound2;
+      setSound(false);
+    }
+    if(!soundS) return;
+  }
+ 
+  //Checking if the user is correct
   const checkHandler = async () => {
     const card = choice ? cardTrueRef : cardFalseRef;
-	
-
-	
+    
     //No card was selected before the check
-
     if (choice === null) return;
-	
 
-		
-		
-
+    //Correct choice
     if ((choice && isSoundEqual(window.sound1,window.sound2))  || (choice === false && !isSoundEqual(window.sound1,window.sound2))) {
       score += 1;
       card.current.style.border = "8px green solid";
 	   playRightSound(rightsound);
     }
+
+    //Incorrect choice
     if ((choice && !isSoundEqual(window.sound1,window.sound2)) || (choice === false &&  isSoundEqual(window.sound1,window.sound2))) {
       card.current.style.border = "8px red solid";
 	   playwrongSound(wrongsound);
     }
 
+    //Update progress
     progressFGRef.current.style.width = `${props.prog + 10}%`;
+
+    //Timeout between questions, refresh UI
     setTimeout(() => {
       cardTrueRef.current.style.border = "0";
       cardFalseRef.current.style.border = "0";
     }, 300);
 
+    //Update progress internally
     props.progressHandler(props.prog + 10, score, sound);
     setSound(true);
     setChoice(null);
+
     //Finish at 10 tests
     if (props.prog + 10 === 100) {
-      setPop(true);
-	  
+      setPop(true); //Popup triggered
       return;
     }
   };
 
+  //Handler for user picking a card
   const choiceHandler = (choice) => {
 	  
     setChoice(choice);
@@ -142,12 +160,9 @@ function LingDiscrimination(props) {
     otherCard.current.style.border = "0";
   };
 
-
-  
   return (
-  
-  
     <>
+    {/* User has completed activity - display modal and completed */}
 	   {pop && (
         <Completed
           objKey={props.objKey}
@@ -155,38 +170,40 @@ function LingDiscrimination(props) {
           score={score * 10}
         />
       )}
-	{soundS && (
-	   soundHandler()
-	   )
-	}
+      {/* If soundS is available, then soundHandler */}
+      {soundS && (
+        soundHandler()
+        )
+      }
 	
-	{!soundS &&(
-	
-      
+    {/* Actual Game */}
+	  {!soundS &&(
       <div className={classes.bg__container}>
         <section className={classes.activity}>
+          {/* Progress bar */}
           <Progress refSetter={refSetter} />
           <div className={classes.activity__items}>
             <div className={classes.opts}>	
 		
-			  <p>
-			   <button className={classes.btn_push_blue}
-			  
-                onClick={() => playSound(window.sound1)}
-              >
-			   🔊
-              </button>
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				 
-			   <button className={classes.btn_push_blue}
-			  
-                onClick={() => playSound(window.sound2)}
-              >
-			   🔊
-              </button>  
-			  </p>
-
+          {/* Play sound buttons */}
+          <p>
+          <button className={classes.btn_push_blue}
+          
+                  onClick={() => playSound(window.sound1)}
+                >
+          🔊
+                </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;				 
+          <button className={classes.btn_push_blue}
+          
+                  onClick={() => playSound(window.sound2)}
+                >
+          🔊
+                </button>  
+          </p>
               <div className={classes.select}>
+                {/* User choice */}
                 <div
                   className={classes.card}
                   ref={cardTrueRef}
@@ -194,7 +211,7 @@ function LingDiscrimination(props) {
                 >
                   <div className={classes.card__mid}>
                     <h1>🔊</h1>
-                    <p> same Sound</p>
+                    <p> Same Sound</p>
                   </div>
                 </div>
                 <div
@@ -204,10 +221,12 @@ function LingDiscrimination(props) {
                 >
                   <div className={classes.card__mid}>
                     <h1>🔊</h1>
-                    <p>diff Sound</p>
+                    <p>Diff Sound</p>
                   </div>
                 </div>
               </div>
+
+              {/* Check if the user is correct */}
               <button
                 className={`${choice !== null ? "btn btn__blue" : "btn"}`}
                 onClick={checkHandler}

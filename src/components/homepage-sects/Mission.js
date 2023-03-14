@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./mission.module.css";
 import styles from "./sections.module.css";
 
+//Purpose: Mission segment 
 function Mission() {
   return (
     <>
@@ -17,10 +18,12 @@ function Mission() {
               alt="Founder"
               className={classes.story__img}
             />
+
             <figcaption className={classes.mission__caption}>
               Dr. Alliete Alfano
             </figcaption>
-          </figure>
+         </figure>
+          
           <div className={classes.mission__text}>
             <p>
               Mission: Audition! is an auditory training application designed to
