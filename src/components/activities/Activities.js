@@ -27,18 +27,20 @@ function Activities(props) {
         <h2>{props.title}</h2> 
       </div>
 
+      <div className={classes.display}>
       {/* Retrieves list of activities from Actiivity helper*/}
-      {props.activitiesArr.map((card, i) => (
+        {props.activitiesArr.map((card, i) => (
 
-        // Actual activity object that displays each individual card
-        <Activity
-          key={i}
-          title={card.title}
-          src={card.src}
-          link={card.link} //Adjust link to new
-          level={lvlColorHandler(card.level)}
-        />
-      ))}
+          // Actual activity object that displays each individual card
+          <Activity
+            key={i}
+            title={card.title}
+            src={card.src}
+            link={card.link} //Adjust link to new
+            level={lvlColorHandler(card.level)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
