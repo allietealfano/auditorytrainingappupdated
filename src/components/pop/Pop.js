@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from "./pop.module.css";
 
+//Purpose: Popup container for forums
 function Pop(props) {
   return (
     <>

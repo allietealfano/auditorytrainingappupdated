@@ -7,24 +7,33 @@ import Completed from "../Completed/Completed";
 
 import classes from "./lingDetection.module.css";
 
+//Purpose: Game page for LingDetection
 function LingDetection(props) {
+
+  //Set up the states involved
   const [choice, setChoice] = useState(null);
   const [currentScores, setCurrentScores] = useState([]);
   const [pop, setPop] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
+  //Fetch activites from db
   const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
 
+  //Completions in the db is empty - not iterable because empty array.
   useEffect(() => {
+    //Update current scores with most recent
     setCurrentScores(
       allActivitiesObj?.lingActivitydetection?.completions.map((comp) => comp)
     );
   }, [allActivitiesObj]);
 
+  //Initialize cards used in activity
   const cardTrueRef = useRef(null);
   const cardFalseRef = useRef(null);
   let progressFGRef;
   const refSetter = (ref) => (progressFGRef = ref);
 
+  //Set up score and sound from props
   let score = props.score;
   let sound = props.sound;
   let lingSound = null;
@@ -32,37 +41,46 @@ function LingDetection(props) {
   //randomly set one of the ling sounds from the database passed as an array from the parent component
   if (props.arr[0][1]) lingSound = props.arr[Math.floor(Math.random() * 4)][1];
 
+  //Checks if the user is correct
   const checkHandler = async () => {
     const card = choice ? cardTrueRef : cardFalseRef;
 
     //No card was selected before the check
     if (choice === null) return;
 
+    //Correct answer
     if ((choice && sound) || (choice === false && !sound)) {
       score += 1;
       card.current.style.border = "8px green solid";
     }
+    //False answer
     if ((choice && !sound) || (choice === false && sound)) {
       card.current.style.border = "8px red solid";
     }
 
+    //Update progress bar visually
     progressFGRef.current.style.width = `${props.prog + 10}%`;
+    
+    //Apply time out between questions
     setTimeout(() => {
       cardTrueRef.current.style.border = "0";
       cardFalseRef.current.style.border = "0";
     }, 300);
 
+    //progressHandler updating
     props.progressHandler(props.prog + 10, score, sound);
 
+    //Reset choice
     setChoice(null);
 
-    //Finish at 10 tests
+    //Finish at 10 tests!!
     if (props.prog + 10 === 100) {
-      setPop(true);
+      setPop(true); //Show popup
       return;
     }
   };
 
+  //Highlight user choice
   const choiceHandler = (choice) => {
     setChoice(choice);
     const card = choice ? cardTrueRef : cardFalseRef;
@@ -74,6 +92,7 @@ function LingDetection(props) {
 
   return (
     <>
+      {/* User is complete - pop is true - show completed modal */}
       {pop && (
         <Completed
           objKey={props.objKey}
@@ -81,11 +100,15 @@ function LingDetection(props) {
           score={score * 10}
         />
       )}
+
+      {/* Otherwise, show game */}
       <div className={classes.bg__container}>
         <section className={classes.activity}>
+          {/* Progress bar at the top */}
           <Progress refSetter={refSetter} />
           <div className={classes.activity__items}>
             <div className={classes.opts}>
+              {/* Play audio button */}
               <PlayButton
                 audUrl={
                   sound
@@ -94,6 +117,7 @@ function LingDetection(props) {
                 }
               />
 
+              {/* Display for whether there was sound or not */}
               <div className={classes.select}>
                 <div
                   className={classes.card}
@@ -116,6 +140,8 @@ function LingDetection(props) {
                   </div>
                 </div>
               </div>
+
+              {/* Check button */}
               <button
                 className={`${choice !== null ? "btn btn__blue" : "btn"}`}
                 onClick={checkHandler}
@@ -125,6 +151,10 @@ function LingDetection(props) {
             </div>
           </div>
         </section>
+        {/* {modalOpen && (
+          <Modal score={score} onCancel={closeModalHandler} onConfirm={closeModalHandler} />
+        )}
+        {modalOpen && <Backdrop onClick={closeModalHandler} />} */}
       </div>
     </>
   );

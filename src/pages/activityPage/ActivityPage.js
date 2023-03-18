@@ -9,11 +9,14 @@ import { allActivities } from "../../helpers/allActivities";
 
 import classes from "./activityPage.module.css";
 
+/*Page displayed when Activity is accessed. */
 function ActivityPage() {
+
   //soundCheck in local storage prevents many sound checks during one session                     //Sign in Test Proceess *Mandatory everytime* Start
   const soundCheck = parseInt(localStorage.getItem("soundCheck"));
   const [pop, setPop] = useState(!soundCheck);
 
+  //Sound check passed, stop showing the popup so it's not repeatedly done
   const soundOk = () => {
     localStorage.setItem("soundCheck", "1");
     setPop(false);
@@ -21,12 +24,13 @@ function ActivityPage() {
 
   const soundNotOk = () => {
     setPop(true);
-    //Keep The PopPup, tell the user what to do
+    //Keep The Popup, tell the user what to do
   };                                                                                                //Sign in Test Proceess *Mandatory everytime* End
 
   return (
     <>
       <Nav />
+      {/* Pop refers to the sound popup, Pop as a component contains the modal */}
       {pop && (
         <Pop
           headerBig={"Before we start, let's perform a sound test!"}
@@ -45,6 +49,7 @@ function ActivityPage() {
           pop={pop}
         />
       )}
+      {/* Occurs when pop is turned off - show off the cards and activities */}
       {!pop && (
         <div>
           <div className={classes.main__container}>

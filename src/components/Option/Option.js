@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 
 import classes from "./act.module.css";
 
+//Purpose: Options
+//TODO: Functionality
+
 function Option(props) {
   // const [[userData], isPending, err] = useFetch("latestActivities");
 
@@ -43,18 +46,23 @@ function Option(props) {
 
   return (
     <>
+      {/* Links to associated options link */}
       <Link to={props.link}>
         <div className={classes.activity__container}>
           <figure className={classes.col_1}>
+            
+            {/* Image */}
             <img
               className={classes.col_1_img}
               src={require(`../../assets/icons/${props.src}.png`)}
               alt="Error"
             />
+            
+            {/* Description and Title */}
             <figcaption className={classes.info}>
               <span className={classes.main__info}> {props.title}<br></br></span>
               <span className={classes.sub__info}>
-                Lorem ipsum dolor sit amet
+                {props.desc}
               </span>
             </figcaption>
           </figure>

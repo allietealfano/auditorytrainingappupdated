@@ -5,6 +5,7 @@
   padding: 10rem 20rem;
   margin: auto;
   color: #fff;
+  display: inline-flex;
 }
 
 .header__title {

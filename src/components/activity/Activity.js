@@ -8,13 +8,19 @@ import useFetch from "../custHooks/useFetch";
 
 import classes from "./act.module.css";
 
+/*Actual Activity being called in Activities.js/ActivityPage.js */
 function Activity(props) {
+
+  //fetching user's latest activities from db - check db schema
   const [[userData], isPending, err] = useFetch("latestActivities");
 
+  //user = current fb user logged in
   const user = useContext(AuthContext).fbUser;
 
+  //key = dot annotation to access correct info within user info
   const key = `${props.link}`.replaceAll("/", "");
 
+  //method to set the latest activity performed by the user.
   const setLatest = () => {
     const UId = doc(db, user);
 
@@ -26,11 +32,13 @@ function Activity(props) {
       return;
     }
 
+    //New latest activity
     const newUserData = userData.filter((data, i) => {
       if (props.link !== data.link) return data;
       return null;
     });
 
+    //Update db with latest activity
     updateDoc(UId, {
       [`allActivitiesObj.${key}.lastVisited`]: new Date().toISOString(),
       latestActivities: [
@@ -41,27 +49,36 @@ function Activity(props) {
     });
   };
 
+  //Display - the actual information within the cards of Activities.js
   return (
     <>
+      {/* Link to the appropriate activity. */}
       <Link to={props.link}>
         <div className={classes.activity__container} onClick={setLatest}>
           <figure className={classes.col_1}>
+            {/* Img within the card */}
             <img
               className={classes.col_1_img}
               src={require(`../../assets/icons/${props.src}.png`)}
               alt=""
             />
+
+            {/* Card title */}
             <figcaption className={classes.info}>
               <span className={classes.main__info}>
                 {" "}
                 {props.title}
                 <br></br>
               </span>
+
+              {/* Description */}
               <span className={classes.sub__info}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                {props.desc}
               </span>
             </figcaption>
           </figure>
+
+          {/* Images in the top right */}
           <div className={classes.col_2}>
             <img
               className={classes.col_2_1}
@@ -74,6 +91,8 @@ function Activity(props) {
               alt="pie chart"
             />
           </div>
+          
+          {/* Level difficulty & color setting */}
           <div className={classes.col_3}>
             <span className={classes.col_3_1}>Level</span>
             <div

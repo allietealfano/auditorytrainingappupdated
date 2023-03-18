@@ -8,11 +8,17 @@ import CardDB from "../cardDB/CardDB";
 
 import classes from "./cards.module.css";
 
+//Purpose: Cards displayed in Activity Page
 function Cards() {
+
+  //Set up state variables
   const [userData, setUserData] = useState([]);
 
+  //get associated user
   const user = useContext(AuthContext).fbUser;
 
+  //Fetch latestactivity and set it to userData var...
+  //TODO: Discover why useFetch is not used in this context?
   useEffect(() => {
     const getLatestActivities = async function () {
       const docRef = doc(db, user);
@@ -24,6 +30,7 @@ function Cards() {
     getLatestActivities();
   }, [user]);
 
+  //Decides color based on col...index?
   const colorHandler = (col) => {
     if (col === 0) return `rgb(192, 165, 255)`;
     if (col === 1) return `rgb(133, 193, 233)`;
@@ -33,10 +40,13 @@ function Cards() {
 
   return (
     <>
+      {/* Confirm user data exists, first row of user data */}
       {userData[0] && (
         <div>
+          {/* Display user's recent activities */}
           <h3 className={classes.header__title}>Recent Activities</h3>
           <div className={classes.cards}>
+            {/* If data exists, place it in a CardDB component and display that */}
             {userData.map((data, i) => {
               if (data) {
                 return (
@@ -49,6 +59,7 @@ function Cards() {
                   />
                 );
               }
+              // Otherwise, return null
               return null;
             })}
           </div>
