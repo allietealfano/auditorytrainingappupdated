@@ -38,6 +38,7 @@ function Activities(props) {
             src={card.src}
             link={card.link} //Adjust link to new
             level={lvlColorHandler(card.level)}
+            desc={card.desc}
           />
         ))}
       </div>

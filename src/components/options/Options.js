@@ -34,6 +34,7 @@ function Options(props) {
             src={card.src}
             link={card.link}                      
             level={lvlColorHandler(card.level)}
+            desc={card.desc}
           />
         ))}
       </div>
