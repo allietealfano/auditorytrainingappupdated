@@ -15,9 +15,6 @@ function Completed(props) {
   //Retrieve user associated
   const user = useContext(AuthContext).fbUser;
 
-  //setState to store retrieved data
-  const [data, setData] = useState([]);
-
   //Key to access db
   const key = `${props.objKey}`.replaceAll("/", "");
 
