@@ -1,11 +1,13 @@
-import fakeData from "./MOCK_DATA.json";
 
 import "./reportsPage2.module.css";
 import AuthContext from "../../components/store/auth-context";
+import mock from "./MOCK_DATA.json";
 
-import useFetch from "../../components/custHooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 import React, { useMemo } from 'react';
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase-config";
+import useFetch from "../../components/custHooks/useFetch";
 
 import MaterialReactTable from 'material-react-table';
 
@@ -15,78 +17,72 @@ const date = new Date().toLocaleString('en-GB',{timeZone: 'EST'});
 
 function ReportsPage2() {
 
-    const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
-    //setState to store retrieved data
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([mock]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isRefetching, setIsRefetching] = useState(false);
+    const user = useContext(AuthContext).fbUser;
 
-    useEffect(()=>{
-        setData(allActivitiesObj);
+    const [[activityData], isPending, err] = useFetch("allActivitiesObj");
+
+    useEffect(() => {
+        const getData = async function () {
+            if(isPending){ 
+                setIsLoading(true);
+            }
+            else{
+                setIsRefetching(true);
+            }
+            
+            setData(activityData); 
+            
+            // if (!data.length) {
+            //     setIsLoading(true);
+            // } else {
+            //     setIsRefetching(true);
+            // }
+            // const userData = doc(db, user);
+            // const result = await getDoc(userData);
+            // //TODO: Add loading screen while data is being retrieved
+            // if(result.exists()){
+            //     //setData(result?.data().allActivitiesObj);
+            //     setData(result?.data()); 
+            // }
+            // else{  
+            //     console.log("ERROR: NO DATA RETRIEVED");
+            // }
+        
+            setIsLoading(false);
+            setIsRefetching(false);
+        };
+
+        getData();
         console.log("DATA", data);
-    });
-//TODO: Find how to access data in accessorKey
-    const columns = useMemo(
+    }, [activityData]);
+
+
+    const columns = useMemo( 
         () => [
         {
-            accessorKey: `lingActivitydetection.completions`,
+            //deeply nested?
+            accessorKey: `allActivitiesObj.activitydetection`, 
             header: 'ACTIVITY NAME',
-            size: 100,
-            muiTableHeadCellProps: {
-            align: 'center',
-            },
-            muiTableBodyCellProps: {
-            align: 'center',
-            },
-        },
+        }, 
         {
-            accessorKey: 'date',
+            accessorKey: 'activitycomprehension.lastVisited',
             header: 'DATE',
-            size: 100,
-            muiTableHeadCellProps: {
-            align: 'center',
-            },
-            muiTableBodyCellProps: {
-            align: 'center',
-            },
         },
-        {
-            accessorKey: 'time',
+        { 
+            accessorKey: 'id',
             header: 'TIME',
-            muiTableHeadCellProps: {
-            align: 'right',
-            },
-            muiTableBodyCellProps: {
-            align: 'right',
-            },
-        },
-        {
-            accessorKey: 'activity',
-            header: 'ACTIVITY',
-            muiTableHeadCellProps: {
-            align: 'right',
-            },
-            muiTableBodyCellProps: {
-            align: 'right',
-            },
-            Cell: ({ cell }) =>
-            cell
-                .getValue()
-                .toLocaleString('en-US', { style: 'currency', currency: 'USD' }),
-        },
-        {
-            accessorKey: 'score',
-            header: 'SCORE',
-            muiTableHeadCellProps: {
-            align: 'right',
-            },
-            muiTableBodyCellProps: {
-            align: 'right',
-            },
         },
         ],
         [],
-    );
+    );   
 
-        return <MaterialReactTable columns={columns} data={data} />;
-    };
+        return <MaterialReactTable columns={columns} 
+                                   data={data ?? mock} 
+                                   state={{ isLoading, showProgressBars: isRefetching,}}
+                />;
+    }; 
 
 export default ReportsPage2;
