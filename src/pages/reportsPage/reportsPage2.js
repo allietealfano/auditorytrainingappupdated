@@ -80,10 +80,24 @@ function ReportsPage2() {
         [],
     );   
 
-        return <MaterialReactTable columns={columns} 
-                                   data={data ?? mock} 
-                                   state={{ isLoading, showProgressBars: isRefetching,}}
-                />;
+        return (
+            <>
+            <div>
+                <Nav />
+            </div>
+            <div>
+                <MaterialReactTable columns={columns} 
+                                    data={data ?? mock} 
+                                    state={{ isLoading, showProgressBars: isRefetching,}}/>
+            </div>
+            </>
+        );
+        
+        // return (
+        //         <MaterialReactTable columns={columns} 
+        //                             data={data ?? mock} 
+        //                             state={{ isLoading, showProgressBars: isRefetching,}}/>
+        // );
     }; 
 
 export default ReportsPage2;
