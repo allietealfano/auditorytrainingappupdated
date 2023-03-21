@@ -1,4 +1,4 @@
-import fakeData from "./MOCK_DATA.json";
+//import fakeData from "./MOCK_DATA.json";
 
 import "./reportsPage2.module.css";
 import AuthContext from "../../components/store/auth-context";
@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import React, { useMemo } from 'react';
 
 import MaterialReactTable from 'material-react-table';
+import Nav from "../../components/nav/Nav";
 
 
 const date = new Date().toLocaleString('en-GB',{timeZone: 'EST'});
@@ -21,13 +22,13 @@ function ReportsPage2() {
 
     useEffect(()=>{
         setData(allActivitiesObj);
-        console.log("DATA", data);
+        console.log("DATA", data); //data somehow doesn't have anything, pulling from the void
     });
-//TODO: Find how to access data in accessorKey
+//TODO: Find how to access data in accessorKey, maybe dot notation but idk
     const columns = useMemo(
         () => [
         {
-            accessorKey: `lingActivitydetection.completions`,
+            accessorKey: `~\lingActivitydetection.completions`,
             header: 'ACTIVITY NAME',
             size: 100,
             muiTableHeadCellProps: {
@@ -86,7 +87,22 @@ function ReportsPage2() {
         [],
     );
 
-        return <MaterialReactTable columns={columns} data={data} />;
+        return (
+        <>
+        {/* Top part of the page w/ header and nav bar */}
+        {/* <div className={classes.navbar}>
+            Reports Page
+        </div>
+        <div className={classes.padding}></div> */}
+        <div>
+            Reports Page
+        </div>
+        <div></div>
+        <Nav />
+
+        <MaterialReactTable columns={columns} data={data} />
+        </>
+        );
     };
 
 export default ReportsPage2;

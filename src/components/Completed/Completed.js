@@ -6,7 +6,7 @@ import Pop from "../pop/Pop";
 import { db } from "../../firebase-config";
 
 import AuthContext from "../store/auth-context";
-import classes from "./completed.module.css";
+import classes from "./completed.module.css"
 import useFetch from "../custHooks/useFetch";
 
 //Purpose: Completed Modal when a user finishes an activity.
