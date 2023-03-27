@@ -5,7 +5,10 @@ import AuthContext from "../store/auth-context";
 import useFetch from "../custHooks/useFetch";
 import classes from "./nav.module.css";
 
+//Purpose: Profile corner of nav bar
 function NavProfile() {
+
+  //Retrieve name
   const [[fName], isPending, err] = useFetch("fName", "lName");
 
   const authContext = useContext(AuthContext);
@@ -13,9 +16,11 @@ function NavProfile() {
   return (
     <div className={classes.nav__right}>
       <div className={classes.profile__items}>
+        {/* Error catching */}
         {err ? (
           "Firebase Document Not Found!"
         ) : (
+          // Otherwise, profile pic and name
           <div className={classes.profile__pic_name}>
             <span className={classes.profile__text}>{fName}</span>
             <div className={classes.img__container}>
@@ -27,6 +32,8 @@ function NavProfile() {
             </div>
           </div>
         )}
+
+        {/* Link to profile */}
         <ul className={classes.list__container}>
           <Link to="/myprofile">
             <li className={classes.list__item}>
@@ -38,6 +45,9 @@ function NavProfile() {
               />
             </li>
           </Link>
+
+          {/* Link to setting*/}
+          {/* TODO: Change to setting page */}
           <Link to="/dashboard">
             <li className={classes.list__item}>
               <span>Settings</span>
@@ -48,6 +58,8 @@ function NavProfile() {
               />
             </li>
           </Link>
+
+          {/* Log out and end up at dashboard */}
           <Link to="/dashboard">
             <li className={classes.list__item} onClick={authContext.logout}>
               <span>Logout</span>
@@ -60,6 +72,8 @@ function NavProfile() {
           </Link>
         </ul>
       </div>
+
+      {/* Forum section of nav bar */}
       <div className={classes.forum__items}>
         <div className={classes.forum__pic_name}>
           <span className={classes.forum__text}>Forums</span>
@@ -72,6 +86,7 @@ function NavProfile() {
           </div>
         </div>
 
+        {/* Go to Detection Forum */}
         <ul className={classes.list__container}>
           <Link to="/DetectionForum">
             <li className={classes.list__item}>
@@ -83,6 +98,8 @@ function NavProfile() {
               />
             </li>
           </Link>
+
+          {/* Discrimination Forum */}
           <Link to="/DiscriminationForum">
             <li className={classes.list__item}>
               <span>Discrimination</span>
@@ -93,6 +110,8 @@ function NavProfile() {
               />
             </li>
           </Link>
+
+          {/* Identification Forum */}
           <Link to="/IdentificationForum">
             <li className={classes.list__item}>
               <span>Identification</span>
@@ -106,6 +125,8 @@ function NavProfile() {
         </ul>
       </div>
 
+      {/* Notification icon */}
+      {/* TODO: FUNCTIONALITY */}
       <img
         className={classes.notification__img}
         src={require("../../assets/icons/notification.png")}

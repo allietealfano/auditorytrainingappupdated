@@ -18,13 +18,17 @@ import {
   CountryRegionData,
 } from "react-country-region-selector";
 
+//Profile page
 function MyProfilePage() {
+
+  //Setting defaults (empty) for fields
   const aboutMeRef = useRef();
   const aboutHLRef = useRef();
   const birthDateRef = useRef();
   const genderRef1 = useRef();
   const genderRef2 = useRef();
 
+  //State variables for profile settings
   const [userData, setUserData] = useState(null);
   const [editProfile, setEditProfile] = useState(false);
   const [country, setCountry] = useState(null);
@@ -40,6 +44,8 @@ function MyProfilePage() {
   const user = useContext(AuthContext).fbUser;
 
   useEffect(async () => {
+
+    //Retrieve userData from db, and change state variables
     const getUserData = async function () {
       const myUId = doc(db, user);
       setUId(myUId);
@@ -51,14 +57,17 @@ function MyProfilePage() {
       setOldPicURL(result.data().profilePic);
       console.log(userData);
     };
+    //Call declared method
     await getUserData();
   }, []);
 
   useEffect(async () => {
+    //Updating profile picture
     const picDataForUpdate = {
       profilePic: picURL,
     };
 
+    //If there is a picURL, update db, set pic, and send confirmation msg
     if (picURL != null) {
       await updateDoc(UId, picDataForUpdate);
       setUploadMsg("Image uploaded successfully!");
@@ -66,25 +75,31 @@ function MyProfilePage() {
     }
   }, [picURL]);
 
+  //Upload profile pic to db
   const handleUpload = () => {
     setUploadMsg("Initializing upload...");
 
+    //Check if it's the default pfp
     if (
       userData.profilePic !=
       "https://firebasestorage.googleapis.com/v0/b/auditorytrainingapp.appspot.com/o/profilePictures%2Fdefault%2Fdefault.jpg?alt=media&token=276e66bb-1827-403b-bb6a-839d6cb9916b"
     ) {
+      //Delete old msg
       console.log("deleting old photo");
       const oldImageReference = ref(storage, oldPicURL);
       deleteObject(oldImageReference);
     }
 
+    //placing pfp in storage
     const storageRef = ref(
       storage,
       "/profilePictures/" + UId.id + "/" + file.name
     );
 
+    //Upload to storageRef
     const uploadTask = uploadBytesResumable(storageRef, file);
 
+    //Upload progression update
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -93,7 +108,7 @@ function MyProfilePage() {
         );
         setUploadMsg("Uploading: " + percent + "%");
       },
-      (err) => console.log(err),
+      (err) => console.log(err), //log error if occurs
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setPicURL(url);
@@ -102,14 +117,17 @@ function MyProfilePage() {
     );
   };
 
+  //Update information
   const updateInfo = async () => {
     console.log(userData);
+    //set new data
     const enteredAboutMe = aboutMeRef.current.value;
     const enteredAboutHL = aboutHLRef.current.value;
     const enteredBirthDate = birthDateRef.current.value;
     const enteredGender1 = genderRef1.current.value;
     const enteredGender2 = genderRef2.current.value;
 
+    //updating user data
     const userDataForUpdate = {
       aboutMe: enteredAboutMe,
       aboutHearingLoss: enteredAboutHL,
@@ -121,6 +139,7 @@ function MyProfilePage() {
       privatePronouns: hidePronouns,
     };
 
+    //Checking for null values
     if (country != null) {
       userDataForUpdate.country = country;
     }
@@ -129,28 +148,36 @@ function MyProfilePage() {
       userDataForUpdate.region = region;
     }
 
+    //Update db
     await updateDoc(UId, userDataForUpdate);
 
-    window.location.reload();
+    window.location.reload(); //force reload
   };
 
+  //Display
   return (
     <>
+      {/* Nav Bar */}
       <Nav />
+
+      {/* Show user Data if it exists */}
       <div className={classes.main_container}>
         {userData && (
           <>
+            {/* Profile picture */}
             <div className={classes.profile_container}>
               <img
                 className={classes.img_container}
                 src={userData.profilePic}
               />
+              {/* Show user's full name and location if hidden flag not triggered */}
               <h1>{userData.fName + " " + userData.lName}</h1>
               {!hideLocation && (
                 <p className={classes.user_subinfo}>
                   {userData.country}, {userData.region}
                 </p>
               )}
+              {/* Age if flag not triggered */}
               {!hideAge && (
                 <p className={classes.user_subinfo}>
                   {Math.floor(
@@ -160,12 +187,14 @@ function MyProfilePage() {
                   years old
                 </p>
               )}
+              {/* Pronouns if flag not triggered */}
               {!hidePronouns && (
                 <p className={classes.user_subinfo}>
                   {userData.genderPronoun1} / {userData.genderPronoun2}
                 </p>
               )}
             </div>
+            {/* Check if edit profile is not triggered. Show Abouts */}
             <div className={classes.aboutMe_container}>
               {!editProfile && (
                 <div>
@@ -178,8 +207,11 @@ function MyProfilePage() {
                   </p>
                 </div>
               )}
+
+              {/* Edit profile flag triggered */}
               {editProfile && (
                 <div>
+                  {/* Profile picture upload */}
                   <h5>Upload Profile Picture:</h5>
                   <input
                     type="file"
@@ -195,6 +227,7 @@ function MyProfilePage() {
                       Upload Image
                     </button>
                   )}
+                  {/* Edit Profile Information */}
                   <p className={classes.upload_msg}>{uploadMsg}</p>
                   <h5>About Me:</h5>
                   <textarea className={classes.text_box} ref={aboutMeRef}>
@@ -267,6 +300,8 @@ function MyProfilePage() {
                     <option value="Em">Em</option>
                   </select>
                   <br></br>
+
+                  {/* Hide flags */}
                   <input
                     type="checkbox"
                     id="hideLocation"
@@ -302,6 +337,8 @@ function MyProfilePage() {
             </div>
           </>
         )}
+
+        {/* Buttons at the bottom of screen */}
         {!editProfile && (
           <button
             onClick={() => setEditProfile(true)}
@@ -310,6 +347,8 @@ function MyProfilePage() {
             Edit Profile
           </button>
         )}
+
+        {/* Buttons if editProfile is active */}
         {editProfile && (
           <div>
             <button
