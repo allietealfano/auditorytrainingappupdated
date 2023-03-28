@@ -11,6 +11,10 @@ import useFetch from "../../components/custHooks/useFetch";
 
 import MaterialReactTable from 'material-react-table';
 import Nav from "../../components/nav/Nav";
+import classes from "./reportsPage2.module.css"
+
+import Button from 'react-bootstrap/Button';
+//<script src="https://unpkg.com/bootstrap-table@1.21.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
 
 const date = new Date().toLocaleString('en-GB',{timeZone: 'EST'});
@@ -85,10 +89,26 @@ function ReportsPage2() {
             <div>
                 <Nav />
             </div>
+            <div className = {classes.header}>
+                <h1>Reports Page</h1>
+                <p>Welcome to the Reports Page, where you can view your activity history.</p>
+            </div>
+            <div>
+                <Button as="input" type="button" value="Export" />{' '}
+                <Button as="input" type="submit" value="Share" />{' '}
+            </div>
+
             <div>
                 <MaterialReactTable columns={columns} 
                                     data={data ?? mock} 
-                                    state={{ isLoading, showProgressBars: isRefetching,}}/>
+                                    state={{ isLoading, showProgressBars: isRefetching,}}
+                                    muiTableHeadCellProps={{
+                                        sx: {
+                                          fontWeight: 'normal',
+                                          fontSize: '50px',
+                                        },
+                                      }}
+                                      />
             </div>
             </>
         );

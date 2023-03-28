@@ -73,3 +73,9 @@ tbody td:hover:before {
   border-bottom-style: double;
   border-color: rgba(var(--dark-blue));
 }
+.header {
+  text-align: center;
+  padding: 5rem 5rem;
+  color: black;
+  font-size: 22px;
+}
