@@ -25,16 +25,19 @@ function Options(props) {
         <h2>{props.title}</h2>
       </div>
 
-      {/* Map out the options available - see OptionsHelper to change options available */}
-      {props.optionsArr.map((card, i) => (
-        <Option
-          key={i}
-          title={card.title}
-          src={card.src}
-          link={card.link}                      
-          level={lvlColorHandler(card.level)}
-        />
-      ))}
+      <div className={classes.display}>
+        {/* Map out the options available - see OptionsHelper to change options available */}
+        {props.optionsArr.map((card, i) => (
+          <Option
+            key={i}
+            title={card.title}
+            src={card.src}
+            link={card.link}                      
+            level={lvlColorHandler(card.level)}
+            desc={card.desc}
+          />
+        ))}
+      </div>
     </div>
   );
 }
