@@ -1,5 +1,5 @@
 html,
-body {
+.body {
   height: 100%;
 }
 .body {
@@ -52,4 +52,43 @@ tbody td:hover:before {
   bottom: -9999px;
   background-color: rgba(255, 255, 255, 0.2);
   z-index: -1;
+}
+.padding {
+  height: 9rem;
+  width: 100%;
+}
+.navbar {
+  height: 4.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+  background-color: #f5f5f5;
+  position: fixed;
+  top: 4.5rem;
+  width: 100%;
+  font-size: 35px;
+  z-index: 1000;
+  text-align: center;
+  border-bottom-style: double;
+  border-color: rgba(var(--dark-blue));
+}
+.header {
+  text-align: center;
+  padding-top: 5rem;
+  color: black;
+  font-size: 22px;
+}
+
+.headertxt{
+  text-align: center;
+}
+
+.button {
+  background-color: rgba(var(--dark-blue));
+}
+
+.btnparent{
+  display: flex;
+  justify-content: center;
 }
