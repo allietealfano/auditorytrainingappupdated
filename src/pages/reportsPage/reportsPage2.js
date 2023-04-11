@@ -1,111 +1,116 @@
-
-import "./reportsPage2.module.css";
-import AuthContext from "../../components/store/auth-context";
-import mock from "./MOCK_DATA.json";
-
-import { useContext, useEffect, useState } from "react";
-import React, { useMemo } from 'react';
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase-config";
+import { useContext, useEffect, useState, useRef } from "react";
 import useFetch from "../../components/custHooks/useFetch";
-
-import MaterialReactTable from 'material-react-table';
 import Nav from "../../components/nav/Nav";
-import classes from "./reportsPage2.module.css"
+import classes from "./reportsPage2.module.css";
+import Button from "react-bootstrap/Button";
 
-import Button from 'react-bootstrap/Button';
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TwitterIcon } from "react-share";
 import { CSVLink } from 'react-csv';
-//<script src="https://unpkg.com/bootstrap-table@1.21.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
 // RUN: npm install react-share
 // RUN: npm install react-csv
-
-const date = new Date().toLocaleString('en-GB',{timeZone: 'EST'});
- //Retrieve user history
-
 function ReportsPage2() {
+  const [detectionData, setDetectionData] = useState([]);
+  const [discriminationData, setDiscriminationData] = useState([]);
+  const [identificationData, setIdentificationData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRefetching, setIsRefetching] = useState(false);
 
-    const [data, setData] = useState([mock]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isRefetching, setIsRefetching] = useState(false);
-    const user = useContext(AuthContext).fbUser;
+  const firstUpdate = useRef(true);
 
-    const [[activityData], isPending, err] = useFetch("allActivitiesObj");
+  const [[activityData], isPending, err] = useFetch("allActivitiesObj");
 
-    useEffect(() => {
-        const getData = async function () {
-            if(isPending){ 
-                setIsLoading(true);
-            }
-            else{
-                setIsRefetching(true);
-            }
-            
-            setData(activityData); 
-            
-            // if (!data.length) {
-            //     setIsLoading(true);
-            // } else {
-            //     setIsRefetching(true);
-            // }
-            // const userData = doc(db, user);
-            // const result = await getDoc(userData);
-            // //TODO: Add loading screen while data is being retrieved
-            // if(result.exists()){
-            //     //setData(result?.data().allActivitiesObj);
-            //     setData(result?.data()); 
-            // }
-            // else{  
-            //     console.log("ERROR: NO DATA RETRIEVED");
-            // }
-        
-            setIsLoading(false);
-            setIsRefetching(false);
-        };
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+      fontSize: 18,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 16,
+    },
+  }));
 
-        getData();
-        console.log("DATA", data);
-    }, [activityData]);
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    "&:last-child td, &:last-child th": {
+      border: 0,
+    },
+  }));
 
+  useEffect(async () => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    const getData = async function () {
+      if (isPending) {
+        setIsLoading(true);
+      } else {
+        setIsRefetching(true);
+      }
 
-    const columns = useMemo( 
-        () => [
-        {
-            //deeply nested?
-            accessorKey: `allActivitiesObj.activitydetection`, 
-            header: 'ACTIVITY NAME',
-        }, 
-        {
-            accessorKey: 'activitycomprehension.lastVisited',
-            header: 'DATE',
-        },
-        { 
-            accessorKey: 'id',
-            header: 'TIME',
-        },
-        ],
-        [],
-    );  
+      setDetectionData(activityData?.activitydetection.completions);
 
-    // const csvData = data.map((activity) => ({
-    //     activityName: activity.allActivitiesObj.activitydetection,
-    //     date: activity.activitycomprehension.lastVisited,
-    //     time: activity.id,
-    // }));
+      //TODO: UPDATE DB TO BE CONSISTENT IN REFERENCE (lingActivity vs activity)
+      setDiscriminationData(
+        activityData?.lingActivitydiscrimination.completions
+      );
+      setIdentificationData(
+        activityData?.lingActivityidentification.completions
+      );
+    };
 
-        return (
-            <>
-            <div>
-                <Nav />
-            </div>
-            <div className = {classes.header}>
-                <h1>Reports Page</h1>
-                <p>Welcome to the Reports Page, where you can view your activity history.</p>
-            </div>
+    await getData();
+    console.log("DATA", detectionData);
+    setIsLoading(false);
+    setIsRefetching(false);
+  }, [activityData, isPending]);
 
-            <div>
-                <Button as="input" type="button" value="Export" />{' '}
+  const rowsDetection = detectionData?.map((item) => ({
+    score: item.score,
+    date: item.date,
+  }));
+
+  const rowsDiscrimination = discriminationData?.map((item) => ({
+    score: item.score,
+    date: item.date,
+  }));
+
+  const rowsIdentification = identificationData?.map((item) => ({
+    score: item.score,
+    date: item.date,
+  }));
+
+  return (
+    <div>
+      {detectionData && (
+        <div>
+          <div>
+            <Nav />
+          </div>
+          <div className={classes.header}>
+            <h1>Reports Page</h1>
+          </div>
+          <div className={classes.headertxt}>
+            <p>
+              Welcome to the Reports Page, where you can view your activity
+              history.
+            </p>
+          </div>
+          <div className={classes.btnparent}>
+          <Button as="input" type="button" value="Export" className={classes.button}/>{' '}
                 <TwitterShareButton url={"https://your-url.com"} title={"Check out my activity history!"} className="twitter-share-button">
                     <TwitterIcon round={true} size={"16px"}/>
                     Share on Twitter
@@ -116,34 +121,49 @@ function ReportsPage2() {
                 <WhatsappShareButton url={"https://your-url.com"} quote={"Check out my activity history!"}>
                     Share on Whatsapp
                 </WhatsappShareButton>
-            </div>
-
-            {/* <div>
-                <CSVLink
-                    data={csvData}
-                    filename={`activity_history_${date}.csv`}
-                >
-                    <Button variant="primary" type="button">
-                        Export to CSV
-                    </Button>
-                </CSVLink>
-            </div> */}
-
-            <div>
-                <MaterialReactTable columns={columns} 
-                                    data={data ?? mock} 
-                                    state={{ isLoading, showProgressBars: isRefetching,}}
-                                    muiTableHeadCellProps={{
-                                        sx: {
-                                          fontWeight: 'normal',
-                                          fontSize: '50px',
-                                        },
-                                      }}
-                                      />
-            </div>
-            </>
-        );
-        
-    }; 
+          </div>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Activity Type</StyledTableCell>
+                  <StyledTableCell>Date</StyledTableCell>
+                  <StyledTableCell>Score</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rowsDetection.map((row) => (
+                  <StyledTableRow>
+                    <StyledTableCell size="small">Detection</StyledTableCell>
+                    <StyledTableCell>{row.date}</StyledTableCell>
+                    <StyledTableCell>{row.score}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+                {rowsDiscrimination.map((row) => (
+                  <StyledTableRow>
+                    <StyledTableCell size="small">
+                      Discrimination
+                    </StyledTableCell>
+                    <StyledTableCell>{row.date}</StyledTableCell>
+                    <StyledTableCell>{row.score}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+                {rowsIdentification.map((row) => (
+                  <StyledTableRow>
+                    <StyledTableCell size="small">
+                      Identification
+                    </StyledTableCell>
+                    <StyledTableCell>{row.date}</StyledTableCell>
+                    <StyledTableCell>{row.score}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default ReportsPage2;

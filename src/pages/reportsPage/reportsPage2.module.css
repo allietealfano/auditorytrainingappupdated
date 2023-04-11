@@ -75,10 +75,24 @@ tbody td:hover:before {
 }
 .header {
   text-align: center;
-  padding: 5rem 5rem;
+  padding-top: 5rem;
   color: black;
   font-size: 22px;
 }
+
 .twitter-share-button {
   font-size: 50px;
+}
+
+.headertxt{
+  text-align: center;
+}
+
+.button {
+  background-color: rgba(var(--dark-blue));
+}
+
+.btnparent{
+  display: flex;
+  justify-content: center;
 }
