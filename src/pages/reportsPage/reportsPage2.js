@@ -12,9 +12,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
-const date = new Date().toLocaleString("en-GB", { timeZone: "EST" });
-//Retrieve user history
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TwitterIcon, FacebookIcon, WhatsappIcon } from "react-share";
+import { CSVLink } from 'react-csv';
+ 
+{/* npm should already set you up with these but just in case you have an error,
+    RUN: npm install react-share
+    RUN: npm install react-csv */}
 
 function ReportsPage2() {
   const [detectionData, setDetectionData] = useState([]);
@@ -77,6 +80,7 @@ function ReportsPage2() {
     setIsRefetching(false);
   }, [activityData, isPending]);
 
+  //TODO: Refactor code so this is not repeated...maybe for loop?
   const rowsDetection = detectionData?.map((item) => ({
     score: item.score,
     date: item.date,
@@ -94,6 +98,8 @@ function ReportsPage2() {
 
   return (
     <div>
+      {/* TODO: Add Spinner while fetching information so its not a white screen flashing while data is being retrieved */}
+
       {detectionData && (
         <div>
           <div>
@@ -109,19 +115,30 @@ function ReportsPage2() {
             </p>
           </div>
           <div className={classes.btnparent}>
-            <Button
-              as="input"
-              type="button"
-              value="Export"
-              className={classes.button}
-            />{" "}
-            <Button
-              as="input"
-              type="submit"
-              value="Share"
-              className={classes.button}
-            />{" "}
+            <div>
+              <Button as="input" type="button" value="Export" className={classes.button}/>
+            </div>
+
+            {/* TODO: For future semesters, buttons are linked to the internet, so once the app goes online, then update the URLs.
+            Click button to see what is the default when sharing. */}
+
+            {/* TODO: Export button not functional - need to be able to export e.g dl as PDF*/}
+            
+            <div className={classes.socialbtn}>
+              <TwitterShareButton url={"https://your-url.com"} title={"Check out my activity history!"} className="twitter-share-button">
+                      <TwitterIcon round={true} size={"30px"}/>
+                  </TwitterShareButton>
+                  <FacebookShareButton url={"https://your-url.com"} quote={"Check out my activity history!"}>
+                    <FacebookIcon round={true} size={"30px"}/>
+                  </FacebookShareButton>
+                  <WhatsappShareButton url={"https://your-url.com"} quote={"Check out my activity history!"}>
+                      <WhatsappIcon round={true} size={"30px"}/>
+                  </WhatsappShareButton>
+            </div> 
           </div>
+
+          {/* TODO: Pagination would be nice */}
+
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
