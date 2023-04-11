@@ -13,6 +13,7 @@ import useFetch from "../custHooks/useFetch";
 function Completed(props) {
 
   //Retrieve user associated
+
   const user = useContext(AuthContext).fbUser;
   const [data, setData] = useState([]);
 

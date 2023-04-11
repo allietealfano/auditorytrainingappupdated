@@ -80,6 +80,10 @@ tbody td:hover:before {
   font-size: 22px;
 }
 
+.twitter-share-button {
+  font-size: 50px;
+}
+
 .headertxt{
   text-align: center;
 }
@@ -91,4 +95,11 @@ tbody td:hover:before {
 .btnparent{
   display: flex;
   justify-content: center;
+}
+
+.socialbtn{
+  padding-top:3px;
+  display: flex;
+  gap: 10px
+
 }
