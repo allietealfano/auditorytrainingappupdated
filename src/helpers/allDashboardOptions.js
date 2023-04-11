@@ -18,7 +18,7 @@ const allDashboardOptions = {
     },
     {
       title: "Reports",
-      link: "/reports",
+      link: "/reportsPage2",
       src: "ear",
       level: 3,
       desc: "See personal reports on your activities"
