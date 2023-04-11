@@ -79,3 +79,6 @@ tbody td:hover:before {
   color: black;
   font-size: 22px;
 }
+.twitter-share-button {
+  font-size: 50px;
+}

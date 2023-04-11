@@ -14,8 +14,12 @@ import Nav from "../../components/nav/Nav";
 import classes from "./reportsPage2.module.css"
 
 import Button from 'react-bootstrap/Button';
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
+import { CSVLink } from 'react-csv';
 //<script src="https://unpkg.com/bootstrap-table@1.21.3/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
+// RUN: npm install react-share
+// RUN: npm install react-csv
 
 const date = new Date().toLocaleString('en-GB',{timeZone: 'EST'});
  //Retrieve user history
@@ -82,7 +86,13 @@ function ReportsPage2() {
         },
         ],
         [],
-    );   
+    );  
+
+    // const csvData = data.map((activity) => ({
+    //     activityName: activity.allActivitiesObj.activitydetection,
+    //     date: activity.activitycomprehension.lastVisited,
+    //     time: activity.id,
+    // }));
 
         return (
             <>
@@ -93,10 +103,31 @@ function ReportsPage2() {
                 <h1>Reports Page</h1>
                 <p>Welcome to the Reports Page, where you can view your activity history.</p>
             </div>
+
             <div>
                 <Button as="input" type="button" value="Export" />{' '}
-                <Button as="input" type="submit" value="Share" />{' '}
+                <TwitterShareButton url={"https://your-url.com"} title={"Check out my activity history!"} className="twitter-share-button">
+                    <TwitterIcon round={true} size={"16px"}/>
+                    Share on Twitter
+                </TwitterShareButton>
+                <FacebookShareButton url={"https://your-url.com"} quote={"Check out my activity history!"}>
+                    Share on Facebook
+                </FacebookShareButton>
+                <WhatsappShareButton url={"https://your-url.com"} quote={"Check out my activity history!"}>
+                    Share on Whatsapp
+                </WhatsappShareButton>
             </div>
+
+            {/* <div>
+                <CSVLink
+                    data={csvData}
+                    filename={`activity_history_${date}.csv`}
+                >
+                    <Button variant="primary" type="button">
+                        Export to CSV
+                    </Button>
+                </CSVLink>
+            </div> */}
 
             <div>
                 <MaterialReactTable columns={columns} 
@@ -113,11 +144,6 @@ function ReportsPage2() {
             </>
         );
         
-        // return (
-        //         <MaterialReactTable columns={columns} 
-        //                             data={data ?? mock} 
-        //                             state={{ isLoading, showProgressBars: isRefetching,}}/>
-        // );
     }; 
 
 export default ReportsPage2;
