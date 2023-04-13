@@ -22,8 +22,3 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-
-.display{
-  display: inline-flex;
-  gap: 50px
-}

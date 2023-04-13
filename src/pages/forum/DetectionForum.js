@@ -4,7 +4,6 @@ import { addDoc, collection, getDocs, orderBy } from "firebase/firestore";
 import NavProfile from "../../components/nav/Nav";
 import Popup from "../../components/forumComp/Popup";
 import classes from "./forumPages.module.css";
-import useFetch from "../../components/custHooks/useFetch";
 
 /**Forum Page for DetectionForum*/
 function DetectionForum (){
@@ -17,7 +16,6 @@ function DetectionForum (){
   //Var for db of posts and date
   const postCollectionRef = collection(db, "detectionPosts");
   const date = new Date();
-  const [[fName], isPending, err] = useFetch("fName", "lName");
 
   //Creating a post
   const createPost = async () => {
@@ -25,7 +23,6 @@ function DetectionForum (){
     await addDoc(postCollectionRef, {
       postText,
       createdAt: date.toUTCString(),
-      createdBy: fName,
     });
     
     //Close the create post modal and set the text back to empty
@@ -96,9 +93,7 @@ function DetectionForum (){
             return (
               <div className={classes.post}>
                 <div className={classes.postTextContainer}>
-                  Posted by: {post.createdBy} 
-                  Posted at: {post.createdAt}
-                  {post.postText} 
+                  {post.postText}
                 </div>
               </div>
             );

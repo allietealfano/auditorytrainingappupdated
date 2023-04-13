@@ -73,7 +73,7 @@ function Activity(props) {
 
               {/* Description */}
               <span className={classes.sub__info}>
-                {props.desc}
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </span>
             </figcaption>
           </figure>

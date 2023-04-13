@@ -62,7 +62,7 @@ function Option(props) {
             <figcaption className={classes.info}>
               <span className={classes.main__info}> {props.title}<br></br></span>
               <span className={classes.sub__info}>
-                {props.desc}
+                Lorem ipsum dolor sit amet
               </span>
             </figcaption>
           </figure>

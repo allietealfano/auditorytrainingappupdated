@@ -17,11 +17,6 @@
   margin-bottom: 1rem;
 }
 
-.display{
-  display: inline-flex;
-  gap: 50px;
-}
-
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 200px);
