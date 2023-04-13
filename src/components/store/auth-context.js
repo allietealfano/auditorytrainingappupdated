@@ -11,6 +11,12 @@ const AuthContext = React.createContext({
   logout: () => {},
 });
 
+//
+export function useAuth() {
+  return useContext(AuthContext);
+}
+//
+
 const calcRemTime = (expirationTime) => {
   const currentTime = new Date().getTime();
   const adjExpTime = expirationTime.getTime();
