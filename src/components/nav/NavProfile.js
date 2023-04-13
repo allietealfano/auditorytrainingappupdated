@@ -7,7 +7,6 @@ import classes from "./nav.module.css";
 
 //Purpose: Profile corner of nav bar
 function NavProfile() {
-
   //Retrieve name
   const [[fName], isPending, err] = useFetch("fName", "lName");
 
@@ -47,8 +46,7 @@ function NavProfile() {
           </Link>
 
           {/* Link to setting*/}
-          {/* TODO: Change to setting page */}
-          <Link to="/dashboard">
+          <Link to="/settings">
             <li className={classes.list__item}>
               <span>Settings</span>
               <img
