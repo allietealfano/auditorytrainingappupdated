@@ -1,0 +1,127 @@
+.settings_light {
+  height: 4.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  position: fixed;
+  top: 4.5rem;
+  width: 100%;
+  font-size: 35px;
+  z-index: -1;
+  text-align: center;
+  border-bottom-style: double;
+  border-color: rgba(var(--dark-blue));
+}
+.settings_dark {
+  height: 4.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #f5f5f5;
+  position: fixed;
+  top: 4.5rem;
+  width: 100%;
+  font-size: 35px;
+  z-index: -1;
+  text-align: center;
+  border-bottom-style: double;
+  border-color: rgba(var(--dark-blue));
+}
+
+.main_container_light {
+  background-color: white;
+  margin-top: 90px;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+  padding-right: 30px;
+  font-family: Sans-Serif;
+}
+.main_container_dark {
+  background-color: #121212;
+  margin-top: 90px;
+  padding-top: 30px;
+  padding-left: 30px;
+  /* /////////////////////////////////////// */
+  padding-bottom: 130px;
+  /* /////////////////////////////////////// */
+  padding-right: 30px;
+  font-family: Sans-Serif;
+}
+
+.text_box_light {
+  width: 35%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(var(--light-blue));
+  height: 5rem;
+  font-size: 1.8rem;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 0.6rem;
+}
+.text_box_dark {
+  width: 35%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 1px solid rgba(var(--light-blue));
+  height: 5rem;
+  font-size: 1.8rem;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 0.6rem;
+  background-color: #c8c8c8;
+}
+
+.password_button {
+  background-color: #074078;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  height: 5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  width: 33%;
+  border-radius: 0.6rem;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.image {
+  /* position: absolute; */
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
+  filter: contrast(0.2);
+}
+
+.card_body_light {
+  background-color: white;
+  padding: 10px;
+  padding-left: 120px;
+  /* width: 100px; */
+}
+.card_body_dark {
+  background-color: #121212;
+  color: #c0c0c0;
+  padding: 10px;
+  padding-left: 120px;
+  /* width: 100px; */
+}
+
+.switch {
+  margin-bottom: 20px;
+  font-size: 2.6rem;
+  font-family: sans-serif;
+}
+
+.theme_label {
+  margin-right: 20px;
+}
