@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 
 let logoutTimer;
 
@@ -10,6 +10,12 @@ const AuthContext = React.createContext({
   login: (token) => {},
   logout: () => {},
 });
+
+//
+export function useAuth() {
+  return useContext(AuthContext);
+}
+//
 
 const calcRemTime = (expirationTime) => {
   const currentTime = new Date().getTime();
