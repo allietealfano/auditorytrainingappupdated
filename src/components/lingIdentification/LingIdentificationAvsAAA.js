@@ -195,6 +195,10 @@ function LingIdentificationAvsAAA(props) {
             <div className={classes.activity__items}>
               <div className={classes.opts}>
 
+                <p>Please press each play button</p>
+                <p>Press '1 a sound' if you hear one 'a' sound</p>
+                <p>Press '3 a sounds' if you hear three 'a' sounds</p>
+                <br></br>
                 {/* Play sounds for activity */}
                 <button
                   className={classes.btn_push_blue}

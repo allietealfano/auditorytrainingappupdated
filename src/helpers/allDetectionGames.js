@@ -3,24 +3,10 @@
 const allDetectionGames = {
   detectGames: [
     {
-      title: "Game 1",
+      title: "Sound or No Sound",
       link: "/lingActivity/detection",
-      src: "volume",
-    },
-    {
-      title: "Game 2",
-      link: "/lingActivity/discrimination",
-      src: "volume",
-    },
-    {
-      title: "Game 3",
-      link: "/lingActivity/identification",
-      src: "volume",
-    },
-    {
-      title: "Game 4",
-      link: "/lingActivity/identification2",
-      src: "volume",
+      src: "detection",
+      desc: "Detect whether a sound played or not"
     },
   ],
 };

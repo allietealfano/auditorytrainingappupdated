@@ -12,11 +12,11 @@ function Activities(props) {
 
   //Handles the color coded difficulty.
   const lvlColorHandler = (lvl) => {
-    if (lvl === 1) return `rgb(218, 247, 166)`;
-    if (lvl === 2) return `rgb(133, 193, 233)`;
-    if (lvl === 3) return `rgb(93, 173, 226)`;
-    if (lvl === 4) return `rgb(102, 0, 204)`;
-    return `rgb(${(63, 137, 187)})`;
+    if (lvl === 1) return `1`;
+    if (lvl === 2) return `2`;
+    if (lvl === 3) return `3`;
+    if (lvl === 4) return `4`;
+    return `N/A`;
   };
 
   return (

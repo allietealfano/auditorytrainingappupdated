@@ -185,6 +185,11 @@ function LingDiscrimination(props) {
           <div className={classes.activity__items}>
             <div className={classes.opts}>	
 		
+            <p>Please press each play button</p>
+            <p>Select 'Same Sound' if the sounds were the same</p>
+            <p>Select 'Diff Sound' if the sounds were different</p>
+
+            <br></br>
           {/* Play sound buttons */}
           <p>
           <button className={classes.btn_push_blue}
@@ -202,6 +207,7 @@ function LingDiscrimination(props) {
           🔊
                 </button>  
           </p>
+
               <div className={classes.select}>
                 {/* User choice */}
                 <div
@@ -245,4 +251,3 @@ function LingDiscrimination(props) {
 }
 
 export default LingDiscrimination;
-

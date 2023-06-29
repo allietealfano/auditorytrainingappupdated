@@ -8,7 +8,7 @@
   padding-top: 2em;
   padding-left: 2em;
   border-radius: 12px;
-  border: 1px solid #4F3580; 
+  position: relative;
   /* border-bottom: 1px transparent solid; */
 }
 
@@ -31,7 +31,7 @@
   width: auto;
   border-radius: 12px;
   padding: 10px;
-  background-color: rgba(var(--light-yellow));
+  background-color: #94C773;
   margin-right: 5rem;
 }
 
@@ -79,4 +79,5 @@
   height: 5rem;
   border-radius: 50%;
   background-color: blue;
+
 }

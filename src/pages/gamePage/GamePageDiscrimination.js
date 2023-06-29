@@ -4,10 +4,10 @@ import Nav from "../../components/nav/Nav";
 import GameOptions from "../../components/Game Options/GameOptions";
 import classes from "./gamePageDetection.module.css";
 
-import { allDetectionGames } from "../../helpers/allDetectionGames";
+import { allDiscriminationGames } from "../../helpers/allDiscriminationGames";
 
 //Game page for detection games specifically
-function GamePageDetection() {
+function GamePageDiscrimination() {
 
   //Actual display
   return (
@@ -18,16 +18,16 @@ function GamePageDetection() {
       <div>
         {/* Title and instructions */}
         <div className = {classes.header}>
-          <h1>Detection Games</h1>
+          <h1>Discrimination Games</h1>
           <p>Please select your activity!</p>
         </div>
         {/* List of buttons for activities  */}
         {/* If you'd like to edit activities, please refer to -GameOptions.js- or -allDetectionGames- */}
        {/* <button type="button" class={classes.section_dropdown}>Activity Section 1</button>*/}
           <div class={classes.buttonlayout}>
-            <div className={classes.allDetectionGames}>
+            <div className={classes.allDiscriminationGames}>
               <GameOptions
-                optionsArr={allDetectionGames.detectGames}
+                optionsArr={allDiscriminationGames.discrimGames}
               />
             </div>
           </div>
@@ -38,4 +38,4 @@ function GamePageDetection() {
 }
 
 
-export default GamePageDetection;
+export default GamePageDiscrimination;

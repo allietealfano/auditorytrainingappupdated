@@ -108,6 +108,8 @@ function LingDetection(props) {
           <Progress refSetter={refSetter} />
           <div className={classes.activity__items}>
             <div className={classes.opts}>
+              <p>Click the play button below to hear the sound</p>
+              <br></br>
               {/* Play audio button */}
               <PlayButton
                 audUrl={
@@ -118,14 +120,18 @@ function LingDetection(props) {
               />
 
               {/* Display for whether there was sound or not */}
-              <div className={classes.select}>
+              <div className={classes.select}>           
                 <div
                   className={classes.card}
                   ref={cardTrueRef}
                   onClick={() => choiceHandler(true)}
                 >
+              {/*Adding Image to Sound choice*/}
+                    <img
+                      src={require("../../assets/icons/detection_choice_sound.png")}
+                      alt="ear"
+                    />
                   <div className={classes.card__mid}>
-                    <h1>🔊</h1>
                     <p>Sound</p>
                   </div>
                 </div>
@@ -134,8 +140,12 @@ function LingDetection(props) {
                   ref={cardFalseRef}
                   onClick={() => choiceHandler(false)}
                 >
+                  {/*Adding Image to noSound choice*/}
+                  <img
+                      src={require("../../assets/icons/detection_choice_nosound.png")}
+                      alt="ear"
+                    />
                   <div className={classes.card__mid}>
-                    <h1>🔈</h1>
                     <p>No Sound</p>
                   </div>
                 </div>

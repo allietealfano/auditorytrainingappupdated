@@ -2,6 +2,7 @@
   height: 100vh;
   width: 100vw;
   background-color: #fff;
+
 }
 
 .activity {
@@ -54,6 +55,7 @@
   height: 100%;
   justify-content: center;
   align-items: center;
+  padding-bottom: 500px;
 }
 
 .card__mid p {
@@ -65,3 +67,15 @@
   background-color: rgba(var(--main-yellow));
   border-radius: 10px;
 }
+
+.sound_icon{
+  display: flex;
+  /*flex-direction: column;*/
+  height: 10rem;
+  width: 10rem;
+  justify-content: center;
+  color: #444;
+  padding-top: 2em;
+  padding-left: 2em;
+}
+

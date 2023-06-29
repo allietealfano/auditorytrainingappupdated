@@ -18,6 +18,8 @@ import LingIdentificationPage from "./pages/ling/LingIdentificationPage";
 import LingIdentificationPage2 from "./pages/ling/LingIdentificationPage2";
 import ActivityPage from "./pages/activityPage/ActivityPage";
 import GamePageDetection from "./pages/gamePage/GamePageDetection";
+import GamePageDiscrimination from "./pages/gamePage/GamePageDiscrimination";
+import GamePageIdentification from "./pages/gamePage/GamePageIdentification";
 import DetectionForum from "./pages/forum/DetectionForum";
 import DiscriminationForum from "./pages/forum/DiscriminationForum";
 import IdentificationForum from "./pages/forum/IdentificationForum";
@@ -43,6 +45,7 @@ function App() {
         <Router>
           <IdleTimerContainer />
           <Routes>
+
             <Route path="/" element={<HomePage />} />
             <Route path="/reset" element={<ResetPage />} />
             <Route
@@ -65,6 +68,7 @@ function App() {
                 )
               }
             />
+            {/* Here would be in-between page*/}
             <Route
               path="/activity/detection"
               element={
@@ -74,7 +78,27 @@ function App() {
                   <Navigate to="/auth" />
                 )
               }
-            />
+            /> 
+            <Route
+            path="/activity/discrimination"
+            element={
+              authContext.isLoggedIn ? (
+                <GamePageDiscrimination />
+              ) : (
+                <Navigate to="/auth" />
+              )
+            }
+          />
+          <Route
+            path="/activity/identification"
+            element={
+              authContext.isLoggedIn ? (
+                <GamePageIdentification />
+              ) : (
+                <Navigate to="/auth" />
+              )
+            }
+          />
             <Route
               path="/lingActivity/detection"
               element={

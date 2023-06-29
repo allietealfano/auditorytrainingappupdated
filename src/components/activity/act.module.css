@@ -1,6 +1,7 @@
 .activity__container {
   margin: 2rem 0;
   display: flex;
+  /*flex-direction: column;*/
   height: 30rem;
   width: 30rem;
   justify-content: center;
@@ -8,8 +9,8 @@
   padding-top: 2em;
   padding-left: 2em;
   border-radius: 12px;
-  border: 1px solid #4f3580;
-  /* border-bottom: 1px transparent solid; */
+ /* border: 1px solid #4f3580;*/
+/* border-bottom: 1px transparent solid; */
 }
 
 .activity__container:hover {
@@ -30,8 +31,8 @@
   width: auto;
   border-radius: 12px;
   padding: 10px;
-  background-color: rgba(var(--light-yellow));
-  margin-right: 5rem;
+  background-color: #94C773;
+  margin-right: 5rem;  
 }
 
 /* .col_1_img:nth-child(odd) {
@@ -42,13 +43,15 @@
 .info {
   flex-direction: column;
   justify-content: space-between;
-
-  /* background-color: aqua; */
+  align-items: center;
+  position: relative;
 }
 
 .main__info,
 .sub__info {
   font-size: 2.25rem;
+  position: relative;
+  text-align: center;
 }
 
 .col_2 {
@@ -63,19 +66,27 @@
 }
 
 .col_3 {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ flex-direction: row;
+
 }
 
-.main__info,
-.col_3_1 {
+.main__info{
   font-weight: 600;
 }
 
+.col_3_1 {
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 40px;
+}
+
+
 .col_3_2 {
-  width: 5rem;
+  /*width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: blue;
+  background-color: blue;*/
+  font-weight: 600;
+  position: absolute; 
+  padding-left: 20px;
 }

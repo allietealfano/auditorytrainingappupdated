@@ -5,31 +5,31 @@ const allDashboardOptions = {
     {
       title: "Activities",
       link: "/activity",
-      src: "volume",
+      src: "ear",
       level: 1,
-      desc: "Hearing exercises to practice listening abilities"
+      desc: "Hearing Exercises to Practice Listening Abilities"
     },
-    {
+   /* {
       title: "Forum",
       link: "/DetectionForum",
       src: "arrows",
       level: 2,
       desc: "Discuss and meet new people within the community"
-    },
+    },*/
     {
       title: "Reports",
       link: "/reportsPage2",
-      src: "ear",
+      src: "reports",
       level: 3,
-      desc: "See personal reports on your activities"
+      desc: "See Personal Reports on your Activities"
     },
-    {
+   /* {
       title: "Support",
       link: "/support",
       src: "ear",
       level: 4,
       desc: "Contact support for issues"
-    },
+    },*/
   ],
 };
 
