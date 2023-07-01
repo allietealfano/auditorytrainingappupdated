@@ -8,6 +8,7 @@
   background-color: rgba(var(--black), 0.5);
   text-align: center;
   z-index: 50000;
+  position: relative;
 }
 
 .pop__up {
@@ -20,10 +21,13 @@
   border-radius: 10px;
   padding: 0rem 6rem;
   background-color: rgba(var(--white));
+  position: relative;
+
 }
 
 .prompt__big {
   color: rgba(var(--dark-grey));
+  padding-top: 50px;
 }
 
 .prompt__small {
@@ -38,4 +42,5 @@
 .choices {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 40px;
 }

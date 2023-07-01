@@ -17,7 +17,6 @@ function DashboardPage() {
           <div className={classes.main__container}>
             {/* Card options in the dashboard - do not req lvl colors so diff component created */}
             <Options
-              title={"Options"}
               optionsArr={allDashboardOptions.dashPage}
             />
           </div>

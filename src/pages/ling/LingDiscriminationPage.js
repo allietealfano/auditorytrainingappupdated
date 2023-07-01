@@ -9,13 +9,12 @@ function LingDiscriminationPage() {
 
   //Variables for progress, score, and sound states
   const [progress, setProgress] = useState(0);
-  const [score, setScore] = useState(0);
   const [soundsArr, setSoundsArr] = useState([[0, 0]]);
 
   //Handler to update progression and score
   const progressHandler = (newProgress, newScore) => {
     setProgress(newProgress);
-    setScore(newScore);
+   // setScore(newScore);
   };
 
   useEffect(() => {
@@ -42,7 +41,7 @@ function LingDiscriminationPage() {
       If you'd like to edit Detection Game, please refer to -LingDiscrimination.js- */}
       <LingDiscrimination
         objKey={"lingActivitydiscrimination"}
-        score={score}
+       // score={score}
         prog={progress}
         progressHandler={progressHandler}
         sound1={Math.floor(Math.random() * 2)}

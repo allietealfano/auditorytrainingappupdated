@@ -4,7 +4,7 @@ import Option from "../Option/Option";
 
 import classes from "./acts.module.css";
 
-//Purpose: Options available
+//Purpose: Options available on Dashboard
 function Options(props) {
 
   //Color coded level
@@ -16,15 +16,12 @@ function Options(props) {
     return `rgb(${(63, 137, 187)})`;
   };
 
+
   return (
 
     // Prompt for what user would like to do + title
     <div className={classes.acts__container}>
-      <h3>What would you like to do today?</h3>
-      <div className={classes.acts__title}>
-        <h2>{props.title}</h2>
-      </div>
-
+        <h3>What Would You Like To Do Today?</h3>
       <div className={classes.display}>
         {/* Map out the options available - see OptionsHelper to change options available */}
         {props.optionsArr.map((card, i) => (

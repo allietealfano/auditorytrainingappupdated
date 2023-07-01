@@ -21,11 +21,14 @@ function GameOption(props) {
               alt="Error"
             />
 
+              <br></br>
+
             {/* Game Description and title */}
             <figcaption className={classes.info}>
-              <span className={classes.main__info}> {props.title}<br></br></span>
+              <span className={classes.main__info}> 
+              {props.title}<br></br></span>
               <span className={classes.sub__info}>
-                Game Description!
+               {props.desc}
               </span>
             </figcaption>
           </figure>

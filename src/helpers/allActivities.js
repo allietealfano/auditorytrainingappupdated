@@ -5,28 +5,28 @@ const allActivities = {
     {
       title: "Detection",
       link: "/activity/detection",
-      src: "volume",
+      src: "detection",
       level: 1,
-      desc:"Detect whether or not a sound really played."
+      desc:"Detect whether or not a sound really played"
     },
     {
       title: "Discrimination",
       link: "/activity/discrimination",
-      src: "arrows",
+      src: "discrimination",
       level: 2,
-      desc:"Work in Progress"
+      desc:"Determine if the sounds are the same or different"
     },
     {
       title: "Identification",
       link: "/activity/identification",
-      src: "ear",
+      src: "identification",
       level: 3,
-      desc:"Work in Progress"
+      desc:"Identify how many sounds have been played"
     },
     {
       title: "Comprehension",
       link: "/activity/comprehension",
-      src: "ear",
+      src: "comprehension",
       level: 4,
       desc:"Work in Progress"
     },

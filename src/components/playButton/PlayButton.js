@@ -29,7 +29,6 @@ function PlayButton(props) {
   return (
     //Play sound button
     <button className={classes.button} onClick={playHandler}>
-      Play Sound
       <audio className={classes.audio} ref={audioPlayer} src={props.audUrl} />
       
       {/* Change audio depending if play is true/false */}

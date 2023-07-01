@@ -54,6 +54,9 @@ function Activity(props) {
     <>
       {/* Link to the appropriate activity. */}
       <Link to={props.link}>
+      <div className={classes.col_3}>
+            <span className={classes.col_3_1}>Level {props.level}</span>
+            </div>
         <div className={classes.activity__container} onClick={setLatest}>
           <figure className={classes.col_1}>
             {/* Img within the card */}
@@ -79,7 +82,7 @@ function Activity(props) {
           </figure>
 
           {/* Images in the top right */}
-          <div className={classes.col_2}>
+       {/*   <div className={classes.col_2}>
             <img
               className={classes.col_2_1}
               src={require("../../assets/icons/notes.png")}
@@ -90,17 +93,11 @@ function Activity(props) {
               src={require("../../assets/icons/pie-chart.png")}
               alt="pie chart"
             />
-          </div>
+          </div>*/}
           
           {/* Level difficulty & color setting */}
-          <div className={classes.col_3}>
-            <span className={classes.col_3_1}>Level</span>
-            <div
-              style={{ backgroundColor: props.level }}
-              className={classes.col_3_2}
-            ></div>
+          
           </div>
-        </div>
       </Link>
     </>
   );
