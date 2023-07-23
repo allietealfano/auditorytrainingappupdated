@@ -3,51 +3,47 @@
   font-weight: 600;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
   position: fixed;
-  top: 4.5rem;
+  top: 10.0rem;
   width: 100%;
   font-size: 35px;
   z-index: -1;
   text-align: center;
-  border-bottom-style: double;
-  border-color: rgba(var(--dark-blue));
+  color: #444;
 }
 .settings_dark {
-  height: 4.5rem;
+  height: 20.0rem;
   font-weight: 600;
   margin: 0;
-  padding: 0;
-  background-color: #121212;
-  color: #f5f5f5;
   position: fixed;
-  top: 4.5rem;
   width: 100%;
+  top: 0;
   font-size: 35px;
   z-index: -1;
   text-align: center;
-  border-bottom-style: double;
-  border-color: rgba(var(--dark-blue));
+  padding-top: 100px;
+  color: white !important;
+  background-color: #121212;
 }
+
+.settings_dark h1{
+  color: white;
+}
+
 
 .main_container_light {
   background-color: white;
-  margin-top: 90px;
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-bottom: 30px;
+  margin-top: 170px;
+  padding-left: 100px;
   padding-right: 30px;
   font-family: Sans-Serif;
 }
 .main_container_dark {
   background-color: #121212;
-  margin-top: 90px;
-  padding-top: 30px;
-  padding-left: 30px;
-  /* /////////////////////////////////////// */
-  padding-bottom: 130px;
-  /* /////////////////////////////////////// */
+  margin-top: 170px;
+  padding-left: 100px;
   padding-right: 30px;
+  padding-bottom: 103px;
   font-family: Sans-Serif;
 }
 
@@ -55,12 +51,12 @@
   width: 35%;
   padding: 10px 20px;
   box-sizing: border-box;
-  border: 1px solid rgba(var(--light-blue));
+  border: 2px solid rgba(var(--black));
   height: 5rem;
-  font-size: 1.8rem;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border-radius: 0.6rem;
+  font-size: 1.7rem;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  border-radius: 4rem;
 }
 .text_box_dark {
   width: 35%;
@@ -68,27 +64,29 @@
   box-sizing: border-box;
   border: 1px solid rgba(var(--light-blue));
   height: 5rem;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   margin-top: 5px;
   margin-bottom: 15px;
-  border-radius: 0.6rem;
+  border-radius: 4rem;
   background-color: #c8c8c8;
 }
 
+.text_box_light[type="password"]{
+  border: 2px solid rgba(var(--black));  
+}
+
 .password_button {
-  background-color: #074078;
-  border: none;
+  background-color: #141467;
   color: white;
   padding: 15px 32px;
   height: 5rem;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
   font-size: 18px;
   width: 33%;
-  border-radius: 0.6rem;
-  margin-top: 10px;
-  margin-left: 10px;
+  border-radius: 0.8rem;
+  margin-top: 20px;
+  margin-left: 5px;
   margin-bottom: 10px;
   cursor: pointer;
   font-family: sans-serif;
@@ -117,11 +115,38 @@
 }
 
 .switch {
-  margin-bottom: 20px;
-  font-size: 2.6rem;
+  margin-bottom: 25px;
+  font-size: 2.1rem;
   font-family: sans-serif;
+  font-style: italic;
 }
 
 .theme_label {
   margin-right: 20px;
+  
 }
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.logobutton{
+  text-align: center;
+ /* padding: 25rem 3rem 2rem 3rem;*/
+  width: 50%;
+  align-items: end;
+  margin: 300px 60px 0px auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: bounce 2s infinite;
+}
+

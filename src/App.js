@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 
 import HomePage from "./pages/homePage/HomePage";
@@ -21,11 +21,11 @@ import GamePageDetection from "./pages/gamePage/GamePageDetection";
 import GamePageDiscrimination from "./pages/gamePage/GamePageDiscrimination";
 import GamePageIdentification from "./pages/gamePage/GamePageIdentification";
 import DetectionForum from "./pages/forum/DetectionForum";
-import DiscriminationForum from "./pages/forum/DiscriminationForum";
-import IdentificationForum from "./pages/forum/IdentificationForum";
 import MyProfilePage from "./pages/myProfile/MyProfilePage";
 import ReportsPage2 from "./pages/reportsPage/reportsPage2";
 import Settings from "./pages/settings/Settings";
+import SupportPage from "./pages/supportPage/SupportPage"
+import InBetweenPage from "./pages/inBetweenPage/inBetweenPage";
 
 export const ThemeContext = createContext(null);
 
@@ -63,6 +63,16 @@ function App() {
               element={
                 authContext.isLoggedIn ? (
                   <ActivityPage />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/activity/inBetweenPage"
+              element={
+                authContext.isLoggedIn ? (
+                  <InBetweenPage />
                 ) : (
                   <Navigate to="/auth" />
                 )
@@ -150,6 +160,16 @@ function App() {
               }
             />
             <Route
+              path="/supportPage"
+              element={
+                authContext.isLoggedIn ? (
+                  <SupportPage />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
               path="auth"
               element={
                 !authContext.isLoggedIn ? (
@@ -159,22 +179,17 @@ function App() {
                 )
               }
             />
-            <Route path="/DetectionForum" element={<DetectionForum />} />
             <Route
               path="/settings"
               element={
                 authContext.isLoggedIn ? <Settings /> : <Navigate to="/auth" />
               }
             />
-            <Route path="*" element={<HomePage />} />
             <Route
-              path="/DiscriminationForum"
-              element={<DiscriminationForum />}
-            />
-            <Route path="*" element={<HomePage />} />
-            <Route
-              path="/IdentificationForum"
-              element={<IdentificationForum />}
+              path="/DetectionForum"
+              element={
+                authContext.isLoggedIn ? <DetectionForum /> : <Navigate to="/auth" />
+              }
             />
             <Route
               path="/myprofile"

@@ -1,0 +1,25 @@
+.main__container {
+  max-width: 170rem;
+  height: 100vh;
+
+  padding: 10rem 20rem;
+  margin: auto;
+  color: #fff;
+  display: inline-flex;
+}
+
+.header__title {
+  color: #444;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 200px) !important;
+  gap: 10px;
+  grid-template-areas:
+    "a b"
+    "c d";
+  align-items: start;
+  grid-auto-flow: row;
+  grid-auto-columns: 300px 100px;
+}

@@ -5,6 +5,7 @@ import NavProfile from "../../components/nav/Nav";
 import Popup from "../../components/forumComp/Popup";
 import classes from "./forumPages.module.css";
 import useFetch from "../../components/custHooks/useFetch";
+import personIcon from "../../assets/icons/Person Icon.png";
 
 /**Forum Page for DetectionForum*/
 function DetectionForum (){
@@ -62,10 +63,106 @@ function DetectionForum (){
     <>
       {/* Top part of the page w/ header and nav bar */}
       <div className={classes.navbar}>
-            Detection Forum
+            {/*Detection Forum*/}
       </div>
-      <div className={classes.padding}></div>
+      {/*<div className={classes.padding}></div>*/}
       <NavProfile/>
+
+    
+
+      {/* The next line of code creates 3 columns */ }
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+
+      {/* Merges the image, name of user, inbox and icon, and notifications and incon into a single object */}
+      <div style={{ paddingTop: "30rem", paddingRight: "1rem", paddingBottom: "1rem", paddingLeft: "8rem", borderRight: "3px solid black" }}>
+      <div>
+      {/* Inserting image */}
+      <div>
+        <img
+          src={personIcon}
+          alt="Founder"
+          className={classes.story__img}
+          style={{ width: "200px", height: "200px" }}
+        />
+      </div>
+
+      {/* Inserting name of user */}
+      <div>
+        <h4 style={{marginBottom: "1rem", marginLeft: "7.5rem"}}>{fName}</h4>
+      </div>
+
+      {/* Inserting Inbox and icon */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div>
+          <h5 style={{ marginBottom: "0.5rem", marginLeft: "6rem" }}>Inbox</h5>
+        </div>
+        <div style={{ marginLeft: "0.5rem" }}>
+        <img
+          src={require("../../assets/icons/Message Icon.jpg")}
+          alt="Founder"
+          className={classes.story__img}
+          style={{ width: "15%", height: "auto" }}
+        />
+        </div>
+      </div>
+
+      {/* Inserting Notification and icon */}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div>
+          <h5 style={{ marginBottom: "0.5rem", marginLeft: "3rem" }}>Notifications</h5>
+        </div>
+        <div style={{ marginLeft: "0.5rem" }}>
+          <img
+            src={require("../../assets/icons/notification.png")}
+            alt="Founder"
+            className={classes.story__img}
+            style={{ width: "15%", height: "auto" }}
+          />
+        </div>
+      </div>
+    </div>
+    </div>
+    {/* Finished merging and first column */}
+
+
+
+      
+      {/* Second column */}
+      {/* Displaying the forum posts */}
+      <div style={{ paddingTop: "10rem", paddingRight: "1rem", paddingBottom: "3rem", paddingLeft: "3rem", borderRight: "3px solid black" }}>
+      <h1 style={{ paddingTop: "0rem", marginBottom: "0.5rem", marginLeft: "23rem", fontFamily: "Sans-Serif", fontWeight: "bold" }}>Forum</h1>
+        <div className={classes.homePage}>
+            {postLists.map((post) => {
+              return (
+                <div className={classes.post}>
+                  <div className={classes.postTextContainer}>
+                    Posted by: {post.createdBy} 
+                    Posted at: {post.createdAt}
+                    {post.postText} 
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+
+
+
+      {/* Third column*/ }
+      <div style={{ paddingTop: "30rem", paddingRight: "1rem", paddingBottom: "3rem", paddingLeft: "15rem" }}>
+        <h5 style={{ marginBottom: "1.5rem", marginLeft: "8rem", padding: "0.5rem", borderRadius: "20px", background: "lightgray", display: "inline-block" }}>Forum Topics        ^</h5>
+        <h5 style={{ marginBottom: "1rem", marginLeft: "0rem", padding: "0.5rem", borderRadius: "20px", background: "lightgray", display: "inline-block" }}> Community for the Deaf and Hard of Hearing</h5>
+        <h5 style={{ marginBottom: "1rem", marginLeft: "5rem", padding: "0.5rem", borderRadius: "20px", background: "lightgray", display: "inline-block" }}> My Hearing Loss Story</h5>
+        <h5 style={{ marginBottom: "1rem", marginLeft: "9.5rem", padding: "0.5rem", borderRadius: "20px", background: "lightgray", display: "inline-block" }}> Lip Reading</h5>
+        <h5 style={{ marginBottom: "1rem", marginLeft: "6rem", padding: "0.5rem", borderRadius: "20px", background: "lightgray", display: "inline-block" }}> My Hearing Journey</h5>
+        <h5 style={{ marginBottom: "1rem", marginLeft: "3rem", padding: "0.5rem", borderRadius: "20px", background: "lightgray", display: "inline-block" }}> Living With Hearing Loss</h5>
+      </div>
+
+
+
+      </div>
+
+
 
       {/* Forum posting part */}
       <div className={classes.btn_container}>
@@ -90,20 +187,8 @@ function DetectionForum (){
         </Popup>
       </div>
 
-      {/* Displaying the forum posts */}
-      <div className={classes.homePage}>
-          {postLists.map((post) => {
-            return (
-              <div className={classes.post}>
-                <div className={classes.postTextContainer}>
-                  Posted by: {post.createdBy} 
-                  Posted at: {post.createdAt}
-                  {post.postText} 
-                </div>
-              </div>
-            );
-          })}
-      </div>
+
+          
 
     </>
   );

@@ -54,6 +54,7 @@
   height: 100%;
   justify-content: center;
   align-items: center;
+  padding-bottom: 70px;
 }
 
 .card__mid p {

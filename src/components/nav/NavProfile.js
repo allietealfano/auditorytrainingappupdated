@@ -71,58 +71,6 @@ function NavProfile() {
         </ul>
       </div>
 
-      {/* Forum section of nav bar */}
-      <div className={classes.forum__items}>
-        <div className={classes.forum__pic_name}>
-          <span className={classes.forum__text}>Forums</span>
-          <div>
-            <img
-              className={classes.forum__img}
-              src={require("../../assets/icons/forum.png")}
-              alt="profile"
-            />
-          </div>
-        </div>
-
-        {/* Go to Detection Forum */}
-        <ul className={classes.list__container}>
-          <Link to="/DetectionForum">
-            <li className={classes.list__item}>
-              <span>Detection</span>
-              <img
-                className={classes.ul__img}
-                src={require("../../assets/icons/volume.png")}
-                alt="profile"
-              />
-            </li>
-          </Link>
-
-          {/* Discrimination Forum */}
-          <Link to="/DiscriminationForum">
-            <li className={classes.list__item}>
-              <span>Discrimination</span>
-              <img
-                className={classes.ul__img}
-                src={require("../../assets/icons/arrows.png")}
-                alt="profile"
-              />
-            </li>
-          </Link>
-
-          {/* Identification Forum */}
-          <Link to="/IdentificationForum">
-            <li className={classes.list__item}>
-              <span>Identification</span>
-              <img
-                className={classes.ul__img}
-                src={require("../../assets/icons/ear.png")}
-                alt="profile"
-              />
-            </li>
-          </Link>
-        </ul>
-      </div>
-
       {/* Notification icon */}
       {/* TODO: FUNCTIONALITY */}
       <img

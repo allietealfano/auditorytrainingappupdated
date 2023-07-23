@@ -45,15 +45,47 @@ function Nav() {
           {/* Homepage link to */}
           <Link to="/">
             <li className={classes.active}>
-              <p>Auditory Training App!</p>
+              <p>Mission: Audition!</p>
             </li>
           </Link>
-          {/* Instead of sign in, go to dashboard */}
+
+
+          {/* Link to home */}
           <Link to="/dashboard">
             <li className={classes.not__active}>
-              <p>Dashboard</p>
+              <p>Home</p>
             </li>
           </Link>
+
+          {/* Link to activities */}
+          <Link to="/activity/inBetweenPage">
+            <li className={classes.not__active}>
+              <p>Activities</p>
+            </li>
+          </Link>
+
+          {/* Link to forum */}
+          <Link to="/DetectionForum">
+            <li className={classes.not__active}>
+              <p>Forum</p>
+            </li>
+          </Link>
+
+          {/* Link to reports */}
+          <Link to="/reportsPage2">
+            <li className={classes.not__active}>
+              <p>Reports</p>
+            </li>
+          </Link>
+
+          {/* Link to support */}
+          <Link to="/supportPage">
+            <li className={classes.not__active}>
+              <p>Support</p>
+            </li>
+          </Link>
+
+
           {/* Go to profile */}
           <NavProfile />
         </ul>

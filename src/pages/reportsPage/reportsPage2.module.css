@@ -2,6 +2,7 @@ html,
 .body {
   height: 100%;
 }
+
 .body {
   margin: 0;
   background: -webkit-linear-gradient(45deg, #49a09d, #5f2c82);
@@ -9,6 +10,7 @@ html,
   font-family: sans-serif;
   font-weight: 100;
 }
+
 .container {
   position: absolute;
   top: 50%;
@@ -18,31 +20,38 @@ html,
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 table {
   width: 800px;
   height: 800px;
   border-collapse: collapse;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(59, 138, 85, 0.1);
 }
+
 th,
 td {
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background-color: rgba(114, 147, 155, 0.2);
+  color: #2d9c2d;
 }
+
 th {
   text-align: left;
 }
+
 thead th {
-  background-color: #55608f;
+  background-color: #1d73a5;
 }
+
 tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(14, 109, 138, 0.3);
 }
+
 tbody td {
   position: relative;
 }
+
 tbody td:hover:before {
   content: "";
   position: absolute;
@@ -50,20 +59,21 @@ tbody td:hover:before {
   right: 0;
   top: -9999px;
   bottom: -9999px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(3, 78, 16, 0.2);
   z-index: -1;
 }
+
 .padding {
   height: 9rem;
   width: 100%;
 }
+
 .navbar {
   height: 4.5rem;
   font-weight: 600;
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
-  background-color: #f5f5f5;
+  background-color: #f5efef;
   position: fixed;
   top: 4.5rem;
   width: 100%;
@@ -71,35 +81,73 @@ tbody td:hover:before {
   z-index: 1000;
   text-align: center;
   border-bottom-style: double;
-  border-color: rgba(var(--dark-blue));
+  border-color: rgb(11, 145, 155);
 }
+
 .header {
   text-align: center;
   padding-top: 5rem;
-  color: black;
+  color: #444;
   font-size: 22px;
+  padding-bottom: 20px;
 }
 
 .twitter-share-button {
   font-size: 50px;
 }
 
-.headertxt{
+.headertxt {
   text-align: center;
 }
 
-.button {
-  background-color: rgba(var(--dark-blue));
+.button[type="button"] {
+  background-color: #086177;
 }
 
-.btnparent{
+.btnparent {
+  display: flex;
+  margin-left: 705px;
+}
+
+.socialbtn {
+  padding-top: 3px;
+  display: flex;
+  gap: 0.2px;
+  margin-left: 215px;
+}
+
+/* Pagination Styles */
+.pagination {
   display: flex;
   justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
 }
 
-.socialbtn{
-  padding-top:3px;
-  display: flex;
-  gap: 10px
 
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pagination button {
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #1d73a5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.pagination button.active {
+  background-color: #04495a;
+}
+
+.pagination button:hover {
+  background-color: #2d9c2d;
 }

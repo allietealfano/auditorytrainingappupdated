@@ -216,7 +216,11 @@ function LingDiscrimination(props) {
                   onClick={() => choiceHandler(true)}
                 >
                   <div className={classes.card__mid}>
-                    <h1>🔊</h1>
+                  <img
+                    class = "img"
+                      src={require("../../assets/icons/discrimination_choice_same.png")}
+                      alt="ear"
+                    />
                     <p> Same Sound</p>
                   </div>
                 </div>
@@ -226,7 +230,11 @@ function LingDiscrimination(props) {
                   onClick={() => choiceHandler(false)}
                 >
                   <div className={classes.card__mid}>
-                    <h1>🔊</h1>
+                  <img
+                    class = "img"
+                      src={require("../../assets/icons/discrimination_choice_diff.png")}
+                      alt="ear"
+                    />
                     <p>Diff Sound</p>
                   </div>
                 </div>

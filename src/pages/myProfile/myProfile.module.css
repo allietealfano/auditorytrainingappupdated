@@ -21,6 +21,7 @@
   border-top-left-radius: 3rem;
   border-bottom-left-radius: 3rem;
   height: 54rem;
+  margin-top: 150px;
 }
 
 .aboutMe_container {
@@ -34,6 +35,7 @@
   border-bottom-right-radius: 3rem;
   overflow-y: auto;
   height: 54rem;
+  margin-top: 150px;
 }
 
 .img_container {

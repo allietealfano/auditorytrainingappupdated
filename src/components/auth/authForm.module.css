@@ -18,8 +18,14 @@
   box-sizing: border-box;
   border: none;
   outline: none;
-  border-bottom: 1px solid #aaa;
+  border: 1.5px solid black;
   font-size: 1.2rem;
+  border-radius: 1rem;
+}
+
+.form__input[type="date"] {
+  border-bottom: 1.5px solid black;
+  outline: none;
 }
 
 .form__dropdown {
@@ -69,4 +75,10 @@
   text-align: center;
   margin: 4rem 0;
   font-weight: 600;
+}
+
+h2{
+  color: #444;
+  margin-top: 10px;
+  margin-right: 10px;
 }

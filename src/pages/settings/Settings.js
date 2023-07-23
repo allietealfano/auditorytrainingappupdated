@@ -10,6 +10,10 @@ import firebase from "firebase/compat/app";
 import { ThemeContext } from "../../App";
 import ReactSwitch from "react-switch";
 
+import logoLight from "../../../src/assets/images/settings-page-light.jpg"; // Tell webpack this JS file uses this image 
+import logoDark from "../../../src/assets/images/settings-page-dark.png"; // Tell webpack this JS file uses this image 
+
+
 function Settings() {
   ////////// Code to change the email and the password of the user//////////
   const emailRef = useRef();
@@ -21,6 +25,8 @@ function Settings() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useNavigate();
+
+ 
 
   function reauthenticate(currentPassword) {
     console.log("currentPassword in reauthenticate", currentPassword);
@@ -129,18 +135,24 @@ function Settings() {
       <div
         className={
           theme === "light" ? classes.settings_light : classes.settings_dark
+         
         }
       >
-        Settings
-      </div>
 
+      <h1 className={classes.header__title}>Settings</h1>
+
+
+      </div>      
+     
       <div
         className={
           theme === "light"
             ? classes.main_container_light
             : classes.main_container_dark
+            
         }
       >
+        
         {/* <div className={classes.main_container_light} id={theme}> */}
 
         {/* <Card> */}
@@ -177,6 +189,7 @@ function Settings() {
                 // defaultValue={currentUser.email}
               />
             </Form.Group>
+            
             <Form.Group id="currentPassword">
               <Form.Label>
                 <h4>Current Password</h4>
@@ -204,7 +217,7 @@ function Settings() {
             </Form.Group>
             <Form.Group id="newpassword">
               <Form.Label>
-                <h4>Password</h4>
+                <h4>New Password</h4>
               </Form.Label>
               <Form.Control
                 className={
@@ -228,7 +241,7 @@ function Settings() {
             </Form.Group>
             <Form.Group id="newPasswordConfirm">
               <Form.Label>
-                <h4>Password Confirmation</h4>
+                <h4>Confirm New Password</h4>
               </Form.Label>
               <Form.Control
                 className={
@@ -247,8 +260,8 @@ function Settings() {
                 src="eye-hide.png"
                 onClick={hideEye3}
                 id="E3"
-                alt="eye"
-              ></img>
+                alt="eye"  
+              ></img>   
             </Form.Group>
             {/* <Button disabled={loading} className="w-100" type="submit"> */}
             <Button
@@ -256,14 +269,29 @@ function Settings() {
               className={classes.password_button}
               type="submit"
             >
-              Update
+              Save Preferences 
             </Button>
           </Form>
         </Card.Body>
         {/* </Card> */}
+ 
+       
+       {/* Conditional rendering for logo */}
+       <div className={classes.logobutton}>
+          {theme === "light" ? (
+            <img src={logoLight} alt="Light Mode Logo" />
+          ) : (
+            <img src={logoDark} alt="Dark Mode Logo" />
+          )}
+        </div>
+      
         <div className="w-100 text-center mt-2">
+        
+      
           {/* <Link to="/">Cancel</Link> */}
         </div>
+        
+
       </div>
     </>
   );

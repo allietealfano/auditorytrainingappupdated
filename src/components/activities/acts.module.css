@@ -5,9 +5,15 @@
   color: rgb(0, 0, 0);
 }
 
+.acts__container h3{
+  margin-left: 500px;
+  color: #444;
+}
 .acts__title {
   max-width: 80rem;
   margin-top: 2rem;
+  padding-bottom: 20px;
+  margin-left: 535px;
 }
 
 .acts__title h2 {
