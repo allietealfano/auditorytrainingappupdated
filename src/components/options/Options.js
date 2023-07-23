@@ -21,7 +21,7 @@ function Options(props) {
 
     // Prompt for what user would like to do + title
     <div className={classes.acts__container}>
-        <h3>What Would You Like To Do Today?</h3>
+       <h1>What Would You Like To Do Today?</h1>
       <div className={classes.display}>
         {/* Map out the options available - see OptionsHelper to change options available */}
         {props.optionsArr.map((card, i) => (

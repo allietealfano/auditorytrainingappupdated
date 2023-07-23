@@ -43,6 +43,7 @@ function MyProfilePage() {
   const [hidePronouns, setHidePronouns] = useState(null);
   const user = useContext(AuthContext).fbUser;
 
+
   useEffect(async () => {
 
     //Retrieve userData from db, and change state variables
@@ -171,7 +172,9 @@ function MyProfilePage() {
                 src={userData.profilePic}
               />
               {/* Show user's full name and location if hidden flag not triggered */}
-              <h1>{userData.fName + " " + userData.lName}</h1>
+             <div
+             className="user_name"
+             > <h1>{userData.fName + " " + userData.lName}</h1> </div>
               {!hideLocation && (
                 <p className={classes.user_subinfo}>
                   {userData.country}, {userData.region}

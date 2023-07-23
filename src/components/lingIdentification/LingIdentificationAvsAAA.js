@@ -215,7 +215,11 @@ function LingIdentificationAvsAAA(props) {
                     onClick={() => choiceHandler(true)}
                   >
                     <div className={classes.card__mid}>
-                      <h1>𝖆</h1>
+                    <img
+                    class = "img"
+                      src={require("../../assets/icons/identification_choice_one.png")}
+                      alt="ear"
+                    />
                       <p> 1 𝖆 Sound</p>
                     </div>
                   </div>
@@ -225,7 +229,11 @@ function LingIdentificationAvsAAA(props) {
                     onClick={() => choiceHandler(false)}
                   >
                     <div className={classes.card__mid}>
-                      <h1>𝖆𝖆𝖆 </h1>
+                    <img
+                    class = "img"
+                      src={require("../../assets/icons/identification_choice_three.png")}
+                      alt="ear"
+                    />
                       <p>3 𝖆 Sound</p>
                     </div>
                   </div>

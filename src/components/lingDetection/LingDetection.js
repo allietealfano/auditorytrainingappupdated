@@ -120,14 +120,16 @@ function LingDetection(props) {
               />
 
               {/* Display for whether there was sound or not */}
-              <div className={classes.select}>           
+              <div className={classes.select}> 
                 <div
                   className={classes.card}
                   ref={cardTrueRef}
                   onClick={() => choiceHandler(true)}
                 >
+
               {/*Adding Image to Sound choice*/}
                     <img
+                    class = "img"
                       src={require("../../assets/icons/detection_choice_sound.png")}
                       alt="ear"
                     />
@@ -141,10 +143,13 @@ function LingDetection(props) {
                   onClick={() => choiceHandler(false)}
                 >
                   {/*Adding Image to noSound choice*/}
+
                   <img
+                  class = "img"
                       src={require("../../assets/icons/detection_choice_nosound.png")}
                       alt="ear"
                     />
+                    
                   <div className={classes.card__mid}>
                     <p>No Sound</p>
                   </div>

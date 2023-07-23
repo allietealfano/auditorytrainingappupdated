@@ -4,22 +4,23 @@
   margin: 0;
   padding: 0;
   /* overflow: hidden; */
-  background-color: #f5f5f5;
   position: fixed;
   top: 4.5rem;
   width: 100%;
   font-size: 35px;
   z-index: 1000;
   text-align: center;
-  border-bottom-style: double;
-  border-color: rgba(var(--dark-blue));
+}
+
+h1{
+  color: #444
 }
 
 .add_post_btn {
   height: 3rem;
   width: 13rem;
-  top: 4.5rem;
-  right: 30rem;
+  top: 7rem;
+  right: 50rem;
   font-size: 1.7rem;
   border-radius: 0.5rem;
   background: rgba(var(--dark-blue));
@@ -36,20 +37,6 @@
 .btn_container {
   top: 10%;
   margin-left: 80%;
-}
-.create_post_btn {
-  height: 3rem;
-  position: absolute !important;
-  bottom: 1.7rem;
-  right: 1.7rem;
-  font-size: 15px;
-  font-weight: 550;
-  border-radius: 0.5rem !important;
-  background: rgba(var(--dark-blue));
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem 1rem !important;
 }
 
 .text_area {

@@ -170,7 +170,8 @@ function LingIdentificationVary(props) {
 
     const audioClip = new Audio(sound);
 
-    const audioClipDuration = 1000;
+    //Do not change audioClipDuration Value unless you want to go above 3 sounds--may cause bug
+    const audioClipDuration = 950;
     audioClip.loop = true;
     setTimeout(() => audioClip.loop = false, (audioClipDuration * (window.correctvalue-1)));
     audioClip.play();
@@ -215,7 +216,11 @@ function LingIdentificationVary(props) {
                   onClick={() => choiceHandler(true)}
                 >
                   <div className={classes.card__mid}>
-                    <h1>🔊 </h1>
+                  <img
+                    class = "img"
+                      src={require(`../../assets/icons/${window.value1}.png`)}
+                      alt="ear"
+                    />
                     <p> {window.value1} 𝖆 Sound</p>
                   </div>
                 </div>
@@ -225,7 +230,11 @@ function LingIdentificationVary(props) {
                   onClick={() => choiceHandler(false)}
                 >
                   <div className={classes.card__mid}>
-                    <h1>🔊</h1>
+                  <img
+                    class = "img"
+                      src={require(`../../assets/icons/${window.value2}.png`)}
+                      alt="ear"
+                    />
                     <p>{window.value2} 𝖆 Sound</p>
                   </div>
                 </div>
