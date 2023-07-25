@@ -18,14 +18,14 @@ function SupportPage() {
               />
 
         <div
-        className= "support_text_input"
+        className= {classes.support_text_input}
         >
           <form>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" />           
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email</label>
             <input type="text" id="email" name="email" placeholder="Your email" />
-            <label htmlFor="message">Message:</label>
+            <label htmlFor="message">Message</label>
             <textarea id="message" name="message" placeholder="Your message"></textarea>
 
             {/*TODO: Make Button send meesage to PO's lab email*/}

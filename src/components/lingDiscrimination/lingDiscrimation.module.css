@@ -17,6 +17,7 @@
 
   flex-direction: column;
   align-items: center;
+
 }
 
 .activity__items {
@@ -65,6 +66,11 @@
   background-color: rgba(var(--main-yellow));
   border-radius: 10px;
 }
+
+.card__mid img{
+
+  margin-right: 45px;
+}
 .btn_push {
   position: relative;
   top: 0px;
@@ -90,6 +96,7 @@
   -o-transition: All 250ms ease;
   -ms-transition: All 250ms ease;
   transition: All 250ms ease;
+
 }
 /*==========  Active State  ==========*/
 .btn_push_blue:active {
@@ -129,6 +136,31 @@
   box-shadow: 0px 5px 0px #177c8e;
   text-shadow: 1px 1px 1px #177c8e;
   cursor: pointer;
+  margin-right: 10rem;
+}
+
+.bg__container h3{
+  padding-top: 30px;
+  font-size: 20px;
+  padding-bottom: 50px;
+
+}
+
+.ind_activity_instruction_1 p{
+  font-size: 20px;
+  padding-left: 55px;
+}
+
+.ind_activity_instruction_2 p{
+  font-size: 20px;
+  padding-right: 42px;
+
+}
+
+.activity_instructions{
+  display: flex;
+  justify-content: space-between; /* To separate the instructions */
+  width: 100%; /* Occupy the full width of the container */
 }
 
 .card__mid {

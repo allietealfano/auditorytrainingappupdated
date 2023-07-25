@@ -55,7 +55,7 @@ function Completed(props) {
         
         //Return to dashboard func
         option2={
-          <Link to="/dashboard">
+          <Link to="/activity/inBetweenPage">
             <span>Activities</span>
           </Link>
         }

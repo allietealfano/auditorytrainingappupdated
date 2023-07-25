@@ -33,17 +33,17 @@
 
 .main_container_light {
   background-color: white;
-  margin-top: 170px;
+  margin-top: 180px;
   padding-left: 100px;
   padding-right: 30px;
   font-family: Sans-Serif;
 }
 .main_container_dark {
   background-color: #121212;
-  margin-top: 170px;
+  margin-top: 180px;
   padding-left: 100px;
   padding-right: 30px;
-  padding-bottom: 103px;
+  padding-bottom: 198px;
   font-family: Sans-Serif;
 }
 

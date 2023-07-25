@@ -1,7 +1,6 @@
 .navbar {
   height: 4.5rem;
   font-weight: 600;
-  margin: 0;
   padding: 0;
   /* overflow: hidden; */
   position: fixed;
@@ -13,14 +12,15 @@
 }
 
 h1{
-  color: #444
+  color: #444;
+  font-size: 65px;
 }
 
 .add_post_btn {
   height: 3rem;
   width: 13rem;
-  top: 7rem;
-  right: 50rem;
+  top: 8rem;
+  right: 60rem;
   font-size: 1.7rem;
   border-radius: 0.5rem;
   background: rgba(var(--dark-blue));
@@ -39,12 +39,23 @@ h1{
   margin-left: 80%;
 }
 
+.btn_container h3{
+  margin-left: 170px;
+  padding-bottom: 10px;
+}
+
 .text_area {
   font-size: 15px;
   min-width: 100%;
   max-width: 100%;
   min-height: 20%;
   max-height: 90%;
+  margin-top: 20px;
+}
+
+.create_post_btn{
+  margin-left: 180px;
+  margin-top: 20px;
 }
 
 .homePage {

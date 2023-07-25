@@ -184,12 +184,6 @@ function LingDiscrimination(props) {
           <Progress refSetter={refSetter} />
           <div className={classes.activity__items}>
             <div className={classes.opts}>	
-		
-            <p>Please press each play button</p>
-            <p>Select 'Same Sound' if the sounds were the same</p>
-            <p>Select 'Diff Sound' if the sounds were different</p>
-
-            <br></br>
           {/* Play sound buttons */}
           <p>
           <button className={classes.btn_push_blue}
@@ -207,6 +201,27 @@ function LingDiscrimination(props) {
           🔊
                 </button>  
           </p>
+
+          <div
+              
+              className="activity_instruction"
+
+              >
+                 <h3>Click each button above to play the sounds</h3>
+
+              </div>
+
+
+
+              <div className={classes.activity_instructions}>
+                <div className={classes.ind_activity_instruction_1}>
+                  <p>If both sounds were the same, click the button below</p>
+                </div>
+
+                <div className={classes.ind_activity_instruction_2}>
+                  <p>If both sounds were different, click the button below</p>
+                </div>
+              </div>
 
               <div className={classes.select}>
                 {/* User choice */}

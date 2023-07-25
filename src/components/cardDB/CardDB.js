@@ -23,7 +23,7 @@ function CardDB(props) {
 
   //Update the last visitted when accessed.
   useEffect(() => {
-    //setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));      //Causing Crashes with Dashboard
+    setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));      //Causing Crashes with Dashboard
     setLastVisited(
       new Date(allActivitiesObj?.[key].lastVisited).toLocaleDateString(locale)
     );
@@ -31,9 +31,10 @@ function CardDB(props) {
 
   //Set up images depending on the link associated with the card
   const imgSetter = () => {
-    if (props.link === "/lingActivity/detection") return "volume";
-    if (props.link === "/lingActivity/identification") return "arrows";
-    if (props.link === "/lingActivity/discrimination") return "ear";
+    console.log("props.link:", props.link);
+    if (props.link === "/activity/detection") return "detection";
+    if (props.link === "/activity/identification") return "identification";
+    if (props.link === "/activity/discrimination") return "discrimination";
     return "notes";
   };
 

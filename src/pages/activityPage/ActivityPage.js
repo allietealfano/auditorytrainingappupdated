@@ -53,11 +53,12 @@ function ActivityPage() {
       {!pop && (
         <div>
           <div className={classes.main__container}>
+
             <Cards />
             <Activities
               title={"Ling Activities"}
               activitiesArr={allActivities.lingActs}
-            />
+          />
           </div>
         </div>
 

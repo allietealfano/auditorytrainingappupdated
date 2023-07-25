@@ -106,14 +106,14 @@ tbody td:hover:before {
 
 .btnparent {
   display: flex;
-  margin-left: 705px;
+  margin-left: 80.5rem;
 }
 
 .socialbtn {
   padding-top: 3px;
   display: flex;
-  gap: 0.2px;
-  margin-left: 215px;
+  gap: 0.1px;
+  margin-left: 28rem;
 }
 
 /* Pagination Styles */
