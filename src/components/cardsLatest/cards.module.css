@@ -1,26 +1,21 @@
 .cards {
   padding: 5rem 0;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  border-radius: 3px;
+  border-radius: 3rem;
   background-color: #fff;
+  padding-left: 20px;
 }
 
 .header__title {
-  margin: 5rem 0;
+  margin: 1rem 0;
+  padding-bottom: 30px;
+  padding-top: 35px;
   color: #444;
-  margin-left: 470px;
+  margin-left: 540px;
 }
 
-.cards__yellow {
-  background-color: rgba(var(--light-yellow));
-}
-
-.cards__blue {
-  background-color: rgba(var(--dark-blue));
-}
 
 .section {
   padding: 8rem 3rem;

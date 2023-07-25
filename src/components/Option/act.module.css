@@ -34,13 +34,10 @@
   background-color: #94C773;
   position: relative;
   top: 25px;
-  /*margin-right: 5rem;*/
+  margin-right: 4.7rem;
 }
 
-/* .col_1_img:nth-child(odd) {
-  padding: 1rem;
-  background-color: rgba(var(--dark-yellow));
-} */
+
 
 .info {
   flex-direction: column;

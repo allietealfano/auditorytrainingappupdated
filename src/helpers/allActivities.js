@@ -28,7 +28,7 @@ const allActivities = {
       link: "/activity/comprehension",
       src: "comprehension",
       level: 4,
-      desc:"Work in Progress"
+      desc:"Work in Progress, Please Implement"
     },
   ],
 };

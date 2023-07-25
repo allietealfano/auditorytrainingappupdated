@@ -49,7 +49,7 @@ p{
   height: 4.5rem;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
+  position: relative;
   right: -5rem;
   color: #000000;
   margin-right: 2rem;
@@ -73,7 +73,6 @@ p{
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-  margin: 0 0.5rem;
   border: #000000 solid;
   overflow: hidden;
 }
@@ -83,6 +82,7 @@ p{
   height: 100%;
   vertical-align: middle;
   border: 0;
+  margin-left: 0rem;
 }
 
 .notification__img {
@@ -138,7 +138,6 @@ p{
 .profile__items:hover .list__container {
   opacity: 1;
   cursor: pointer;
-  /* background-color: rgb(202, 202, 202); */
 }
 
 .list__item {
@@ -149,6 +148,8 @@ p{
   align-items: center;
   justify-content: space-around;
   padding: 1rem 0;
+  padding-right: 1rem;
+  padding-left: 1rem;
   border-bottom: rgba(68, 68, 68, 0.3) 1px solid;
 }
 

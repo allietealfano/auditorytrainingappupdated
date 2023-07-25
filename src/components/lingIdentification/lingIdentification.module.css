@@ -34,6 +34,35 @@
   justify-content: space-between;
 }
 
+.bg__container h3{
+  padding-top: 30px;
+  font-size: 20px;
+  padding-bottom: 50px;
+
+}
+
+.ind_activity_instruction_1 p{
+  font-size: 20px;
+  padding-left: 55px;
+}
+
+.ind_activity_instruction_2 p{
+  font-size: 20px;
+  padding-right: 42px;
+
+}
+
+.activity_instructions{
+  display: flex;
+  justify-content: space-between; /* To separate the instructions */
+  width: 100%; /* Occupy the full width of the container */
+}
+
+.card__mid img{
+
+  margin-right: 45px;
+}
+
 .card {
   height: 25rem;
   width: 25rem;
@@ -130,6 +159,8 @@
   box-shadow: 0px 5px 0px #177c8e;
   text-shadow: 1px 1px 1px #177c8e;
   cursor: pointer;
+  margin-right: 10rem;
+
 }
 
 .card__mid {

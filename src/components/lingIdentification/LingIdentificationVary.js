@@ -206,7 +206,28 @@ function LingIdentificationVary(props) {
                 onClick={() => playSound(sound)}
               >
 			          🔊
-              </button>            
+              </button>  
+
+              <div
+              
+              className="activity_instruction"
+
+              >
+                 <h3>Click each button above to play the sounds</h3>
+
+              </div>
+
+
+
+              <div className={classes.activity_instructions}>
+                <div className={classes.ind_activity_instruction_1}>
+                  <p>If {window.value1} 'a' sound&#40;s&#41; played, click the button below</p>
+                </div>
+
+                <div className={classes.ind_activity_instruction_2}>
+                  <p>If {window.value2} 'a' sound&#40;s&#41; played, click the button below</p>
+                </div>
+              </div>          
               
               {/* Choice handler and card options */}
               <div className={classes.select}>

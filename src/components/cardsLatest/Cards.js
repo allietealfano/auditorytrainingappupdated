@@ -32,9 +32,9 @@ function Cards() {
 
   //Decides color based on col...index?
   const colorHandler = (col) => {
-    if (col === 0) return `rgb(192, 165, 255)`;
-    if (col === 1) return `rgb(133, 193, 233)`;
-    if (col === 2) return `rgb(218, 247, 166)`;
+    if (col === 0) return 1;
+    if (col === 1) return 2;
+    if (col === 2) return 3;
     return `rgb(${(63, 137, 187)})`;
   };
 
@@ -50,6 +50,7 @@ function Cards() {
             {userData.map((data, i) => {
               if (data) {
                 return (
+
                   <CardDB
                     key={i}
                     title={data.title}

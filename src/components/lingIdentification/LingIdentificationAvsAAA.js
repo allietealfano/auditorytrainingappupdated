@@ -62,7 +62,7 @@ function LingIdentificationAvsAAA(props) {
 
     const audioClip = new Audio(rightsound);
 
-    const audioClipDuration = 1000;
+    const audioClipDuration = 900;
     audioClip.loop = true;
     setTimeout(() => (audioClip.loop = false), audioClipDuration * (1 - 1));
     audioClip.play();
@@ -75,7 +75,7 @@ function LingIdentificationAvsAAA(props) {
 
     const audioClip = new Audio(wrongsound);
 
-    const audioClipDuration = 1000;
+    const audioClipDuration = 950;
     audioClip.loop = true;
     setTimeout(() => (audioClip.loop = false), audioClipDuration * (1 - 1));
     audioClip.play();
@@ -163,7 +163,7 @@ function LingIdentificationAvsAAA(props) {
 
     const audioClip = new Audio(sound);
 
-    const audioClipDuration = 1000;
+    const audioClipDuration = 950;
     audioClip.loop = true;
     setTimeout(
       () => (audioClip.loop = false),
@@ -195,10 +195,6 @@ function LingIdentificationAvsAAA(props) {
             <div className={classes.activity__items}>
               <div className={classes.opts}>
 
-                <p>Please press each play button</p>
-                <p>Press '1 a sound' if you hear one 'a' sound</p>
-                <p>Press '3 a sounds' if you hear three 'a' sounds</p>
-                <br></br>
                 {/* Play sounds for activity */}
                 <button
                   className={classes.btn_push_blue}
@@ -206,6 +202,27 @@ function LingIdentificationAvsAAA(props) {
                 >
                   🔊
                 </button>
+
+                <div
+              
+              className="activity_instruction"
+
+              >
+                 <h3>Click the button above to play the sound</h3>
+
+              </div>
+
+
+
+              <div className={classes.activity_instructions}>
+                <div className={classes.ind_activity_instruction_1}>
+                  <p>If a 1 'a' sound played, click the button below</p>
+                </div>
+
+                <div className={classes.ind_activity_instruction_2}>
+                  <p>If 3 'a' sounds played, click the button below</p>
+                </div>
+              </div>
 
                 {/* Player choice cards */}
                 <div className={classes.select}>

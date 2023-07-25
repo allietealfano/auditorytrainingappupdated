@@ -108,8 +108,6 @@ function LingDetection(props) {
           <Progress refSetter={refSetter} />
           <div className={classes.activity__items}>
             <div className={classes.opts}>
-              <p>Click the play button below to hear the sound</p>
-              <br></br>
               {/* Play audio button */}
               <PlayButton
                 audUrl={
@@ -118,6 +116,28 @@ function LingDetection(props) {
                     : "https://firebasestorage.googleapis.com/v0/b/auditorytrainingapp.appspot.com/o/audio%2Fno_sound%2Fno_sound.mp3?alt=media&token=480a3b00-a8f0-4277-8d47-751dbf96d3b6"
                 }
               />
+
+              <div
+              
+              className="activity_instruction"
+
+              >
+                 <h3>Click the button above to play the sound</h3>
+
+              </div>
+
+
+
+              <div className={classes.activity_instructions}>
+                <div className={classes.ind_activity_instruction_1}>
+                  <p>If you heard a sound, click the button below</p>
+                </div>
+
+                <div className={classes.ind_activity_instruction_2}>
+                  <p>If you did not hear a sound, click the button below</p>
+                </div>
+              </div>
+
 
               {/* Display for whether there was sound or not */}
               <div className={classes.select}> 

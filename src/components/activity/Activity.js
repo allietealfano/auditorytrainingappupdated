@@ -79,24 +79,7 @@ function Activity(props) {
                 {props.desc}
               </span>
             </figcaption>
-          </figure>
-
-          {/* Images in the top right */}
-       {/*   <div className={classes.col_2}>
-            <img
-              className={classes.col_2_1}
-              src={require("../../assets/icons/notes.png")}
-              alt="notes"
-            />
-            <img
-              className={classes.col_2_1}
-              src={require("../../assets/icons/pie-chart.png")}
-              alt="pie chart"
-            />
-          </div>*/}
-          
-          {/* Level difficulty & color setting */}
-          
+          </figure>         
           </div>
       </Link>
     </>

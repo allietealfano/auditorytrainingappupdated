@@ -10,8 +10,8 @@
 }
 
 .header__title {
-  margin-top: 0px;
   color: #444;
+  padding-bottom: 10px;
 }
 
 .card__img {
@@ -22,13 +22,14 @@
   margin-top: 2rem;
   margin-bottom: 2rem; 
   border-radius: 5px;
+  padding-bottom: 32rem;
 }
 
 .subheading {
   color: #999;
   margin-top: 10px;
   margin-left: 20px;
-  margin-bottom: 60px;
+  padding-bottom: 20px;
 }
 
 .wrapper {
@@ -43,15 +44,21 @@
   grid-auto-columns: 300px 100px;
 }
 
+.wrapper img{
+
+  padding-right: 60px;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 label {
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 input,
@@ -72,9 +79,9 @@ textarea {
   border: 2px solid rgba(var(--black));
 }
 
-.support_text_input{
-  border: 1.5px solid rgba(var(--black));
-  
+.support_text_input label{
+
+  color: black;
 }
 
 button {
