@@ -2,11 +2,11 @@
 
 Authors:
 
-Capstone 2: Alex Rodriguez, Casey Sit, Maney Wu, Barbarella Castillo, Joseph Tran
+Capstone 2: Nicole Cruz, Ashley Enalien, Rafael Mejia Galvan, Hubert Cabrera, Enrique Portela 
 
 Product Owner: Alliete Alfano
 
-The Auditory Training App is currently in its third version. It is designed for adults with
+The Auditory Training App is currently in its fourth version. It is designed for adults with
 hearing loss who have received a hearing aid or cochlear implant and want to improve their hearing
 via fun games and other listening activities.
 
