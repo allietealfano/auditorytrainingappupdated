@@ -2,10 +2,10 @@ import { React, useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
-import LingDetection from "../../components/lingDetection/LingDetection";
+import LingDetectionLvl2 from "../../components/lingDetection/LingDetectionLvl2";
 
 //Page for Detection Game
-function LingDetectionPage() {
+function LingDetectionPageGame2() {
     //Variables for progress, score, and sound states
     const [progress, setProgress] = useState(0);
     const [score, setScore] = useState(0);
@@ -20,11 +20,9 @@ function LingDetectionPage() {
     useEffect(() => {
         //Retrieve sounds from db
         const getLingSounds = async function () {
-            const docRef = doc(db, "audio", "ling");
+            const docRef = doc(db, "audio", "lingDetectionGame2");
             const docSnap = await getDoc(docRef);
-
             console.log(docSnap);
-
             //Checking to make sure docs were correctly grabbed
             if (docSnap.exists()) {
                 //Set array of sounds with associated key value
@@ -46,7 +44,7 @@ function LingDetectionPage() {
         <>
             {/* Calls LingDetection and passes required params. 
       If you'd like to edit Detection Game, please refer to -LingDetection.js- */}
-            <LingDetection
+            <LingDetectionLvl2
                 objKey={"activitydetection"}
                 score={score}
                 prog={progress}
@@ -58,4 +56,4 @@ function LingDetectionPage() {
     );
 }
 
-export default LingDetectionPage;
+export default LingDetectionPageGame2;

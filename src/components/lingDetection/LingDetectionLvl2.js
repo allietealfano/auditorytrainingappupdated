@@ -8,7 +8,7 @@ import Completed from "../Completed/Completed";
 import classes from "./lingDetection.module.css";
 
 //Purpose: Game page for LingDetection
-function LingDetection(props) {
+function LingDetectionLvl2(props) {
     //Set up the states involved
     const [choice, setChoice] = useState(null);
     const [currentScores, setCurrentScores] = useState([]);
@@ -206,4 +206,4 @@ function LingDetection(props) {
     );
 }
 
-export default LingDetection;
+export default LingDetectionLvl2;
