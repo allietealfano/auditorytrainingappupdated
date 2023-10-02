@@ -41,7 +41,7 @@ function LingDetection(props) {
 
     //randomly set one of the ling sounds from the database passed as an array from the parent component
     if (props.arr[0][1])
-        lingSound = props.arr[Math.floor(Math.random() * 4)][1];
+        lingSound = props.arr[Math.floor(Math.random() * props.arr.length)][1];
 
     //Checks if the user is correct
     const checkHandler = async () => {
