@@ -209,7 +209,10 @@ function LingDiscriminationLvl2(props) {
                                 </p>
 
                                 <div className="activity_instruction">
-                                    <h3>SUUUUUUUUUUUBADASSDUVCLKDS</h3>
+                                    <h3>
+                                        Click each button above to play the
+                                        sounds
+                                    </h3>
                                 </div>
 
                                 <div className={classes.activity_instructions}>

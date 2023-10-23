@@ -6,7 +6,7 @@ const allDiscriminationGames = {
             title: "Same or Different Level 1",
             link: "/lingActivity/discrimination",
             src: "discrimination",
-            desc: "Detect whether the two sounds are the same or notL Ling 6 sounds",
+            desc: "Detect whether the two sounds are the same or not: Ling 6 sounds",
         },
         {
             title: "Same or Different Level 2",
