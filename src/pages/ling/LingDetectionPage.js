@@ -51,7 +51,7 @@ function LingDetectionPage() {
                 score={score}
                 prog={progress}
                 progressHandler={progressHandler}
-                sound={Math.floor(Math.random() * 2)}
+                sound={Math.floor(Math.random() * 3)} //default was 2, increase the number less chance of no sound
                 arr={soundsArr}
             />
         </>

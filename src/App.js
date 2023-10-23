@@ -15,6 +15,7 @@ import ResetPage from "./pages/reset/ResetPage";
 import LingDetectionPage from "./pages/ling/LingDetectionPage";
 import LingDetectionPageGame2 from "./pages/ling/LingDetectionPageGame2";
 import LingDiscriminationPage from "./pages/ling/LingDiscriminationPage";
+import LingDiscriminationPageGame2 from "./pages/ling/LingDiscriminationPageGame2";
 import LingIdentificationPage from "./pages/ling/LingIdentificationPage";
 import LingIdentificationPage2 from "./pages/ling/LingIdentificationPage2";
 import ActivityPage from "./pages/activityPage/ActivityPage";
@@ -27,6 +28,7 @@ import ReportsPage2 from "./pages/reportsPage/reportsPage2";
 import Settings from "./pages/settings/Settings";
 import SupportPage from "./pages/supportPage/SupportPage";
 import InBetweenPage from "./pages/inBetweenPage/inBetweenPage";
+import VoiceSelectorPage from "./pages/voiceSelectorPage/voiceSelectorPage";
 
 export const ThemeContext = createContext(null);
 
@@ -73,6 +75,16 @@ function App() {
                             element={
                                 authContext.isLoggedIn ? (
                                     <InBetweenPage />
+                                ) : (
+                                    <Navigate to="/auth" />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/activity/voiceSelector"
+                            element={
+                                authContext.isLoggedIn ? (
+                                    <VoiceSelectorPage />
                                 ) : (
                                     <Navigate to="/auth" />
                                 )
@@ -134,6 +146,16 @@ function App() {
                             element={
                                 authContext.isLoggedIn ? (
                                     <LingDiscriminationPage />
+                                ) : (
+                                    <Navigate to="/auth" />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/lingActivity/discriminationGame2"
+                            element={
+                                authContext.isLoggedIn ? (
+                                    <LingDiscriminationPageGame2 />
                                 ) : (
                                     <Navigate to="/auth" />
                                 )

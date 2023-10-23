@@ -3,16 +3,16 @@
 const allDetectionGames = {
     detectGames: [
         {
-            title: "Sound or No Sound Level 1",
+            title: "Detection Level 1",
             link: "/lingActivity/detection",
             src: "detection",
-            desc: "Detect whether a sound played or not: a, u, i, m, s, sh",
+            desc: "Detect whether a sound played or not: Ling 6 sounds",
         },
         {
-            title: "Sound or No Sound Level 2",
+            title: "Detection Level 2",
             link: "/lingActivity/detectionGame2",
             src: "detection",
-            desc: "Detect whether a sound played or not: a, u, i, m, s, sh, n, z, h, dz",
+            desc: "Detect whether a sound played or not: Ling 10 sounds",
         },
     ],
 };

@@ -2,30 +2,29 @@ import { React, useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
-import LingDetectionLvl2 from "../../components/lingDetection/LingDetectionLvl2";
+import LingDiscriminationLvl2 from "../../components/lingDiscrimination/lingDiscriminationLvl2";
 
-//Page for Detection Game
-function LingDetectionPageGame2() {
+//Page for Discrimination Game
+function LingDiscriminationPageGame2() {
     //Variables for progress, score, and sound states
     const [progress, setProgress] = useState(0);
-    const [score, setScore] = useState(0);
     const [soundsArr, setSoundsArr] = useState([[0, 0]]);
 
     //Handler to update progression and score
     const progressHandler = (newProgress, newScore) => {
         setProgress(newProgress);
-        setScore(newScore);
+        // setScore(newScore);
     };
 
     useEffect(() => {
         //Retrieve sounds from db
         const getLingSounds = async function () {
-            const docRef = doc(db, "audio", "lingDetectionGame2");
+            const docRef = doc(db, "audio", "lingDetectionGame2"); // choose audio from database
             const docSnap = await getDoc(docRef);
-            console.log(docSnap);
-            //Checking to make sure docs were correctly grabbed
+
+            //Checking to make sure docs correctly grabbed
             if (docSnap.exists()) {
-                //Set array of sounds with associated key value
+                //Set SoundsArr to sounds from db
                 setSoundsArr(
                     Object.keys(docSnap.data()).map((key) => [
                         key,
@@ -35,25 +34,24 @@ function LingDetectionPageGame2() {
             }
         };
 
-        //Call func declared earlier
+        //Call func declared previously
         getLingSounds();
     }, []);
-
-    //Display
     return (
         <>
             {/* Calls LingDetection and passes required params. 
-      If you'd like to edit Detection Game, please refer to -LingDetection.js- */}
-            <LingDetectionLvl2
-                objKey={"activitydetection"}
-                score={score}
+      If you'd like to edit Detection Game, please refer to -LingDiscrimination.js- */}
+            <LingDiscriminationLvl2
+                objKey={"lingActivitydiscrimination"}
+                // score={score}
                 prog={progress}
                 progressHandler={progressHandler}
-                sound={Math.floor(Math.random() * 4)} //Increase the number less probability of no sound
+                sound1={Math.floor(Math.random() * 2)}
+                sound2={Math.floor(Math.random() * 2)}
                 arr={soundsArr}
             />
         </>
     );
 }
 
-export default LingDetectionPageGame2;
+export default LingDiscriminationPageGame2;
