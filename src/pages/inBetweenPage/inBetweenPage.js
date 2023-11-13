@@ -24,11 +24,11 @@ function inBetweenPage() {
                         />
                     </div>
                     <div className={classes.buttonWrapper}>
-                        <Link to={"/activity/voiceSelector"}>
+                        {/* <Link to={"/activity/voiceSelector"}>
                             <button className={classes.voicebtn}>
                                 Voice Selector
                             </button>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             }

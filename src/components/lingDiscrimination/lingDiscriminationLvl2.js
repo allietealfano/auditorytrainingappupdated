@@ -194,7 +194,18 @@ function LingDiscriminationLvl2(props) {
                                 <p>
                                     <button
                                         className={classes.btn_push_blue}
-                                        onClick={() => playSound(window.sound1)}
+                                        onClick={() => {
+                                            if (!window.sound1) {
+                                                window.sound1 =
+                                                    props.arr[
+                                                        Math.floor(
+                                                            Math.random() *
+                                                                props.arr.length
+                                                        )
+                                                    ][1];
+                                            }
+                                            playSound(window.sound1);
+                                        }}
                                     >
                                         🔊
                                     </button>
@@ -202,7 +213,19 @@ function LingDiscriminationLvl2(props) {
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <button
                                         className={classes.btn_push_blue}
-                                        onClick={() => playSound(window.sound2)}
+                                        onClick={() => {
+                                            if (!window.sound2) {
+                                                window.sound2 =
+                                                    props.arr[
+                                                        Math.floor(
+                                                            Math.random() *
+                                                                props.arr.length
+                                                        )
+                                                    ][1];
+                                            }
+
+                                            playSound(window.sound2);
+                                        }}
                                     >
                                         🔊
                                     </button>
