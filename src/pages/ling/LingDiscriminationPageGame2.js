@@ -23,7 +23,7 @@ function LingDiscriminationPageGame2() {
                 db,
                 "audio_voices",
                 voiceType,
-                "ling_discrimination_game_1", // Adjusted to match your database screenshot
+                "ling_discrimination_game_2", 
                 "sounds"
             );
         } else {
@@ -31,7 +31,7 @@ function LingDiscriminationPageGame2() {
                 db,
                 "audio_voices",
                 voiceType,
-                "ling_detection_discrimination_game_1", // Adjusted to match your database screenshot
+                "ling_detection_discrimination_game_2", 
                 "sounds"
             );
         }
@@ -98,10 +98,24 @@ function LingDiscriminationPageGame2() {
                     db,
                     "audio_voices",
                     "male_a",
-                    "ling_discrimination_game_1",
+                    "ling_discrimination_game_2",
                     "sounds"
                 );
-            } else {
+            } else if (voice === "male_b" || voice === "male_c" || voice === "male_d") {
+                // Extracting the last character from the voice variable
+                const letter = voice.charAt(voice.length - 1);
+            
+                docRef = doc(
+                    db,
+                    "audio_voices",
+                    "male_" + letter, // Correctly concatenates the letter with "male_"
+                    "ling_detection_discrimination_game_2",
+                    "sounds"
+                );
+            }
+            
+            
+            else {
                 docRef = doc(
                     db,
                     "audio_voices",
@@ -185,6 +199,20 @@ function LingDiscriminationPageGame2() {
                     <div className="voice-choice-wrapper">
                         <button
                             className="voice-btn"
+                            onClick={() => handleSetVoice("female_d")}
+                        >
+                            Female D
+                        </button>
+                        <button
+                            className="preview-btn"
+                            onClick={() => playAudioSample("female_d")}
+                        >
+                            🔊
+                        </button>
+                    </div>
+                    <div className="voice-choice-wrapper">
+                        <button
+                            className="voice-btn"
                             onClick={() => handleSetVoice("male_a")}
                         >
                             Male A
@@ -192,6 +220,48 @@ function LingDiscriminationPageGame2() {
                         <button
                             className="preview-btn"
                             onClick={() => playAudioSample("male_a")}
+                        >
+                            🔊
+                        </button>
+                    </div>
+                    <div className="voice-choice-wrapper">
+                        <button
+                            className="voice-btn"
+                            onClick={() => handleSetVoice("male_b")}
+                        >
+                            Male B
+                        </button>
+                        <button
+                            className="preview-btn"
+                            onClick={() => playAudioSample("male_b")}
+                        >
+                            🔊
+                        </button>
+                    </div>
+                    <div className="voice-choice-wrapper">
+                        <button
+                            className="voice-btn"
+                            onClick={() => handleSetVoice("male_c")}
+                        >
+                            Male C
+                        </button>
+                        <button
+                            className="preview-btn"
+                            onClick={() => playAudioSample("male_c")}
+                        >
+                            🔊
+                        </button>
+                    </div>
+                    <div className="voice-choice-wrapper">
+                        <button
+                            className="voice-btn"
+                            onClick={() => handleSetVoice("male_d")}
+                        >
+                            Male D
+                        </button>
+                        <button
+                            className="preview-btn"
+                            onClick={() => playAudioSample("male_d")}
                         >
                             🔊
                         </button>
