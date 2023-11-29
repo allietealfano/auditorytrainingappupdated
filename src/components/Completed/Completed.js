@@ -21,7 +21,7 @@ function Completed(props) {
   const key = `${props.objKey}`.replaceAll("/", "");
 
   //Retrieve user history
-  const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
+  const [[allActivitiesObj], [allGamesObj], isPending, err] = useFetch("allActivitiesObj", "allGamesObj");
 
   /*TODO: db is inconsistent when referring to objKey (lingactivitydetection vs activitydetection)*/
   //Retrieving user data from fb db.
@@ -34,12 +34,19 @@ function Completed(props) {
         // ...props.currentScores,
       ),
     });
+    updateDoc(UId, {
+      [`allGamesObj.${props.objKey}.completions`]: arrayUnion(
+        { score: props.score, date: new Date().toLocaleString('en-GB',{timeZone: 'EST'})},
+        // ...props.currentScores,
+      ),
+    });
 
     //Grab the data from the db
     //console.log("TEST",allActivitiesObj);
     setData(allActivitiesObj?.[key].completions); //Access the history...
+    setData(allGamesObj?.[key].completions);
 
-  }, [allActivitiesObj]);
+  }, [allActivitiesObj] [allGamesObj]);
 
   return (
     <>
