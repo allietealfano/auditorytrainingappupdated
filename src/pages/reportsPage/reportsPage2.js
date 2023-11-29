@@ -24,7 +24,7 @@ function ReportsPage2() {
   const [currentPage, setCurrentPage] = useState(0);
   const csvLink = useRef(); // Create a reference to the CSVLink component
 
-  const [[activityData], isPending, err] = useFetch("allActivitiesObj");
+  const [[activityData], isPending, err] = useFetch("allActivitiesObj", "allGamesObj");
   const firstUpdate = useRef(true);
 
   useEffect(() => {

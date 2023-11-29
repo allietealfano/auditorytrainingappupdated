@@ -1,0 +1,36 @@
+.acts__container {
+    margin-top: 2rem;
+    display: grid;
+    flex-direction: row;
+    color: rgb(0, 0, 0);
+  }
+  
+  .acts__container h3{
+    margin-left: 563px;
+    color: #444;
+  }
+  .acts__title {
+    max-width: 80rem;
+    margin-top: 2rem;
+    padding-bottom: 20px;
+    margin-left: 600px;
+  }
+  
+  .acts__title h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+  
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .display{
+    display: inline-flex;
+    gap: 50px
+  }
+  

@@ -1,0 +1,116 @@
+.bg__container {
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+  
+  }
+  
+  .bg__container h3{
+    padding-top: 30px;
+    font-size: 20px;
+    padding-bottom: 50px;
+  
+  }
+  
+  .ind_activity_instruction_1 p{
+    font-size: 20px;
+    padding-left: 55px;
+  }
+  
+  .ind_activity_instruction_2 p{
+    font-size: 20px;
+    padding-right: 42px;
+  
+  }
+  
+  .activity_instructions{
+    display: flex;
+    justify-content: space-between; /* To separate the instructions */
+    width: 100%; /* Occupy the full width of the container */
+  }
+  
+  .activity {
+    position: relative;
+    padding: 4rem;
+    max-width: 120rem;
+    height: 100vh;
+    margin: auto;
+  }
+  
+  .opts {
+    display: flex;
+  
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .activity__items {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 30px;
+  }
+  
+  .select {
+    width: 80%;
+    margin: 5rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card {
+    height: 25rem;
+    width: 25rem;
+    margin: 8px;
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    color: rgba(var(--dark-blue));
+    box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+    transition: all 0.2s ease-out;
+  }
+  
+  .card__mid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 500px;
+  }
+  
+  .card__mid p {
+    text-transform: uppercase;
+    margin-top: 4rem;
+    font-weight: 600;
+    font-size: 2rem;
+    padding: 2rem 4rem;
+    background-color: rgba(var(--main-yellow));
+    border-radius: 10px;
+  }
+  
+  .sound_icon{
+    display: flex;
+    /*flex-direction: column;*/
+    height: 10rem;
+    width: 10rem;
+    justify-content: center;
+    color: #444;
+    padding-top: 2em;
+    padding-left: 2em;
+  }
+  
+  img{
+    width: 170px;
+    margin-left: 4rem;
+  }
+  
+  
+  /* .activity_instructions{
+  
+  
+  } */

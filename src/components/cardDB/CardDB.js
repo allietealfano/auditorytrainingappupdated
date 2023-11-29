@@ -16,18 +16,42 @@ function CardDB(props) {
   const locale = useContext(AuthContext).locale;
 
   //fetching the allactivitiesobj from fb db
-  const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
+  const [data, isPending, err] = useFetch("allActivitiesObj", "allGamesObj");
+  const [allActivitiesObj, allGamesObj] = data || [];
+  // const [[allActivitiesObj], [allGamesObj], isPending, err] = useFetch("allActivitiesObj", "allGamesObj");
+
+  // Now you can use the activities and games arrays in your code
+
 
   //Replacing slashes in the key for it to be usable
   const key = `${props.link}`.replaceAll("/", "");
 
   //Update the last visitted when accessed.
-  useEffect(() => {
-    setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));      //Causing Crashes with Dashboard
-    setLastVisited(
-      new Date(allActivitiesObj?.[key].lastVisited).toLocaleDateString(locale)
-    );
-  }, [allActivitiesObj, key, locale]);
+  // useEffect(() => {
+  //   setAllScores(allActivitiesObj?.[key].completions.map((comp) => comp.score));
+  //   setAllScores(allGamesObj?.[key].completions.map((comp) => comp.score));      //Causing Crashes with Dashboard
+  //   setLastVisited(
+  //     new Date(allActivitiesObj?.[key].lastVisited).toLocaleDateString(locale),
+  //     new Date(allGamesObj?.[key].lastVisited).toLocaleDateString(locale)
+  //   );
+  // }, [allActivitiesObj, allGamesObj, key, locale]);
+
+  // Update the last visited when accessed.
+useEffect(() => {
+  if (isPending || err) {
+    return; // Handle loading or error state
+  }
+
+  const key = `${props.link}`.replaceAll("/", "");
+  const activitiesCompletions = allActivitiesObj?.[key]?.completions ?? [];
+  const gamesCompletions = allGamesObj?.[key]?.completions ?? [];
+
+  setAllScores(activitiesCompletions.map((comp) => comp.score));
+  setLastVisited(
+    new Date(allActivitiesObj?.[key]?.lastVisited).toLocaleDateString(locale)
+  );
+}, [allActivitiesObj, allGamesObj, props.link, locale, isPending, err]);
+
 
   //Set up images depending on the link associated with the card
   const imgSetter = () => {
@@ -35,6 +59,7 @@ function CardDB(props) {
     if (props.link === "/activity/detection") return "detection";
     if (props.link === "/activity/identification") return "identification";
     if (props.link === "/activity/discrimination") return "discrimination";
+    if (props.link === "/activity/gameActivities/matching") return "detection";
     return "notes";
   };
 

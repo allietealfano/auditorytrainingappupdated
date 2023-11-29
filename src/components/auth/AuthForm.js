@@ -4,8 +4,9 @@ import { setDoc, doc } from "firebase/firestore";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 import AuthContext from "../store/auth-context";
-import { db, apiKey } from "../../firebase-config";
+import { db } from "../../firebase-config";
 import { allActivities } from "../../helpers/allActivities";
+import { allGames } from "../../helpers/allGames";
 import {
   CountryDropdown,
   RegionDropdown,
@@ -47,15 +48,26 @@ function AuthForm(props) {
     setIsLogin((prevState) => !prevState);
   };
 
+  const apiKey = "AIzaSyC85rsx-Nb7HYh6uX5HKHd17zboiuwiWUI";
+
   //Initialize variables
   let allActivitiesObj = {};
+  let allGamesObj = {};
   const activities = { completions: [], lastVisited: "" };
+  const games = { completions: [], lastVisited: "" };
 
   //Setting up obj links
   Object.entries(allActivities).forEach((activityGroup) => {
     activityGroup[1].forEach((activity) => {
       const newObj = { [activity.link.replaceAll("/", "")]: { ...activities } };
       allActivitiesObj = { ...allActivitiesObj, ...newObj };
+    });
+  });
+
+  Object.entries(allGames).forEach((gameGroup) => {
+    gameGroup[1].forEach((game) => {
+      const newObj = { [game.link.replaceAll("/", "")]: { ...games } };
+      allGamesObj = { ...allGamesObj, ...newObj };
     });
   });
 
@@ -151,6 +163,7 @@ function AuthForm(props) {
             privatePronouns: false,
             latestActivities: [],
             allActivitiesObj,
+            allGamesObj,
           };
           //Updating db
           const UId = doc(db, `users/${data.localId}`);

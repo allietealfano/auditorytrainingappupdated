@@ -1,0 +1,47 @@
+.word-search-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 40px);
+    grid-gap: 2px;
+    margin-bottom: 20px;
+  }
+  
+  .letter {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .letter.selected {
+    background-color: #a0c8f0;
+  }
+  
+  .word-list {
+    text-align: center;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  li.found {
+    text-decoration: line-through;
+  }
+  

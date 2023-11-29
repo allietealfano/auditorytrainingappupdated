@@ -13,11 +13,20 @@ import AuthContext from "./components/store/auth-context";
 import IdleTimerContainer from "./components/store/IdleTimerContainer";
 import ResetPage from "./pages/reset/ResetPage";
 import LingDetectionPage from "./pages/ling/LingDetectionPage";
+import LingMatchingPage from "./pages/ling/LingMatchingPage";
+import LingMatchingPage2 from "./pages/ling/LingMatchingPage2";
+import LingMatchingPage3 from "./pages/ling/LingMatchingPage3";
+import LingMatchingPage4 from "./pages/ling/LingMatchingPage4";
+import CrossWord from "./components/crossWord/CrossWord";
+import CrossWord2 from "./components/crossWord2/CrossWord2";
 import LingDiscriminationPage from "./pages/ling/LingDiscriminationPage";
 import LingIdentificationPage from "./pages/ling/LingIdentificationPage";
 import LingIdentificationPage2 from "./pages/ling/LingIdentificationPage2";
 import ActivityPage from "./pages/activityPage/ActivityPage";
+import GamePage from "./pages/activityPage/GamePage";
 import GamePageDetection from "./pages/gamePage/GamePageDetection";
+import GamePageMatching from "./pages/gamePage/GamePageMatching";
+import GamePageCrossWords from "./pages/gamePage/GamePageCrossWords";
 import GamePageDiscrimination from "./pages/gamePage/GamePageDiscrimination";
 import GamePageIdentification from "./pages/gamePage/GamePageIdentification";
 import DetectionForum from "./pages/forum/DetectionForum";
@@ -80,6 +89,16 @@ function App() {
             />
             {/* Here would be in-between page*/}
             <Route
+              path="/activity/gameActivities"
+              element={
+                authContext.isLoggedIn ? (
+                  <GamePage />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
               path="/activity/detection"
               element={
                 authContext.isLoggedIn ? (
@@ -109,6 +128,87 @@ function App() {
               )
             }
           />
+          {/* Start Of Game Pages*/}
+          <Route
+              path="/activity/gameActivities/matching"
+              element={
+                authContext.isLoggedIn ? (
+                  <GamePageMatching />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl1"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl2"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage2 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl3"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage3 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl4"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage4 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/activity/gameActivities/crosswords"
+              element={
+                authContext.isLoggedIn ? (
+                  <GamePageCrossWords />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/crosswordslvl1"
+              element={
+                authContext.isLoggedIn ? (
+                  <CrossWord />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/crosswordslvl2"
+              element={
+                authContext.isLoggedIn ? (
+                  <CrossWord2 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
             <Route
               path="/lingActivity/detection"
               element={
