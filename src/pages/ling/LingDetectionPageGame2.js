@@ -58,7 +58,7 @@ function LingDetectionPage() {
                     db,
                     "audio_voices",
                     "female_a",
-                    "ling_detection_game_1",
+                    "ling_detection_game_2",
                     "sounds"
                 );
             } else if (voice === "female_b") {
@@ -66,7 +66,7 @@ function LingDetectionPage() {
                     db,
                     "audio_voices",
                     "female_b",
-                    "ling_detection_discrimination_game_1",
+                    "ling_detection_discrimination_game_2",
                     "sounds"
                 );
             } else if (voice === "female_c") {
@@ -74,7 +74,7 @@ function LingDetectionPage() {
                     db,
                     "audio_voices",
                     "female_c",
-                    "ling_detection_discrimination_game_1",
+                    "ling_detection_discrimination_game_2",
                     "sounds"
                 );
             } else if (voice === "male_a") {
@@ -82,7 +82,7 @@ function LingDetectionPage() {
                     db,
                     "audio_voices",
                     "male_a",
-                    "ling_detection_game_1",
+                    "ling_detection_game_2",
                     "sounds"
                 );
             } else if (voice === "male_b" || voice === "male_c" || voice === "male_d") {
@@ -93,18 +93,17 @@ function LingDetectionPage() {
                     db,
                     "audio_voices",
                     "male_" + letter, // Correctly concatenates the letter with "male_"
-                    "ling_detection_discrimination_game_1",
+                    "ling_detection_discrimination_game_2",
                     "sounds"
                 );
             }
-            
-            
+                   
             else {
                 docRef = doc(
                     db,
                     "audio_voices",
                     "female_a",
-                    "ling_detection_game_1",
+                    "ling_detection_game_2",
                     "sounds"
                 );
             }
@@ -134,7 +133,7 @@ function LingDetectionPage() {
                 db,
                 "audio_voices",
                 voiceType,
-                "ling_discrimination_game_1", 
+                "ling_discrimination_game_2", 
                 "sounds"
             );
         } else {
@@ -142,7 +141,7 @@ function LingDetectionPage() {
                 db,
                 "audio_voices",
                 voiceType,
-                "ling_detection_discrimination_game_1", 
+                "ling_detection_discrimination_game_2", 
                 "sounds"
             );
         }

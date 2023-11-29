@@ -1,0 +1,116 @@
+.sidebar {
+    position: fixed;
+    left: -500px; /* Hide sidebar by default */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f9f9f9;
+    transition: left 0.3s ease;
+    /* Add some padding and possibly other styles */
+}
+
+
+.wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.voice-choice-wrapper {
+    display: flex;
+    margin: 0;
+    margin-right: 10rem;
+    margin-top: 1rem;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+
+.voice-choice-wrapper button {
+    padding: 10px;
+    margin: 0;
+}
+
+.voice-select-btn {
+    width: 18rem;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    border: 1px solid black;
+}
+
+.voice-select-btn:hover {
+    width: 18rem;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff0a3;
+}
+
+.voice-btn {
+    width: 10rem;
+    text-align: center;
+    color: black;
+    background-color: #f0dc78;
+    border: none;
+    border-radius: 5px;
+}
+
+.voice-btn:hover {
+    background-color: rgb(11, 82, 144);
+    cursor: pointer;
+    color: white;
+}
+
+.preview-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: rgb(238, 245, 251);
+}
+
+.preview-btn:hover {
+    background-color: rgb(11, 82, 144);
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 350px;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar.open {
+    left: 0; /* Show sidebar */
+    z-index: 99;
+    background-color: rgb(238, 245, 251);
+}
+
+
+/* LingDiscriminationPageGame2.css */
+.close-btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    color: red;
+    
+}
+
+/* Add styles for the button if needed */
+.close-btn button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+    padding: 0 10px 0 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.close-btn button:hover {
+    background-color: #ffeceb;
+}

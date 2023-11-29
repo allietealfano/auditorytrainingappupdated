@@ -8,7 +8,7 @@ import Completed from "../Completed/Completed";
 import classes from "./lingDetection.module.css";
 
 //Purpose: Game page for LingDetection
-function LingDetection(props) {
+function LingDetectionLvl2(props) {
     //Set up the states involved
     const [choice, setChoice] = useState(null);
     const [currentScores, setCurrentScores] = useState([]);
@@ -40,8 +40,9 @@ function LingDetection(props) {
     let lingSound = null;
 
     //randomly set one of the ling sounds from the database passed as an array from the parent component
-    if (props.arr[0][1])
+    if (props.arr[0][1]) {
         lingSound = props.arr[Math.floor(Math.random() * props.arr.length)][1];
+    }
 
     //Checks if the user is correct
     const checkHandler = async () => {
@@ -206,4 +207,4 @@ function LingDetection(props) {
     );
 }
 
-export default LingDetection;
+export default LingDetectionLvl2;

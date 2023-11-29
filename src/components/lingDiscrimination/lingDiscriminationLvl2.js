@@ -10,12 +10,12 @@ import Completed from "../Completed/Completed";
 import classes from "./lingDiscrimation.module.css";
 
 //Purpose: LingDiscrimination Activity Page
-function LingDiscrimination(props) {
+function LingDiscriminationLvl2(props) {
     //State variable setup
     const [choice, setChoice] = useState(null);
     const [currentScores, setCurrentScores] = useState([]);
     const [pop, setPop] = useState(false);
-    const [soundS, setSound] = useState(true);
+    const [soundS, setSound] = useState(false);
 
     //Fetching activities
     const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
@@ -28,10 +28,6 @@ function LingDiscrimination(props) {
             )
         );
     }, [allActivitiesObj]);
-
-    useEffect(() => {
-        soundHandler();
-    }, []);
 
     //Set up variables for correct/false card.
     const cardTrueRef = useRef(null);
@@ -103,21 +99,17 @@ function LingDiscrimination(props) {
         //Confirm sound is not null
         if (soundS) {
             //Randomize sound played
-            if (props.arr[0][1]) {
+            if (props.arr[0][1])
                 sound1 =
                     props.arr[Math.floor(Math.random() * props.arr.length)][1];
-            }
             window.sound1 = sound1;
-            if (props.arr[0][1]) {
+            if (props.arr[0][1])
                 sound2 =
                     props.arr[Math.floor(Math.random() * props.arr.length)][1];
-            }
             window.sound2 = sound2;
             setSound(false);
         }
-        if (!soundS) {
-            return;
-        }
+        if (!soundS) return;
     }
 
     //Checking if the user is correct
@@ -187,7 +179,6 @@ function LingDiscrimination(props) {
                     score={score * 10}
                 />
             )}
-
             {/* If soundS is available, then soundHandler */}
             {soundS && soundHandler()}
 
@@ -323,4 +314,4 @@ function LingDiscrimination(props) {
     );
 }
 
-export default LingDiscrimination;
+export default LingDiscriminationLvl2;
