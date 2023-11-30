@@ -90,6 +90,16 @@ function App() {
                             }
                         />
                         <Route
+                            path="/activity/gameActivities"
+                            element={
+                                authContext.isLoggedIn ? (
+                                    <GamePage />
+                                ) : (
+                                    <Navigate to="/auth" />
+                                )
+                            }
+                        />
+                        <Route
                             path="/activity/voiceSelector"
                             element={
                                 authContext.isLoggedIn ? (
@@ -130,6 +140,86 @@ function App() {
                                 )
                             }
                         />
+                        <Route
+              path="/activity/gameActivities/matching"
+              element={
+                authContext.isLoggedIn ? (
+                  <GamePageMatching />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl1"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl2"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage2 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl3"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage3 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/matchinglvl4"
+              element={
+                authContext.isLoggedIn ? (
+                  <LingMatchingPage4 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/activity/gameActivities/crosswords"
+              element={
+                authContext.isLoggedIn ? (
+                  <GamePageCrossWords />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/crosswordslvl1"
+              element={
+                authContext.isLoggedIn ? (
+                  <CrossWord />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
+            <Route
+              path="/lingActivity/crosswordslvl2"
+              element={
+                authContext.isLoggedIn ? (
+                  <CrossWord2 />
+                ) : (
+                  <Navigate to="/auth" />
+                )
+              }
+            />
                         <Route
                             path="/lingActivity/detection"
                             element={
