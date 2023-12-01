@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
 import LingDetection from "../../components/lingDetection/LingDetection";
+import LingDetectionLvl2 from "../../components/lingDetection/LingDetectionLvl2";
 
 //Page for Detection Game
 function LingDetectionPage() {
@@ -312,7 +313,7 @@ function LingDetectionPage() {
 
             {/* Calls LingDetection and passes required params. 
       If you'd like to edit Detection Game, please refer to -LingDetection.js- */}
-            <LingDetection
+            <LingDetectionLvl2
                 objKey={"activitydetection"}
                 score={score}
                 prog={progress}
