@@ -14,6 +14,7 @@ function LingDetectionLvl2(props) {
     const [currentScores, setCurrentScores] = useState([]);
     const [pop, setPop] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
+    let counter = 0
 
     //Fetch activites from db
     const [[allActivitiesObj], isPending, err] = useFetch("allActivitiesObj");
@@ -55,10 +56,13 @@ function LingDetectionLvl2(props) {
         if ((choice && sound) || (choice === false && !sound)) {
             score += 1;
             card.current.style.border = "8px green solid";
+            counter += 1
+            
         }
         //False answer
         if ((choice && !sound) || (choice === false && sound)) {
             card.current.style.border = "8px red solid";
+            counter += 1
         }
 
         //Update progress bar visually
@@ -81,6 +85,8 @@ function LingDetectionLvl2(props) {
             setPop(true); //Show popup
             return;
         }
+
+        
     };
 
     //Highlight user choice
@@ -103,6 +109,7 @@ function LingDetectionLvl2(props) {
                     score={score * 10}
                 />
             )}
+
 
             {/* Otherwise, show game */}
             <div className={classes.bg__container}>
