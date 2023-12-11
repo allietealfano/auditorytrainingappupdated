@@ -17,6 +17,7 @@ function Completed(props) {
   const user = useContext(AuthContext).fbUser;
   const [data, setData] = useState([]);
 
+
   //Key to access db
   const key = `${props.objKey}`.replaceAll("/", "");
 
@@ -44,6 +45,7 @@ function Completed(props) {
     //Grab the data from the db
     //console.log("TEST",allActivitiesObj);
     setData(allActivitiesObj?.[key].completions); //Access the history...
+    // setData(allGamesObj?.[key].completions);
 
   }, [allActivitiesObj]);
 
