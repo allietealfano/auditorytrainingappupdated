@@ -17,10 +17,13 @@ const words = [
 ];
 
 function AudioMemoryGame() {
-  const [sequence, setSequence] = useState([]);
-  const [userInput, setUserInput] = useState([]);
-  const [gameState, setGameState] = useState('idle');
-  const [progress, setProgress] = useState(0);
+ 
+    const [sequence, setSequence] = useState([]);
+    const [userInput, setUserInput] = useState([]);
+    const [gameState, setGameState] = useState('idle');
+    const [progress, setProgress] = useState(0);
+  
+  
 
   // Function to play sound, returns a promise that resolves when the sound finishes playing
   const playSound = (soundUrl) => {
@@ -68,7 +71,7 @@ function AudioMemoryGame() {
         
           if (isCorrect) {
             
-              setProgress((prevProgress) => prevProgress + 10); // Increment progress by 10%
+              setProgress((prevProgress) => prevProgress + 10); 
               setUserInput([]);
               addWordToSequence();
               setGameState('ready');
@@ -100,6 +103,7 @@ function AudioMemoryGame() {
       playSequence();
     }
   }, [sequence]);
+  
 
   return (
     <div className={classes.gameContainer}>
@@ -130,7 +134,6 @@ function AudioMemoryGame() {
               key={index}
               onClick={() => handleUserInput(word.word)}
               className={classes.wordButton}
-              disabled={gameState !== 'ready'}
             >
               {word.word}
             </button>
