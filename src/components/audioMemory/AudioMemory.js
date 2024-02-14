@@ -21,7 +21,7 @@ function AudioMemoryGame() {
     const [sequence, setSequence] = useState([]);
     const [userInput, setUserInput] = useState([]);
     const [gameState, setGameState] = useState('idle');
-    const [progress, setProgress] = useState(0);
+    const [score, setScore] = useState(0); // Initialize score state here
   
   
 
@@ -71,7 +71,7 @@ function AudioMemoryGame() {
         
           if (isCorrect) {
             
-              setProgress((prevProgress) => prevProgress + 10); 
+              setScore((prevScore) => prevScore + 10); // Update score here
               setUserInput([]);
               addWordToSequence();
               setGameState('ready');
@@ -88,7 +88,7 @@ function AudioMemoryGame() {
   // Button to start game
   const handleStartGame = () => {
     if (gameState === 'idle' || gameState === 'ready') {
-      setProgress(0);
+      setScore(0);
       setSequence([]);
       setUserInput([]);
       addWordToSequence();
@@ -107,44 +107,45 @@ function AudioMemoryGame() {
 
   return (
     <div className={classes.gameContainer}>
-      <div className={classes.title}>Audio Memory Game</div>
+    <div className={classes.title}>Audio Memory Game</div>
 
-      {gameState === 'idle' && (
-        <div className={classes.startButtonContainer}>
-          <Link to="/dashboard" style={{ textDecoration: 'none', color: 'gray', fontSize: '30px', position: 'absolute', top: '10px', left: '10px' }}>
-            X
-          </Link>
-          <button className={classes.startButton} onClick={handleStartGame}>
-            Start Game
-          </button>
-        </div>
-      )}
-
-      <div className={classes.progressContainer}>
-        <div className={classes.progressBar} style={{ width: `${progress}%` }}></div>
-      </div>
-
-      {(gameState === 'ready' || gameState === 'waitingForInput') && (
-        <div className={classes.wordsContainer}>
-          <Link to="/dashboard" style={{ textDecoration: 'none', color: 'gray', fontSize: '30px', position: 'absolute', top: '10px', left: '10px' }}>
-            X
-          </Link>
-          {words.map((word, index) => (
-            <button
-              key={index}
-              onClick={() => handleUserInput(word.word)}
-              className={classes.wordButton}
-            >
-              {word.word}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {gameState === 'completed' && (
-        <div className={classes.completedMessage}>Congratulations! You've completed the game!</div>
-      )}
+    {/* Display the score instead of progress */}
+    <div className={classes.scoreContainer}>
+      Score: {score}
     </div>
+
+    {gameState === 'idle' && (
+      <div className={classes.startButtonContainer}>
+        <Link to="/dashboard" style={{ textDecoration: 'none', color: 'gray', fontSize: '30px',fontfamily: "Google Sans", position: 'absolute', top: '10px', left: '10px' }}>
+          X
+        </Link>
+        <button className={classes.startButton} onClick={handleStartGame}>
+          Start Game
+        </button>
+      </div>
+    )}
+
+    {(gameState === 'ready' || gameState === 'waitingForInput') && (
+      <div className={classes.wordsContainer}>
+        <Link to="/dashboard" style={{ textDecoration: 'none', color: 'gray', fontSize: '30px', fontfamily: "Google Sans",  position: 'absolute', top: '10px', left: '10px' }}>
+          X
+        </Link>
+        {words.map((word, index) => (
+          <button
+            key={index}
+            onClick={() => handleUserInput(word.word)}
+            className={classes.wordButton}
+          >
+            {word.word}
+          </button>
+        ))}
+      </div>
+    )}
+
+    {gameState === 'completed' && (
+      <div className={classes.completedMessage}>Congratulations! You've completed the game!</div>
+    )}
+  </div>
   );
 }
 
