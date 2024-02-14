@@ -3,8 +3,8 @@
 const allGames = {
     lingGames: [
       {
-        title: "Coming Soon",
-        link: "/activity/gameActivities/unknown",
+        title: "Audio Memory",
+        link: "/activity/gameActivities/audioMemoryGame",
         src: "detection",
         level: 1,
         desc:"Work in progress, please implement"
@@ -17,7 +17,7 @@ const allGames = {
         desc:"Match the same sounds"
       },
       {
-        title: "Identification",
+        title: "Cross Words",
         link: "/activity/gameActivities/crosswords",
         src: "identification",
         level: 3,

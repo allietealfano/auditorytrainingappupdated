@@ -31,6 +31,7 @@ import GamePageMatching from "./pages/gamePage/GamePageMatching";
 import GamePageCrossWords from "./pages/gamePage/GamePageCrossWords";
 import GamePageDiscrimination from "./pages/gamePage/GamePageDiscrimination";
 import GamePageIdentification from "./pages/gamePage/GamePageIdentification";
+import GamePageAudioMemory from "./pages/gamePage/GamePageAudioMemory"; 
 import DetectionForum from "./pages/forum/DetectionForum";
 import MyProfilePage from "./pages/myProfile/MyProfilePage";
 import ReportsPage2 from "./pages/reportsPage/reportsPage2";
@@ -38,7 +39,8 @@ import Settings from "./pages/settings/Settings";
 import SupportPage from "./pages/supportPage/SupportPage";
 import InBetweenPage from "./pages/inBetweenPage/inBetweenPage";
 import VoiceSelectorPage from "./pages/voiceSelectorPage/voiceSelectorPage";
-
+import LingAudioMemoryPage from "./pages/ling/LingAudioMemoryPage";
+import AudioMemory from "./components/audioMemory/AudioMemory";
 export const ThemeContext = createContext(null);
 
 function App() {
@@ -140,7 +142,8 @@ function App() {
                                 )
                             }
                         />
-                        <Route
+                         
+            <Route
               path="/activity/gameActivities/matching"
               element={
                 authContext.isLoggedIn ? (
@@ -149,6 +152,26 @@ function App() {
                   <Navigate to="/auth" />
                 )
               }
+            />
+           <Route
+                path="/activity/gameActivities/audioMemoryGame"
+                element={
+                authContext.isLoggedIn ? (
+                    <GamePageAudioMemory /> 
+                    )   :  ( 
+                        <Navigate to="/auth"  />
+                    )
+                }
+            />
+            <Route
+                path="/gameActivity/audioMemory"
+                element={
+                authContext.isLoggedIn ? (
+                    <AudioMemory /> 
+                    )   :  ( 
+                        <Navigate to="/auth"  />
+                    )
+                }
             />
             <Route
               path="/lingActivity/matchinglvl1"

@@ -6,13 +6,13 @@ const allMatchingGames = {
         title: "Matching: Level 1",
         link: "/lingActivity/matchinglvl1",
         src: "MatchingGameIcon",
-        desc: "Match the sounds with a few tiles!"
+        desc: "Match the sounds with a couple tiles!"
       },
       {
         title: "Matching: Level 2",
         link: "/lingActivity/matchinglvl2",
         src: "MatchingGameIcon",
-        desc: "Match the sounds with a couple of tiles!"
+        desc: "Match the sounds with a few of tiles!"
       },
       {
         title: "Matching: Level 3",

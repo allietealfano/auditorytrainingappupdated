@@ -1,0 +1,124 @@
+.gameContainer {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; /* Fixed width */
+  height: 600px; /* Fixed height */
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-sizing: border-box; /* Include padding and border in the container's dimensions */
+  padding: 40px; /* Added padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.title {
+  font-size: 24px;
+  margin-bottom: 50px;
+  align-self: top;
+}
+
+.wordsContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Creates five columns */
+  grid-template-rows: repeat(2, 1fr); /* Creates two rows */
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensure it occupies the full width of its parent */
+}
+
+.startButtonContainer {
+  width: 100%; /* This ensures the container spans the full width */
+  display: flex;
+  justify-content: center;
+  margin-right: 90px;
+}
+
+
+.wordButton { /* Apply the same style to startButton and wordButton */
+  width: 100px; /* Same width and height for a square button */
+  height: 100px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase; /* Capitalize button text */
+  transition: background-color 0.3s; /* Smooth transition for color change */
+  margin-bottom: 10px; /* Space between the start button and the grid */
+  margin-left: 0px;
+}
+
+/* Hover and active styles for buttons */
+.wordButton:hover,
+.startButton:hover {
+  background-color: #add8e6; /* Light blue on hover */
+
+}
+
+.wordButton:active,
+.startButton:active {
+  background-color: #00008b; /* Darker blue on click */
+}
+
+.progressContainer {
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.progressBar {
+  height: 20px;
+  background-color: #76b852;
+  width: 0; /* Initial state */
+}
+
+.completedMessage {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .wordsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .wordButton {
+    width: 80%; /* Adjust size for smaller screens */
+    height: auto;
+    padding: 20px;
+  }
+}
+
+.startButton {
+  width: auto; /* Adjust size for smaller screens */
+  height: auto;
+  padding: 20px;
+  align-items: center;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  align-items: center !important;
+  justify-content: center;
+  text-transform: uppercase; /* Capitalize button text */
+  transition: background-color 0.3s; /* Smooth transition for color change */
+  margin-bottom: 20px;
+  align-self: center !important;
+  margin-right: 90px;
+  margin-right: 0;
+}
